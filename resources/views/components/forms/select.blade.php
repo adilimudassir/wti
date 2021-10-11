@@ -1,8 +1,15 @@
-{{ html()->label(ucfirst($name))
-    ->class('form-control-label')
+@props([
+'name' => '',
+'label' => $label ?? ucwords(str_replace("_", " ",$name)),
+'options' => []
+])
+
+{{ html()->label($label)
+    ->class('form-label fs-6 fw-bolder text-dark')
     ->for($name)
 }}
-{{ html()->select($name, $options, isset($model) ? $model->$name : null)
-    ->class('form-control')
-    ->placeholder("Select {$name}")
+{{ html()->select($name, $options)
+    ->class('form-control form-control-lg form-control-solid')
+    ->placeholder("Select {$label}")
+    ->attributes($attributes->whereStartsWith('wire'))
 }}

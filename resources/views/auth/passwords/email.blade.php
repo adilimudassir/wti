@@ -2,26 +2,21 @@
     <x-slot name="title">
         Reset Password
     </x-slot>
-    <a href="/" class="logo mt-3 float-left">
-        <h2>{{ config('app.name') }}</h2>
-    </a>
-
-    <div class="panel card-sign">
-        <div class="card-title-sign mt-3 text-right">
-            <h2 class="title text-uppercase font-weight-bold m-0"><i class="fas fa-user mr-1"></i> Reset Password</h2>
+    <form method="POST" action="{{ route('password.email') }}" class="form w-100" novalidate="novalidate" id="kt_password_reset_form">
+        <div class="text-center mb-10">
+            <h1 class="text-dark mb-3">Forgot Password ?</h1>
+            <div class="text-gray-400 fw-bold fs-4">Enter your email to reset your password.</div>
         </div>
-        <div class="card-body">
-            <form method="POST" action="{{ route('password.email') }}">
-                @csrf
-                <div class="form-group mb-3">
-                    <x-forms.email name="email" />
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <button type="submit" class="btn btn-block btn-primary mt-2">Send Password Reset Link</button>
-                    </div>
-                </div>
-            </form>
+        <div class="fv-row mb-10">
+            <x-forms.email name="email" />
         </div>
-    </div>
+        <div class="d-flex flex-wrap justify-content-center pb-lg-0">
+            <button type="button" id="kt_password_reset_submit" class="btn btn-lg btn-primary fw-bolder me-4">
+                <span class="indicator-label">Submit</span>
+                <span class="indicator-progress">Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+            <a href="{{ route('login') }}" class="btn btn-lg btn-light-primary fw-bolder">Cancel</a>
+        </div>
+    </form>
 </x-layouts.guest>

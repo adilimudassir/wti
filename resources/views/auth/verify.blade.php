@@ -2,19 +2,28 @@
     <x-slot name="title">
         Verify Email Address
     </x-slot>
-    <a href="/" class="logo mt-3 float-left">
-        <h2>{{ config('app.name') }}</h2>
-    </a>
-
-    <div class="panel card-sign">
-        <div class="card-title-sign mt-3 text-right">
-            <h2 class="title text-uppercase font-weight-bold m-0"><i class="fas fa-user mr-1"></i> Verify Your Email Address</h2>
+    <div class="w-100">
+        <div class="text-center mb-10">
+            <h1 class="text-dark mb-3">
+                Verify Email
+            </h1>
+            <div class="text-gray-400 fw-bold fs-4">
+                Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
+            </div>
+            @if (session('status') === 'verification-link-sent')
+            <p class="font-medium text-sm text-gray-500 mt-4">
+                A new verification link has been sent to the email address you provided during registration.
+            </p>
+            @endif
         </div>
-        <div class="card-body text-center">
-            Before proceeding, please check your email for a verification link. If you did not receive the email,
-            <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+        <div class="d-flex flex-wrap justify-content-center pb-lg-0">
+            <form method="POST" action="{{ route('verification.send') }}">
                 @csrf
-                <button type="submit" class="btn btn-link p-0 m-0 align-baseline">click here to request another</button>.
+                <button type="submit" class="btn btn-lg btn-primary fw-bolder me-4">Resend Verification Email</button>
+            </form>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-lg btn-light-primary fw-bolder me-4">Log out</button>
             </form>
         </div>
     </div>

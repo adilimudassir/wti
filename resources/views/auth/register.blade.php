@@ -2,38 +2,50 @@
     <x-slot name="title">
         Register
     </x-slot>
-    <a href="/" class="logo mt-3 float-left">
-        <h2>{{ config('app.name') }}</h2>
-    </a>
+    <form method="POST" action="{{ route('register') }}" class="form w-100" id="kt_sign_up_form">
+        @csrf
+        <div class="text-center mb-10">
+            <h1 class="text-dark mb-3">
+                Create an Account
+            </h1>
+            <div class="text-gray-400 fw-bold fs-4">
+                Already have an account?
 
-    <div class="panel card-sign">
-        <div class="card-title-sign mt-3 text-right">
-            <h2 class="title text-uppercase font-weight-bold m-0"><i class="fas fa-user mr-1"></i> Register</h2>
-        </div>
-        <div class="card-body">
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
-                <div class="form-group mb-3">
-                    <x-forms.text name="name" />
-                </div>
-                <div class="form-group mb-3">
-                    <x-forms.email name="email" />
-                </div>
-                <div class="form-group mb-3">
-                    <x-forms.password name="password" />
-                </div>
-                <div class="form-group mb-3">
-                    <x-forms.confirm-password />
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <button type="submit" class="btn btn-block btn-primary mt-2">Register</button>
-                    </div>
-                </div>
-                <a class="btn btn-link text-center" href="{{ route('login') }}">
-                    Already have account?
+                <a href="{{ route('login') }}" class="link-primary fw-bolder">
+                    Sign in here
                 </a>
-            </form>
+            </div>
         </div>
-    </div>
+        <div class="fv-row mb-7">
+            <x-forms.text name="name" />
+        </div>
+        <div class="fv-row mb-7">
+            <x-forms.email name="email" />
+        </div>
+        <div class="mb-7 fv-row">
+            <x-forms.password name="password" />
+        </div>
+        <div class="fv-row mb-5">
+            <x-forms.confirm-password />
+        </div>
+        <div class="fv-row mb-10">
+            <label class="form-check form-check-custom form-check-solid form-check-inline">
+                <input class="form-check-input" type="checkbox" name="toc" value="1" />
+                <span class="form-check-label fw-bold text-gray-700 fs-6">
+                    I Agree & <a href="#" class="ms-1 link-primary">Terms and conditions</a>.
+                </span>
+            </label>
+        </div>
+        <div class="text-center">
+            <button type="submit" id="kt_sign_up_submit" class="btn btn-lg btn-primary w-100">
+                <span class="indicator-label">
+                    Submit
+                </span>
+                <span class="indicator-progress">
+                    Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                </span>
+            </button>
+        </div>
+    </form>
 </x-layouts.guest>

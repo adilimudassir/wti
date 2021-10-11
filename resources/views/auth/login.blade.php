@@ -2,44 +2,47 @@
     <x-slot name="title">
         Login
     </x-slot>
-    <a href="/" class="logo mt-3 float-left">
-        <h2>{{ config('app.name') }}</h2>
-    </a>
-
-    <div class="panel card-sign">
-        <div class="card-title-sign mt-3 text-right">
-            <h2 class="title text-uppercase font-weight-bold m-0"><i class="fas fa-user mr-1"></i> Sign In</h2>
+    <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="POST" action="{{ route('login') }}">
+        <div class="text-center mb-10">
+            <h1 class="text-dark mb-3">Sign In</h1>
+            <div class="text-gray-400 fw-bold fs-4">New Here?
+                <a href="{{ route('register') }}" class="link-primary fw-bolder">Create an Account</a>
+            </div>
         </div>
-        <div class="card-body">
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-                <div class="form-group mb-3">
-                    <x-forms.email name="email" />
-                </div>
-                <div class="form-group mb-3">
-                    <x-forms.password name="password" />
-                </div>
+        <x-utils.errors />
+        @csrf
+        <div class="fv-row mb-10">
+            <label class="form-label fs-6 fw-bolder text-dark">Email</label>
 
-                <div class="row">
-                    <div class="col-sm-8">
-                        <div class="checkbox-custom checkbox-default">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                            <label class="form-check-label" for="remember">
-                                Remember Me
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 text-right">
-                        <button type="submit" class="btn btn-primary mt-2">Sign In</button>
-                    </div>
-                </div>
-                @if (Route::has('password.request'))
-                <a class="btn btn-link text-center" href="{{ route('password.request') }}">
-                    Forgot Your Password?
-                </a>
-                @endif
-            </form>
+            <input class="form-control form-control-lg form-control-solid @error('email') is-invalid @enderror " type="text" name="email" autocomplete="off" id="email" />
         </div>
-    </div>
+        <div class="fv-row mb-10">
+            <div class="d-flex flex-stack mb-2">
+                <label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
+                <a href="{{ route('password.request') }}" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
+            </div>
+            <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="form-check form-check-custom form-check-solid">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} id="flexCheckDefault" />
+                    <label class="form-check-label" for="remenber">
+                        Remember
+                    </label>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="text-center">
+                <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
+                    <span class="indicator-label">Continue</span>
+                    <span class="indicator-progress">Please wait...
+                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                </button>
+            </div>
+        </div>
+    </form>
+    <x-slot name="after_scripts">
+    </x-slot>
 </x-layouts.guest>
