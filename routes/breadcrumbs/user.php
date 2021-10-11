@@ -9,7 +9,7 @@ Breadcrumbs::for('users.index', function ($trail) {
 // Dashboard > Users > Index > Show
 Breadcrumbs::for('users.show', function ($trail, $userID) {
     $trail->parent('users.index');
-    $trail->push('View User', route('users.show', $userID));
+    $trail->push('View', route('users.show', $userID));
 });
 
 // Dashboard > Users > Index > Create
