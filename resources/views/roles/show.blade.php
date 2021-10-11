@@ -2,43 +2,31 @@
     <x-slot name="title">
         View Role
     </x-slot>
-    <div class="row">
-        <div class="col">
-            @can('update-roles')
-                <div class="btn-group flex-wrap pull-right">
-                    <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-sm btn-success">EDIT</a>
-                </div>
-            @endcan
+    <div class="d-flex justify-content-between mb-3">
+        <div>
+            <x-utils.link :href="route('roles.index')" class="btn btn-sm btn-light-primary" text="Back" icon="bi bi-chevron-left" />
+        </div>
+        <div>
+            <x-utils.action-button name="edit" :href="route('roles.edit', $role)" permission="update-roles" class="btn btn-sm btn-primary" icon="bi bi-pencil" />
         </div>
     </div>
-    <x-partials.tabs>
-        <x-slot name="headers">
-            <x-partials.tab-header id="overview" :active="true">
-                Overview
-            </x-partials.tab-header>
+    <x-partials.card>
+        <x-slot name="body">
+            <span class="fw-bolder">Name</span>
+            <div class="card-title">
+                <span class="pl-2">{{ $role->name }}</span>
+                <small>{{ $role->description }} </small>
+            </div>
+            <div class="separator my-10"></div>
+            <span class="fw-bolder">Permissions</span>
+            <div class="d-flex pl-2 flex-column">
+                @foreach($role->permissions as $key => $permission)
+                <li class="d-flex align-items-center py-2">
+                    <span class="bullet me-5"></span> {{ $permission->description }}
+                </li>
+                @endforeach
+            </div>
+            </fieldset>
         </x-slot>
-        <x-slot name="contents">
-            <x-partials.tab-content id="overview" :active="true">
-                <table class="table table-bordered">
-                    <tr>
-                        <th>Name</th>
-                        <td>{{ $role->name }}</td>
-                    </tr>
-                    <tr>
-                        <th>Permissions</th>
-                        <td>
-                            <table class="table table-bordered">
-                                @foreach($role->permissions as $key => $permission)
-                                <tr>
-                                    <td>{{++$key}}</td>
-                                    <td>{{ $permission->description }}</td>
-                                </tr>
-                                @endforeach
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </x-partials.tab-content>
-        </x-slot>
-    </x-partials.tabs>
+    </x-partials.card>
 </x-layouts.app>

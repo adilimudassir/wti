@@ -2,15 +2,15 @@
 
 namespace Domains\Auth\Repositories;
 
-use Domains\General\Exceptions\GeneralException;
-use App\Repositories\BaseRepository;
-use App\Http\Requests\UserFormRequest;
-use Domains\Auth\Events\UserCreated;
-use Domains\Auth\Events\UserUpdated;
-use Domains\Auth\Exceptions\UserException;
 use Domains\Auth\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Repositories\BaseRepository;
+use Domains\Auth\Events\UserCreated;
+use Domains\Auth\Events\UserUpdated;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserFormRequest;
+use Domains\Auth\Exceptions\UserException;
+use Domains\General\Exceptions\GeneralException;
 
 class UserRepository extends BaseRepository
 {
@@ -97,7 +97,7 @@ class UserRepository extends BaseRepository
             throw new GeneralException(__('This user is already deleted.'));
         }
 
-        if ($this->deleteById($user->id)) {
+        if ($user->delete()) {
             return $user;
         }
 

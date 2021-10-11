@@ -2,9 +2,12 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Spatie\Permission\Exceptions\UnauthorizedException;
 use Throwable;
+use Domains\General\Exceptions\GeneralException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Spatie\Permission\Exceptions\UnauthorizedException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -54,7 +57,19 @@ class Handler extends ExceptionHandler
         if ($exception instanceof UnauthorizedException) {
             return redirect()
                 ->route(home_route())
-                ->withFlashDanger(__('You do not have access to do that.'));
+                ->withFlashDanger('You do not have access to do that.');
+        }
+
+        if ($exception instanceof AuthorizationException) {
+            return redirect()
+                ->back()
+                ->withFlashDanger('You do not have access to do that.');
+        }
+
+        if ($exception instanceof ModelNotFoundException) {
+            return redirect()
+                ->route(home_route())
+                ->withFlashDanger('The requested resource was not found.');
         }
 
         return parent::render($request, $exception);

@@ -11,9 +11,6 @@
     </x-utils.alert>
     @endif
     <x-partials.card>
-        <x-slot name="header">
-            Change User Password
-        </x-slot>
         <x-slot name="body">
             <div class="row">
                 @if(Route::is('change-password'))
@@ -30,8 +27,7 @@
             </div>
         </x-slot>
         <x-slot name="footer">
-            {{ html()->submit('Update')->class('btn btn-success pull-right') }}
-            {{ html()->a('users.index', 'Back')->class('btn btn-danger') }}
+            <x-utils.form-submit-actions-buttons :back="route('profile')" />
         </x-slot>
     </x-partials.card>
     {{ html()->form()->close() }}

@@ -31,7 +31,7 @@
                 </div>
                 <div class="d-flex flex-center flex-column-auto p-10">
                     <div class="d-flex align-items-center fw-bold fs-6">
-                        &copy; Copyright {{ date('Y') }} &nbsp; <strong class="fw-bolder">{{ config('app.name') }}</strong> . All rights reserved.
+                        &copy; Copyright {{ date('Y') }} &nbsp; <strong class="fw-bolder text-primary">{{ config('app.name') }}</strong> . All rights reserved.
                     </div>
                 </div>
             </div>

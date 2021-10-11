@@ -6,7 +6,7 @@
             name="delete-item"
             :button-class="$class"
         >
-            <i class="{{ $icon }}"></i> {{ $text ?? 'Delete' }}
+             {{ $text ?? 'Delete' }}
         </x-utils.form-button>
     @endif
 @else
@@ -16,6 +16,6 @@
         name="delete-item"
         :button-class="$class"
     >
-        <i class="{{ $icon }}"></i> {{ $text ?? 'Delete' }}
+         {{ $text ?? 'Delete' }}
     </x-utils.form-button>
 @endif

@@ -4,9 +4,6 @@
     </x-slot>
     {{ html()->form('POST', route('users.store'))->class('form-horizontal')->open() }}
     <x-partials.card>
-        <x-slot name="header">
-            Create User
-        </x-slot>
         <x-slot name="body">
             <div class="row">
                 <div class="form-group col-lg-12">
@@ -22,7 +19,7 @@
                     <x-forms.confirm-password />
                 </div>
                 <div class="form form-group col-lg-12">
-                    <x-forms.multiple-checkbox name="roles" :options="$roles" />        
+                    <x-forms.multiple-checkbox name="roles" :options="$roles" />
                 </div>
                 <div class="form-group col-lg-12">
                     <x-forms.checkbox name="status" labelName="Active" :checked="true" value="Active" />
@@ -33,8 +30,7 @@
             </div>
         </x-slot>
         <x-slot name="footer">
-            {{ html()->submit('Submit')->class('btn btn-success pull-right') }}
-            {{ html()->a('users.index', 'Back')->class('btn btn-danger') }}
+            <x-utils.form-submit-actions-buttons :back="route('users.index')" />
         </x-slot>
     </x-partials.card>
     {{ html()->form()->close() }}

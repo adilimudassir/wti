@@ -1,15 +1,13 @@
-<div class="card">
-    @if (isset($header))
+<div class="card shadow-sm">
+    @if (isset($header) || isset($toolbar))
     <div class="card-header">
-        {{ $header }}
-        @if (isset($headerActions))
-        <div class="card-header-actions">
-            {{ $headerActions }}
-        </div>
-        @else
-        <div class="card-actions">
-            <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
-            <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+        @if(isset($header))
+        <h3 class="card-title">{{ $header }}</h3>
+        @endif
+        @if (isset($toolbar))
+        <div class="card-title"></div>
+        <div class="card-toolbar d-flex justify-content-end">
+            {{ $toolbar }}
         </div>
         @endif
     </div>

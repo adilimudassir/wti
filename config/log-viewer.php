@@ -71,7 +71,7 @@ return [
      */
 
     'download'      => [
-        'prefix'    => 'laravel-',
+        'prefix'    => env('APP_NAME') . '-',
 
         'extension' => 'log',
     ],

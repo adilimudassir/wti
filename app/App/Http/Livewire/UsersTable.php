@@ -22,7 +22,8 @@ class UsersTable extends DataTableComponent
                 ->sortable(),
             Column::make('Name')
                 ->searchable()
-                ->sortable(),
+                ->sortable()
+                ->format(fn ($value, $column, $row) => html()->a(route('users.show', $row), $value)),
             Column::make('E-mail', 'email')
                 ->searchable()
                 ->sortable(),

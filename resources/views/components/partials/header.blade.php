@@ -1,58 +1,45 @@
-<header class="header">
-	<div class="logo-container">
-		<a href="{{ route('dashboard') }}" class="logo">
-			<span class="text-center h2">
-				{{ config('app.name') }}
-			</span>
-		</a>
-		<div class="d-md-none toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html"
-			data-fire-event="sidebar-left-opened">
-			<i class="fas fa-bars" aria-label="Toggle sidebar"></i>
-		</div>
-	</div>
-	
-	<div class="header-right">
-		<span class="separator"></span>
-		<div id="userbox" class="userbox">
-			<a href="#" data-toggle="dropdown">
-				<figure class="profile-picture">
-					<i class="fa fa-user"></i>
-				</figure>
-				<div class="profile-info" data-lock-name="{{ auth()->user()->name }}" data-lock-email="{{ auth()->user()->email }}">
-					<span class="name">{{ auth()->user()->name }}</span>
-					<span class="role">{{ auth()->user()->getRoleNames()->first() }}</span>
-				</div>
+					<!--begin::Header-->
+					<div id="kt_header" style="" class="header align-items-stretch">
+						<!--begin::Container-->
+						<div class="container-fluid d-flex align-items-stretch justify-content-between">
+							<!--begin::Aside mobile toggle-->
+							<div class="d-flex align-items-center d-lg-none ms-n3 me-1" title="Show aside menu">
+								<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_aside_mobile_toggle">
+									<!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
+									<span class="svg-icon svg-icon-2x mt-1">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black" />
+											<path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="black" />
+										</svg>
+									</span>
+									<!--end::Svg Icon-->
+								</div>
+							</div>
+							<!--end::Aside mobile toggle-->
+							<!--begin::Mobile logo-->
+							<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+								<a href="?page=index" class="d-lg-none">
+									<img alt="Logo" src="{{ asset('assets/media/logos/logo.png')}}" class="h-30px" />
+								</a>
+							</div>
+							<!--end::Mobile logo-->
+							<!--begin::Wrapper-->
+							<div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
+								<!--begin::Navbar-->
+								<div class="d-flex align-items-center" id="kt_header_nav">
 
-				<i class="fa custom-caret"></i>
-			</a>
+								</div>
+								<!--end::Navbar-->
+								<!--begin::Topbar-->
+								<div class="d-flex align-items-stretch flex-shrink-0">
 
-			<div class="dropdown-menu">
-				<ul class="list-unstyled mb-2">
-					<li class="divider"></li>
-					<li>
-						<a role="menuitem" tabindex="-1" href="{{ route('profile') }}"><i class="fas fa-user"></i> My
-							Profile</a>
-					</li>
-					<li>
-						<a role="menuitem" tabindex="-1" href="{{ route('change-password') }}"><i class="fas fa-lock"></i>
-						Change Password
-						</a>
-					</li>
-					<li>
-						<a role="menuitem" tabindex="-1" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-							<i class="fas fa-power-off"></i>
-							Logout
-						</a>
+									<x-partials.top-bar />
 
-						<form id="logout-form" action="{{ route('logout') }}" method="POST"
-							style="display: none;">
-							@csrf
-						</form>
-					</li>
-
-				</ul>
-			</div>
-		</div>
-	</div>
-</header>
+								</div>
+								<!--end::Topbar-->
+							</div>
+							<!--end::Wrapper-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Header-->

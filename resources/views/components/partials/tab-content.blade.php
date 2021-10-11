@@ -1,8 +1,8 @@
 @props([
-    'id' => '',
-    'active' => false
+'id' => '',
+'active' => false
 ])
 
-<div id="{{ $id }}" class="tab-pane {{ $active ? 'active' : '' }}">
+<div id="{{ $id }}" class="tab-pane fade show {{ $active ? 'active' : '' }}" role="tabpanel">
     {{ $slot }}
 </div>

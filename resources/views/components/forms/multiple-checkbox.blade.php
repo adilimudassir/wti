@@ -7,9 +7,9 @@
 ])
 
 {{
-    html()->label(ucfirst($name))->class('control-label text-lg-right pt-2 text-color-dark text-3')
+    html()->label(ucfirst($name))->class('form-label fs-6 fw-bolder text-dark my-3')
 }}
-<small class="text-info">(Select all that apply)</small>
+<small class="text-primary">(Select all that apply)</small>
 
 @foreach($options->chunk($chunkNumber) as $chunk)
 <div class="row">

@@ -1,6 +1,6 @@
 @props(['dismissable' => true, 'type' => 'success', 'ariaLabel' => 'Close'])
 
-<div {{ $attributes->merge(['class' => 'alert alert-dismissible d-flex flex-column flex-sm-row w-100 p-5 mb-10 bg-light-'.$type]) }}>
+<div {{ $attributes->merge(['class' => 'alert alert-dismissible d-flex flex-column flex-sm-row w-100 p-5 mb-10 alert-'.$type]) }}>
 
     <div class="d-flex flex-column pe-0 pe-sm-10 py-3 align-left">
         {{ $slot }}

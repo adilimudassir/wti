@@ -23,7 +23,8 @@ class RolesTable extends DataTableComponent
                 ->sortable(),
             Column::make('Name')
                 ->sortable()
-                ->searchable(),
+                ->searchable()
+                ->format(fn ($value, $column, $row) => html()->a(route('roles.show', $row), $value)),
             Column::make('Permissions', 'permissions_label')
                 ->searchable(
                     fn ($builder, $term) =>

@@ -213,7 +213,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark p-0">
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top p-0" style="background-color: red;">
         <a href="{{ route('log-viewer::dashboard') }}" class="navbar-brand mr-0">
             <i class="fa fa-fw fa-book"></i> LogViewer
         </a>
@@ -222,18 +222,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item {{ Route::is('log-viewer::dashboard') ? 'active' : '' }}">
-                    <a href="{{ route('log-viewer::dashboard') }}" class="nav-link">
+                <li class="nav-item {{ Route::is('log-viewer::dashboard') ? 'font-weight-bold' : '' }}">
+                    <a href="{{ route('log-viewer::dashboard') }}" class="nav-link text-white">
                         <i class="fa fa-dashboard"></i> @lang('Dashboard')
                     </a>
                 </li>
-                <li class="nav-item {{ Route::is('log-viewer::logs.list') ? 'active' : '' }}">
-                    <a href="{{ route('log-viewer::logs.list') }}" class="nav-link">
+                <li class="nav-item {{ Route::is('log-viewer::logs.list') ? 'font-weight-bold' : '' }}">
+                    <a href="{{ route('log-viewer::logs.list') }}" class="nav-link text-white">
                         <i class="fa fa-archive"></i> @lang('Logs')
                     </a>
                 </li>
-                <li class="nav-item {{ Route::is('log-viewer::logs.list') ? 'active' : '' }}">
-                    <a href="{{ route('dashboard') }}" class="nav-link">
+                <li class="nav-item">
+                    <a href="{{ route('dashboard') }}" class="nav-link font-weight-bold text-white">
                         <i class="fa fa-home"></i> Back to App
                     </a>
                 </li>

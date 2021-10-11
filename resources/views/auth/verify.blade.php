@@ -8,10 +8,13 @@
                 Verify Email
             </h1>
             <div class="text-gray-400 fw-bold fs-4">
-                Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
+                Thanks for signing up, <span class="text-primary fw-bold">{{ auth()->user()->name }}</span>! 
+                <br>
+                <br>
+                Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
             </div>
             @if (session('status') === 'verification-link-sent')
-            <p class="font-medium text-sm text-gray-500 mt-4">
+            <p class="font-medium text-sm text-primary mt-4">
                 A new verification link has been sent to the email address you provided during registration.
             </p>
             @endif

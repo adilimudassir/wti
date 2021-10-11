@@ -2,13 +2,12 @@
     <x-slot name="title">
         View User
     </x-slot>
-    <div class="row">
-        <div class="col">
-            @can('update-users')
-            <div class="btn-group flex-wrap pull-right">
-                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-success">EDIT</a>
-            </div>
-            @endcan
+    <div class="d-flex justify-content-between mb-3">
+        <div>
+            <x-utils.link :href="route('users.index')" class="btn btn-sm btn-light-primary" text="Back" icon="bi bi-chevron-left" />
+        </div>
+        <div>
+            <x-utils.action-button name="edit" :href="route('users.edit', $user->id)" permission="update-users" class="btn btn-sm btn-primary" icon="bi bi-pencil fs-3" />
         </div>
     </div>
     <x-partials.tabs>

@@ -36,8 +36,7 @@ class UserFormRequest extends FormRequest
         }
 
         if (Request::isMethod('PATCH')) {
-            $data['email'] = 'required|email';
-            $data['phone'] = 'required|digits:11';
+            $data['email'] = 'email';
             $data['password'] = '';
         }
 

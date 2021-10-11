@@ -9,7 +9,7 @@ Breadcrumbs::for('roles.index', function ($trail) {
 // Dashboard > Roles > Index > Show
 Breadcrumbs::for('roles.show', function ($trail, $roleID) {
     $trail->parent('roles.index');
-    $trail->push('View User', route('roles.show', $roleID));
+    $trail->push('View', route('roles.show', $roleID));
 });
 
 // Dashboard > Roles > Index > Create

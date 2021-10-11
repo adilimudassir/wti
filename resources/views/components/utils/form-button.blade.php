@@ -1,4 +1,4 @@
-<form method="POST" action="{{ $action }}" name="{{ $name ?? '' }}" class="{{ $formClass ?? 'd-inline' }}">
+<form method="POST" action="{{ $action }}" name="{{ $name ?? 'delete-item' }}" class="{{ $formClass ?? 'd-inline' }}">
     @csrf
     @method($method ?? 'POST')
 

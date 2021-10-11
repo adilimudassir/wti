@@ -18,7 +18,9 @@ class ProfileController extends Controller
 
     public function profile()
     {
-        return view('profile.overview');
+        return view('profile.overview', [
+            'user' => auth()->user()
+        ]);
     }
 
     public function changePassword()
