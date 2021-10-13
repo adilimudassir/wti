@@ -1,21 +1,21 @@
 @if (isset($permission))
     @if (auth()->user()->can($permission))
-        <x-utils.form-button
+        <x-form.button
             :action="$href"
             method="delete"
             name="delete-item"
             :button-class="$class"
         >
              {{ $text ?? 'Delete' }}
-        </x-utils.form-button>
+        </x-form.button>
     @endif
 @else
-    <x-utils.form-button
+    <x-form.button
         :action="$href"
         method="delete"
         name="delete-item"
         :button-class="$class"
     >
          {{ $text ?? 'Delete' }}
-    </x-utils.form-button>
+    </x-form.button>
 @endif

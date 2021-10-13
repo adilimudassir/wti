@@ -15,7 +15,7 @@
 <div class="row">
     @foreach($chunk as $id => $value)
         <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 col-12">
-            <x-forms.checkbox 
+            <x-form.checkbox 
             :id="$id"
             :name="$name"
             :checked="$modelValues->contains($value) ? true : false"

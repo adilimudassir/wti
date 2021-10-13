@@ -3,15 +3,11 @@
         Users
     </x-slot>
     <div class="d-flex justify-content-end mb-3">
-        @can('create-users')
-        <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm">
-            <i class="bi bi-plus fs-3"></i>CREATE
-        </a>
-        @endcan
+        <x-button name="create" :href="route('users.create')" permission="create-users" class="btn btn-sm btn-primary" icon="bi bi-plus" />
     </div>
-    <x-partials.card>
+    <x-card>
         <x-slot name="body">
             <livewire:users-table />
         </x-slot>
-    </x-partials.card>
+    </x-card>
 </x-layouts.app>

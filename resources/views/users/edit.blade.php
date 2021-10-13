@@ -2,31 +2,23 @@
     <x-slot name="title">
         Edit User
     </x-slot>
-    {{ html()->modelForm($user, 'PATCH', route('users.update', $user->id))->class('form-horizontal')->open() }}
-    <x-partials.card>
-        <x-utils.errors />
-        <x-slot name="body">
-            <div class="row">
-                <div class="form-group col-lg-12">
-                    <x-forms.text name="name" />
-                </div>
-                <div class="form-group col-lg-12">
-                    <x-forms.email name="email" />
-                </div>
-                <div class="form form-group col-lg-12">
-                    <x-forms.multiple-checkbox name="roles" :modelValues="$user->getRoleNames()" :options="$roles" />
-                </div>
-                <div class="form-group col-lg-12">
-                    <x-forms.checkbox name="status" :checked="$user->isActive()" labelName="Active" value="Active" />
-                </div>
-                <div class="form-group col-lg-12">
-                    <x-forms.checkbox name="confirmed" :checked="$user->hasVerifiedEmail()" labelName="Yes" value="True" />
-                </div>
+    <x-form method="PATCH" :model="$user" :route="route('users.update', $user->id)" :back-route="route('users.index')">
+        <div class="row">
+            <div class="form-group col-lg-12">
+                <x-form.text name="name" />
             </div>
-        </x-slot>
-        <x-slot name="footer">
-            <x-utils.form-submit-actions-buttons label="Update" :back="route('users.show', $user->id)" />
-        </x-slot>
-    </x-partials.card>
-    {{ html()->form()->close() }}
+            <div class="form-group col-lg-12">
+                <x-form.email name="email" />
+            </div>
+            <div class="form form-group col-lg-12">
+                <x-form.multiple-checkbox name="roles" :modelValues="$user->getRoleNames()" :options="$roles" />
+            </div>
+            <div class="form-group col-lg-12">
+                <x-form.checkbox name="status" :checked="$user->isActive()" labelName="Active" value="Active" />
+            </div>
+            <div class="form-group col-lg-12">
+                <x-form.checkbox name="confirmed" :checked="$user->hasVerifiedEmail()" labelName="Yes" value="True" />
+            </div>
+        </div>
+    </x-form>
 </x-layouts.app>

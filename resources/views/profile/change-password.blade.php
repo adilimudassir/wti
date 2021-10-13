@@ -4,31 +4,31 @@
     </x-slot>
     {{ html()->form('PUT', route('user-password.update'))->class('form-horizontal')->open() }}
     @if($errors->updatePassword->any())
-    <x-utils.alert type="danger">
+    <x-alert type="danger">
         @foreach($errors->updatePassword->all() as $error)
         {{ $error }}<br />
         @endforeach
-    </x-utils.alert>
+    </x-alert>
     @endif
-    <x-partials.card>
+    <x-card>
         <x-slot name="body">
             <div class="row">
                 @if(Route::is('change-password'))
                 <div class="form-group col-lg-12">
-                    <x-forms.password name="current password" />
+                    <x-form.password name="current password" />
                 </div>
                 @endif
                 <div class="form-group col-lg-12">
-                    <x-forms.password name="password" />
+                    <x-form.password name="password" />
                 </div>
                 <div class="form-group col-lg-12">
-                    <x-forms.confirm-password />
+                    <x-form.confirm-password />
                 </div>
             </div>
         </x-slot>
         <x-slot name="footer">
-            <x-utils.form-submit-actions-buttons :back="route('profile')" />
+            <x-form.actions :back-route="route('profile')" />
         </x-slot>
-    </x-partials.card>
+    </x-card>
     {{ html()->form()->close() }}
 </x-layouts.app>

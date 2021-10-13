@@ -4,7 +4,7 @@
     @if($breadcrumb->url && !$loop->last)
     <li class="breadcrumb-item text-muted">
         <span>
-            <x-utils.link :href="$breadcrumb->url" :text="$breadcrumb->title" />
+            <x-button.link :href="$breadcrumb->url" :text="$breadcrumb->title" />
         </span>
     </li>
     <li class="breadcrumb-item">

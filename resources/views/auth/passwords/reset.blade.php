@@ -11,15 +11,15 @@
                 <a href="{{ route('login') }}" class="link-primary fw-bolder">Sign in here</a>
             </div>
         </div>
-        <x-utils.errors />
+        <x-errors />
         <div class="form-group mb-3">
-            <x-forms.email name="email" />
+            <x-form.email name="email" />
         </div>
         <div class="mb-7 fv-row">
-            <x-forms.password name="password" />
+            <x-form.password name="password" />
         </div>
         <div class="fv-row mb-5">
-            <x-forms.confirm-password />
+            <x-form.confirm-password />
         </div>
         <div class="fv-row mb-10">
             <div class="form-check form-check-custom form-check-solid form-check-inline">
@@ -28,6 +28,6 @@
                     <a href="#" class="ms-1 link-primary">Terms and conditions</a>.</label>
             </div>
         </div>
-        <x-utils.form-submit-actions-buttons :back="route('login')" />
+        <x-form.actions :back-route="route('login')" />
     </form>
 </x-layouts.guest>

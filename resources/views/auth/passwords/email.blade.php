@@ -9,8 +9,8 @@
             <div class="text-gray-400 fw-bold fs-4">Enter your email to reset your password.</div>
         </div>
         <div class="fv-row mb-10">
-            <x-forms.email name="email" />
+            <x-form.email name="email" />
         </div>
-        <x-utils.form-submit-actions-buttons :back="route('login')" />
+        <x-form.actions :back-route="route('login')" />
     </form>
 </x-layouts.guest>

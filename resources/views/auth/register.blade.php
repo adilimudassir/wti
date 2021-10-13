@@ -17,16 +17,16 @@
             </div>
         </div>
         <div class="fv-row mb-7">
-            <x-forms.text name="name" />
+            <x-form.text name="name" />
         </div>
         <div class="fv-row mb-7">
-            <x-forms.email name="email" />
+            <x-form.email name="email" />
         </div>
         <div class="mb-7 fv-row">
-            <x-forms.password name="password" />
+            <x-form.password name="password" />
         </div>
         <div class="fv-row mb-5">
-            <x-forms.confirm-password />
+            <x-form.confirm-password />
         </div>
         <div class="fv-row mb-10">
             <label class="form-check form-check-custom form-check-solid form-check-inline">

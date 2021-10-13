@@ -9,7 +9,7 @@
                 <a href="{{ route('register') }}" class="link-primary fw-bolder">Create an Account</a>
             </div>
         </div>
-        <x-utils.errors />
+        <x-errors />
         @csrf
         <div class="fv-row mb-10">
             <label class="form-label fs-6 fw-bolder text-dark">Email</label>

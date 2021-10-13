@@ -4,13 +4,13 @@
     </x-slot>
     <div class="d-flex justify-content-between mb-3">
         <div>
-            <x-utils.link :href="route('roles.index')" class="btn btn-sm btn-light-primary" text="Back" icon="bi bi-chevron-left" />
+            <x-button.link :href="route('roles.index')" class="btn btn-sm btn-light-primary" text="Back" icon="bi bi-chevron-left" />
         </div>
         <div>
-            <x-utils.action-button name="edit" :href="route('roles.edit', $role)" permission="update-roles" class="btn btn-sm btn-primary" icon="bi bi-pencil" />
+            <x-button name="edit" :href="route('roles.edit', $role)" permission="update-roles" class="btn btn-sm btn-primary" icon="bi bi-pencil" />
         </div>
     </div>
-    <x-partials.card>
+    <x-card>
         <x-slot name="body">
             <span class="fw-bolder">Name</span>
             <div class="card-title">
@@ -28,5 +28,5 @@
             </div>
             </fieldset>
         </x-slot>
-    </x-partials.card>
+    </x-card>
 </x-layouts.app>

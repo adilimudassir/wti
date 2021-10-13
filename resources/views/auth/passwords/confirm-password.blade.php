@@ -8,7 +8,7 @@
             <div class="text-gray-400 fw-bold fs-4">Please confirm your password before continuing.</div>
         </div>
         <div class="form-group mb-3">
-            <x-forms.password name="password" />
+            <x-form.password name="password" />
         </div>
         <div class="d-flex flex-wrap justify-content-center pb-lg-0">
             <button type="button" id="kt_password_reset_submit" class="btn btn-lg btn-primary fw-bolder me-4">

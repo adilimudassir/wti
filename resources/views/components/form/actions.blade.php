@@ -1,15 +1,18 @@
 @props([
 'label' => $label ?? 'Submit',
 'message' => $message ?? 'Please wait...',
-'back' => $back ?? route('dashboard')
+'backRoute' => $backRoute ?? route('dashboard')
 ])
+
+@aware(['backRoute' => $backRoute ?? route('dashboard')])
+
 
 <!--begin::Indicator-->
 
 <!--end::Indicator-->
 
 <div class="d-flex justify-content-between g-2">
-    <a class="btn btn-light-primary btn-sm" href="{{ $back }}">Back</a>
+    <a class="btn btn-light-primary btn-sm" href="{{ $backRoute }}">Back</a>
     <button type="submit" id="kt_submit_button" class="btn btn-primary btn-sm fw-bolder me-4">
         <span class="indicator-label">
             {{ $label }}
