@@ -23,12 +23,13 @@
     </div>
     <div class="d-flex flex-column flex-root">
         <div class="page d-flex flex-row flex-column-fluid">
-            <x-partials.aside />
+            @include('partials.aside')
             <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-                <x-partials.header />
+                @include('partials.header')
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                    <x-partials.toolbar :title="$title" />
+                    @include('partials.toolbar', ['title' => $title])
                     @include('partials.messages')
+                    @include('components.errors')
                     @include('partials.impersonate')
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <div id="kt_content_container" class="container-fluid">
@@ -36,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <x-partials.footer />
+                @include('partials.footer')
             </div>
         </div>
     </div>

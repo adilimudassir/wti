@@ -47,7 +47,7 @@
         {{ $slot }}
     </x-slot>
     <x-slot name="footer">
-        <x-form.actions :label=" ($method === 'PATCH') ? 'Update' : 'Submit'" />
+        <x-form.actions :label=" isset($method) ? 'Update' : 'Submit'" />
     </x-slot>
 </x-card>
 
