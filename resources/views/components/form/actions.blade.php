@@ -1,10 +1,9 @@
 @props([
 'label' => $label ?? 'Submit',
 'message' => $message ?? 'Please wait...',
-'backRoute' => $backRoute ?? route('dashboard')
+'hideBackRoute' => $hideBackRoute ?? false,
+'backRoute' => $backRoute ?? route('dashboard'),
 ])
-
-@aware(['backRoute' => $backRoute ?? route('dashboard')])
 
 
 <!--begin::Indicator-->
@@ -12,8 +11,10 @@
 <!--end::Indicator-->
 
 <div class="d-flex justify-content-between g-2">
+    @if(!$hideBackRoute)
     <a class="btn btn-light-primary btn-sm" href="{{ $backRoute }}">Back</a>
-    <button type="submit" id="kt_submit_button" class="btn btn-primary btn-sm fw-bolder me-4">
+    @endif
+    <button type="submit" id="kt_submit_button" class="btn btn-primary btn-sm fw-bolder @if($hideBackRoute) btn-lg w-100 @endif">
         <span class="indicator-label">
             {{ $label }}
         </span>

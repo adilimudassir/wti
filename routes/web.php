@@ -20,4 +20,8 @@ Route::group(['middleware' => 'verified'], function () {
     require 'routes/dashboard.php';
     require 'routes/users.php';
     require 'routes/roles.php';
+
+    require 'routes/courses.php';
+    require 'routes/topics.php';
+
 });

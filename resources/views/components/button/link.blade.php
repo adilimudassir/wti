@@ -1,6 +1,15 @@
+@props(['class' => 'btn btn-sm btn-light-primary', 'href' => '', 'text' => '', 'icon' => false])
 
-@props(['active' => '', 'text' => '', 'hide' => false, 'icon' => false])
-
-@if (!$hide)
-    <a {{ $attributes->merge(['href' => '#', 'class' => $active]) }}>@if ($icon)<i class="{{ $icon }}"></i> @endif{{ $text }}</a>
+@if (isset($permission))
+@can($permission))
+<a {{ $attributes->merge(['href' => $href, 'class' => $class]) }}>
+    @if ($icon)<i class="{{ $icon }}"></i>@endif
+    {{ ucfirst($text) }}
+</a>
+@endcan
+@else
+<a {{ $attributes->merge(['href' => $href, 'class' => $class]) }}>
+    @if ($icon)<i class="{{ $icon }}"></i>@endif
+    {{ ucfirst($text) }}
+</a>
 @endif

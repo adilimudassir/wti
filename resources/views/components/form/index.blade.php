@@ -6,6 +6,18 @@
             ->class('form-horizontal')
         ->open() 
     }}
+
+    <x-card>
+    <x-slot name="body">
+        {{ $slot }}
+    </x-slot>
+    <x-slot name="footer">
+        <x-form.actions label="Update" />
+    </x-slot>
+</x-card>
+
+
+{{ html()->closeModelForm() }}
 @endif
 
 @if(isset($model) && isset($files))
@@ -17,6 +29,17 @@
             ->acceptsFiles()
         ->open() 
     }}
+
+    <x-card>
+    <x-slot name="body">
+        {{ $slot }}
+    </x-slot>
+    <x-slot name="footer">
+        <x-form.actions label="Update" />
+    </x-slot>
+</x-card>
+
+{{ html()->closeModelForm() }}
 @endif
 
 @if(isset($files) && !isset($model))
@@ -28,6 +51,17 @@
             ->acceptsFiles()
         ->open() 
     }}
+
+<x-card>
+    <x-slot name="body">
+        {{ $slot }}
+    </x-slot>
+    <x-slot name="footer">
+        <x-form.actions label="Submit" />
+    </x-slot>
+</x-card>
+
+{{ html()->form()->close() }}
 @endif
 
 
@@ -39,17 +73,15 @@
             ->class('form-horizontal')
         ->open() 
     }}
-@endif
-
 
 <x-card>
     <x-slot name="body">
         {{ $slot }}
     </x-slot>
     <x-slot name="footer">
-        <x-form.actions :label=" isset($method) ? 'Update' : 'Submit'" />
+        <x-form.actions label="Submit" />
     </x-slot>
 </x-card>
 
-
 {{ html()->form()->close() }}
+@endif  

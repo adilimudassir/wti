@@ -22,6 +22,9 @@ trait CreatePermissions
     protected $entities = [
         'users',
         'roles',
+        'courses',
+        'levels',
+        'topics'
     ];
 
     public function generatePermissions()

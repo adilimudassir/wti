@@ -63,6 +63,7 @@
     <script src="{{ mix('assets/js/scripts.bundle.js') }}"></script>
     {{ $after_scripts ?? null }}
     <livewire:scripts>
+    @stack('scripts')
 
 </body>
 

@@ -7,10 +7,13 @@ var KTFormsTinyMCEHidden = function() {
         tinymce.init({
             selector: '#kt_docs_tinymce_hidden',
             menubar: false,
-            toolbar: ['styleselect fontselect fontsizeselect',
-                'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
-                'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'],
-            plugins : 'advlist autolink link image lists charmap print preview code'
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste imagetools wordcount'
+            ],
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         });
     }
 

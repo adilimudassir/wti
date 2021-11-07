@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Repositories\RepositoryTrait;
+
 /**
  * Class BaseRepository.
  *
@@ -9,6 +11,7 @@ namespace App\Repositories;
  */
 abstract class BaseRepository implements RepositoryContract
 {
+    use RepositoryTrait;
     /**
      * The repository model.
      *

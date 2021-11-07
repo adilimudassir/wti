@@ -21,7 +21,7 @@
         <span class="text-muted fs-6 fw-bold mt-5">Loading...</span>
     </div>
     <div class="d-flex flex-column flex-root">
-        <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed bg-red" style="background-image: url({{ asset('assets/media/illustrations/sketchy-1/14.png') }})">
+        <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed bg-red" style="background-image: url({{ asset('assets/media/illustrations/sigma-1/14.png') }})">
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
                 <a href="{{ config('app.url') }}" class="mb-12">
                     <img alt="Logo" src="{{ asset('assets/media/logos/logo.png')}}" class="h-60px" />

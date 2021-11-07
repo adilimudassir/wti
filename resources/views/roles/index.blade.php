@@ -3,7 +3,13 @@
         Roles
     </x-slot>
     <div class="d-flex justify-content-end mb-3">
-        <x-button name="create" :href="route('roles.create')" permission="create-roles" class="btn btn-sm btn-primary" icon="bi bi-plus" />
+        <x-button 
+            name="create" 
+            :href="route('roles.create')" 
+            permission="create-roles" 
+            class="btn btn-sm btn-primary" 
+            icon="bi bi-plus" 
+        />
     </div>
     <x-card>
         <x-slot name="body">

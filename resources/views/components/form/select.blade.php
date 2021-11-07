@@ -13,3 +13,10 @@
     ->placeholder("Select {$label}")
     ->attributes($attributes->whereStartsWith('wire'))
 }}
+
+@error($name)
+{{ html()->span()->text($message)
+        ->class('invalid-feedback font-weight-bold')
+        ->attribute('role', 'alert')
+    }}
+@enderror

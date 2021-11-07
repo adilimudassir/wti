@@ -1,6 +1,6 @@
-<div class="card shadow-sm">
+<div class="card card-xl-stretch shadow-sm my-2">
     @if (isset($header) || isset($toolbar))
-    <div class="card-header">
+    <div class="card-header cursor-pointer">
         @if(isset($header))
         <h3 class="card-title">{{ $header }}</h3>
         @endif
