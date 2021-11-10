@@ -16,7 +16,7 @@
         <x-slot name="footer">
             <x-form.actions 
                 label="Update" 
-                :back-route="route('topics.show', [$topic->id, 'course' => $topic->level?->course?->slug])"
+                :back-route="route('topics.show', [$topic->slug, 'course' => $topic->level?->course?->slug])"
             />
         </x-slot>
     </x-card>

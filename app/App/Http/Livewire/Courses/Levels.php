@@ -47,7 +47,20 @@ class Levels extends Component
 
         $this->toggleForm();
 
+        $this->course->load('levels');
+
         session()->flash('flash_success', 'Level added');
+    }
+
+    public function delete($id)
+    {
+        $level = Level::find($id);
+
+        $level->delete();
+
+        $this->course->load('levels');
+
+        session()->flash('flash_success', 'Level deleted');
     }
     
     public function render()

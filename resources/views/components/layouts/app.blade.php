@@ -14,6 +14,7 @@
     <link href="{{ mix('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     {{ $after_styles ?? null }}
     <livewire:styles>
+        @notifyCss
 </head>
 
 <body id="kt_body" class="page-loading-enabled page-loading header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
@@ -41,6 +42,8 @@
             </div>
         </div>
     </div>
+    <x:notify-messages />
+
 
     <!--begin::Scrolltop-->
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
@@ -63,7 +66,9 @@
     <script src="{{ mix('assets/js/scripts.bundle.js') }}"></script>
     {{ $after_scripts ?? null }}
     <livewire:scripts>
-    @stack('scripts')
+        @notifyJs
+
+        @stack('scripts')
 
 </body>
 

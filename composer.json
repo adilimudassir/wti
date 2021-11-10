@@ -22,6 +22,7 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "livewire/livewire": "^2.6",
+        "mckenziearts/laravel-notify": "^2.2",
         "predis/predis": "^1.1",
         "rappasoft/laravel-livewire-tables": "^1.6",
         "spatie/laravel-html": "^2.27",

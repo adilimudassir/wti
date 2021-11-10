@@ -1,11 +1,10 @@
-<div class="card card-xl-stretch shadow-sm my-2">
+<div class="card card-xl-stretch card-bordered my-2">
     @if (isset($header) || isset($toolbar))
     <div class="card-header cursor-pointer">
         @if(isset($header))
         <h3 class="card-title">{{ $header }}</h3>
         @endif
         @if (isset($toolbar))
-        <div class="card-title"></div>
         <div class="card-toolbar d-flex justify-content-end">
             {{ $toolbar }}
         </div>

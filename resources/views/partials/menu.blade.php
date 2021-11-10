@@ -25,7 +25,7 @@
 									<div class="menu-sub menu-sub-accordion menu-active-bg">
 										@foreach($courses as $course)
 										<div class="menu-item">
-											<a class="menu-link {{ (Route::is('courses') && request()->slug === $course->slug) || (Route::is('topics.*') && request()->course === $course->slug) ? 'active' : '' }}" href="{{ route('courses', $course) }}">
+											<a class="menu-link {{ (Route::is('courses') && request()->slug === $course->slug) || (Route::is('topics.*') && (request()->slug === $course->slug || request()->course === $course->slug)) ? 'active' : '' }}" href="{{ route('courses', $course) }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
