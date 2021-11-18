@@ -5,7 +5,8 @@
 {{ html()->email($name)
     ->class('form-control form-control-lg form-control-solid')
     ->classIf($errors->has($name), 'is-invalid')
-    ->attributes($attributes->whereStartsWith('wire'))
+    ->attributes($attributes)
+    
 }}
 @error($name)
 {{ html()->span()->text($message)

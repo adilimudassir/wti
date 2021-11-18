@@ -12,6 +12,7 @@ use App\Repositories\RepositoryTrait;
 abstract class BaseRepository implements RepositoryContract
 {
     use RepositoryTrait;
+    use FileUpload;
     /**
      * The repository model.
      *

@@ -10,8 +10,10 @@
 }}
 {{ html()->select($name, $options)
     ->class('form-control form-control-lg form-control-solid')
+    ->classIf($errors->has($name), 'is-invalid')
     ->placeholder("Select {$label}")
-    ->attributes($attributes->whereStartsWith('wire'))
+    ->attributes($attributes)
+    
 }}
 
 @error($name)

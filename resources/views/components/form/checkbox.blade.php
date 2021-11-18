@@ -28,8 +28,7 @@ $inputID = $name.'_'.$id;
                 ->id($inputID)
                 ->checked($checked)
                 ->value($value)
-                ->attributes($attributes->whereStartsWith('wire'))
-                ->class('form-check-input'),
+                            ->class('form-check-input'),
 
             html()
                 ->label($labelName)

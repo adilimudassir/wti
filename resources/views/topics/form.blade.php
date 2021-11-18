@@ -3,6 +3,9 @@
         <x-form.select name="level_id" label="Level" :options="$levels" />
     </div>
     <div class="form-group col-lg-12">
+        <x-form.select name="previous_topic_id" label="Previous Topic" :options="$topics" />
+    </div>
+    <div class="form-group col-lg-12">
         <x-form.text name="title" />
     </div>
     <div class="form-group col-lg-12">

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
 {
@@ -17,8 +17,13 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->unsignedTinyInteger('active')->default(1);
+            $table->string('account_type')->default('STAFF');
+            $table->string('state')->nullable();
+            $table->string('state_code')->nullable();
+            $table->string('avatar')->nullable();
             $table->string('timezone')->nullable();
             $table->timestamp('last_login_at')->nullable();
             $table->string('last_login_ip')->nullable();

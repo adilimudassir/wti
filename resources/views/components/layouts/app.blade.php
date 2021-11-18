@@ -1,4 +1,9 @@
-@props(['title', 'asset_url' => config('app.url') . "/assets/"])
+@props([
+'title',
+'asset_url' => config('app.url') . "/assets/",
+'styles' => $styles ?? null,
+'scripts' => $scripts ?? null,
+])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -7,14 +12,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title }} | {{ config('app.name') }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    {{ $before_styles ?? null }}
     <link href="{{ mix('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ mix('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-    {{ $after_styles ?? null }}
+    {{ $styles }}
     <livewire:styles>
-        @notifyCss
 </head>
 
 <body id="kt_body" class="page-loading-enabled page-loading header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
@@ -42,9 +46,6 @@
             </div>
         </div>
     </div>
-    <x:notify-messages />
-
-
     <!--begin::Scrolltop-->
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
         <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
@@ -61,15 +62,11 @@
     <script>
         var hostUrl = '{{ $asset_url }}';
     </script>
-    {{ $before_scripts ?? null }}
     <script src="{{ mix('assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ mix('assets/js/scripts.bundle.js') }}"></script>
-    {{ $after_scripts ?? null }}
+    {{ $scripts }}
     <livewire:scripts>
-        @notifyJs
-
         @stack('scripts')
-
 </body>
 
 </html>

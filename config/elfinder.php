@@ -26,7 +26,7 @@ return array(
     |    ]
     */
     'disks' => [
-
+        'public'
     ],
 
     /*
@@ -63,8 +63,6 @@ return array(
     | If you want custom options, you can set your own roots below.
     |
     */
-
-    'roots' => null,
 
     /*
     |--------------------------------------------------------------------------

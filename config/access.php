@@ -11,7 +11,7 @@ return [
     'admin_role' => 'Super Admin',
 
     // The default role all new registered users get added to
-    'default_role' => 'User',
+    'default_role' => 'Student',
 
     /*
         * Whether or not new users need to be approved by an administrator before logging in

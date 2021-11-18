@@ -27,7 +27,8 @@ class TopicController extends Controller
         $course = Course::where('slug', $slug)->first();
         return view('topics.create', [
             'course' => $course,
-            'levels' => $course->levels->pluck('title', 'id')
+            'levels' => $course->levels->pluck('title', 'id'),
+            'topics' => $this->topicRepository->all()->pluck('title', 'id')
         ]);
     }
 
@@ -40,7 +41,7 @@ class TopicController extends Controller
         $topic = $this->topicRepository->create($request);
 
         return redirect()
-            ->route('courses', $topic->level?->course?->slug)
+            ->route('topics.show', [$topic->slug, 'course' => $topic->level?->course?->slug])
             ->withFlashSuccess('Topic Added Successfully!');
     }
 
@@ -68,7 +69,8 @@ class TopicController extends Controller
         return view('topics.edit', [
             'course' => $course,
             'topic' => $topic,
-            'levels' => $course->levels->pluck('title', 'id')
+            'levels' => $course->levels->pluck('title', 'id'),
+            'topics' => $this->topicRepository->all()->pluck('title', 'id')
         ]);
     }
 
@@ -83,7 +85,7 @@ class TopicController extends Controller
         $this->topicRepository->update($request, $topic);
 
         return redirect()
-            ->route('courses', $topic->level?->course?->slug)
+            ->route('topics.show', [$topic->slug, 'course' => $topic->level?->course?->slug])
             ->withFlashSuccess('Topic Updated Successfully!');
     }
 

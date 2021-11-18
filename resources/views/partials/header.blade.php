@@ -26,8 +26,35 @@
 							<!--begin::Wrapper-->
 							<div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
 								<!--begin::Navbar-->
-								<div class="d-flex align-items-center" id="kt_header_nav">
+								<div class="d-flex align-items-center g-2" id="kt_header_nav">
+									{{--
+									@if(Route::is('classroom.*'))
+									<!--begin::Trigger-->
+									<button type="button" class="btn btn-sm btn-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start">
+										Go to
+										<i class="bi bi-chevron-down"></i>
+									</button>
+									<!--end::Trigger-->
 
+									<!--begin::Menu-->
+									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-150px py-4" data-kt-menu="true">
+										@if(Route::is('classroom.show'))
+										<!--begin::Menu item-->
+										<div class="menu-item px-3">
+											<x-button name="Exit Classroom" :href="route('classroom.index')" class="menu-link px-3" />
+										</div>
+										<!--end::Menu item-->
+										@endif
+
+										<!--begin::Menu item-->
+										<div class="menu-item px-3">
+											<x-button name="Main Menu" :href="route('dashboard')" class="menu-link px-3" />
+										</div>
+										<!--end::Menu item-->
+									</div>
+									<!--end::Menu-->
+									@endif
+									--}}
 								</div>
 								<!--end::Navbar-->
 								<!--begin::Topbar-->

@@ -2,13 +2,13 @@
 
 namespace Domains\Auth\Repositories;
 
+use Illuminate\Http\Request;
 use Domains\Auth\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\BaseRepository;
 use Domains\Auth\Events\UserCreated;
 use Domains\Auth\Events\UserUpdated;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\UserFormRequest;
 use Domains\Auth\Exceptions\UserException;
 use Domains\General\Exceptions\GeneralException;
 
@@ -24,16 +24,10 @@ class UserRepository extends BaseRepository
         $this->model = $user;
     }
 
-    public function create(UserFormRequest $request): User
+    public function create(Request $request): User
     {
         return DB::transaction(function () use ($request) {
-            $newUser = $this->model::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'active' => $request->has('status') ? 1 : 0,
-                'email_verified_at' => $request->has('confirmed') ? now() : null,
-            ]);
+            $newUser = $this->model::create($this->serializeData($request));
 
             if (! $newUser) {
                 throw new UserException('Account could not be created at the moment');
@@ -45,21 +39,21 @@ class UserRepository extends BaseRepository
                 $newUser->assignRole(config('access.default_role'));
             }
 
+            if ($request->hasFile('avatar')) {
+                $newUser->avatar = $this->storeFile($request->avatar, 'avatars');
+                $newUser->save();
+            }
+
             event(new UserCreated($newUser));
 
             return $newUser;
         });
     }
 
-    public function update(UserFormRequest $request, User $user): User
+    public function update(Request $request, User $user): User
     {
         return DB::transaction(function () use ($request, $user) {
-            if (! $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'active' => $request->has('status') ? 1 : 0,
-                'email_verified_at' => $request->has('confirmed') ? now() : null,
-            ])) {
+            if (! $user->update($this->serializeData($request))) {
                 throw new UserException('User Could not be updated');
             }
 
@@ -68,6 +62,11 @@ class UserRepository extends BaseRepository
             } else {
                 $user->syncRoles(config('access.default_role'));
             }
+
+            if ($request->hasFile('avatar')) {
+                $this->updateFile($user, 'avatar', $request->avatar, 'avatars');
+            }
+
 
             event(new UserUpdated($user));
 
@@ -94,14 +93,14 @@ class UserRepository extends BaseRepository
         }
 
         if ($user->deleted_at !== null) {
-            throw new GeneralException(__('This user is already deleted.'));
+            throw new GeneralException(__('This account is already deleted.'));
         }
 
         if ($user->delete()) {
             return $user;
         }
 
-        throw new GeneralException('There was a problem deleting this user. Please try again.');
+        throw new GeneralException('There was a problem deleting this account. Please try again.');
     }
 
     public function updatePassword(User $user, array $data = []): User
@@ -120,5 +119,42 @@ class UserRepository extends BaseRepository
 
             return $user;
         });
+    }
+
+    public function getById($id): User
+    {
+        $user = $this->model->find($id);
+
+        if (! $user) {
+            throw new GeneralException('That record does not exist.');
+        }
+
+        return $user;
+    }
+
+    public function getByEmail($email): User
+    {
+        $user = $this->model->where('email', $email)->first();
+
+        if (! $user) {
+            throw new GeneralException('That record does not exist.');
+        }
+
+        return $user;
+    }
+
+    private function serializeData(Request $request): array
+    {
+        return [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+            'active' => $request->has('status') ? 1 : 0,
+            'email_verified_at' => $request->has('confirmed') ? now() : null,
+            'state' => $request->has('state') ? $request->state : null,
+            'state_code'  => $request->has('state_code') ? $request->state_code : null,
+            'account_type' => $request->has('account_type') ? $request->account_type : 'STAFF',
+        ];
     }
 }

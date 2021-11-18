@@ -19,7 +19,8 @@ class Topic extends BaseModel
         'title',
         'excerpt',
         'content',
-        'level_id'
+        'level_id',
+        'previous_topic_id'
     ];
     
     /**
@@ -49,5 +50,25 @@ class Topic extends BaseModel
     {
         return 'slug';
     }
-    
+
+    public function setContentAttribute($value)
+    {
+        $this->attributes['content'] = str_replace('../..', config('app.url'), $value);
+    }
+
+    /**
+     * Get Previous topic
+     */
+    public function previousTopic()
+    {
+        return $this->belongsTo(self::class, 'previous_topic_id', 'id');
+    }
+
+    /**
+     * Get Next topic
+     */
+    public function nextTopic()
+    {
+        return $this->hasOne(self::class, 'previous_topic_id', 'id');
+    }
 }

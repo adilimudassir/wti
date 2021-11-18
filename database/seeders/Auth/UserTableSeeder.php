@@ -26,6 +26,7 @@ class UserTableSeeder extends Seeder
             'password' => Hash::make('secret'),
             'email_verified_at' => now(),
             'active' => true,
+            'account_type' => 'Staff'
         ]);
 
         User::create([
@@ -34,6 +35,7 @@ class UserTableSeeder extends Seeder
             'password' => Hash::make('secret'),
             'email_verified_at' => now(),
             'active' => true,
+            'account_type' => 'Staff'
         ]);
 
         $this->enableForeignkeys();

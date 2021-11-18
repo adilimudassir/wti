@@ -27,7 +27,8 @@ class TopicFormRequest extends FormRequest
             'level_id' =>'required',
             'title' => 'required|string',
             'content' => 'required|string',
-            'excerpt' => 'required|string'
+            'excerpt' => 'required|string',
+            'previous_topic_id' => 'nullable'
         ];
     }
 
@@ -35,6 +36,7 @@ class TopicFormRequest extends FormRequest
     {
         return [
             'level_id.required' => 'Please select a level',
+            'previous_topic_id.required' => 'Please select previous topic',
         ];
     }
 }

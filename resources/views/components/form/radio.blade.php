@@ -10,7 +10,8 @@
             html()
                 ->radio($name)
                 ->value($value)
-                ->attributes($attributes->whereStartsWith('wire')),
+                            ->attributes($attributes)
+                ,
 
             html()
                 ->label($value)

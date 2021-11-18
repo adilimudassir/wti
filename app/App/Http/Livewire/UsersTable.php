@@ -11,7 +11,7 @@ class UsersTable extends DataTableComponent
 {
     public function query(): Builder
     {
-        return User::query();
+        return User::whereAccountType('STAFF');
     }
 
     public function columns(): array

@@ -17,9 +17,10 @@ class CreateTopicsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-        $table->longText('excerpt');
+            $table->longText('excerpt');
             $table->longText('content');
             $table->foreignId('level_id');
+            $table->foreignId('previous_topic_id')->nullable();
             $table->timestamps();
         });
     }

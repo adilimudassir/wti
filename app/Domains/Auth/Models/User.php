@@ -2,15 +2,15 @@
 
 namespace Domains\Auth\Models;
 
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
 use Altek\Accountant\Contracts\Recordable;
-use Domains\Auth\Notifications\ResetPasswordNotification;
+use Lab404\Impersonate\Models\Impersonate;
 use Domains\Auth\Notifications\VerifyEmail;
-use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Lab404\Impersonate\Models\Impersonate;
-use Spatie\Permission\Traits\HasRoles;
+use Domains\Auth\Notifications\ResetPasswordNotification;
+use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 
 class User extends Authenticatable implements Recordable, MustVerifyEmail
 {
@@ -20,6 +20,8 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
         MustVerifyEmailTrait,
         \Altek\Accountant\Recordable;
 
+    protected $table = 'users';
+        
     /**
      * The attributes that are mass assignable.
      *
@@ -28,8 +30,13 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
         'active',
+        'account_type',
+        'state',
+        'state_code',
+        'avatar',
         'timezone',
         'last_login_at',
         'last_login_ip',
@@ -74,6 +81,14 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
     ];
 
     /**
+     * 
+     * Get Account types
+     */
+    public static $TYPES = [
+        'STAFF' => 'STAFF'
+    ];
+
+    /**
      * Send the registration verification email.
      */
     public function sendEmailVerificationNotification(): void
@@ -107,8 +122,10 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
         if (\count($roles)) {
             return implode(
                 ', ',
-                array_map(fn ($item) => ucwords($item),
-                $roles)
+                array_map(
+                    fn ($item) => ucwords($item),
+                    $roles
+                )
             );
         }
 
@@ -134,7 +151,7 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
      */
     public function canBeImpersonated(): bool
     {
-        return ! $this->isSuperAdmin();
+        return !$this->isSuperAdmin();
     }
 
     /**
