@@ -88,5 +88,10 @@
     }
 
     tinymce.init(options);
+
+    document.addEventListener('turbo:load', function() {
+        tinymce.remove();
+        tinymce.init(options);
+    });
 </script>
 @endpush

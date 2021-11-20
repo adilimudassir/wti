@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Http\Request;
 use Laravel\Fortify\Fortify;
+use Domains\Student\Models\Student;
 use App\Actions\Fortify\CreateNewUser;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -54,7 +55,10 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::registerView(function () {
-            return view('auth.register');
+            return view('auth.register', [
+                'account_types' => Student::$types,
+                'states' => Student::$states,
+            ]);
         });
 
         Fortify::requestPasswordResetLinkView(function () {

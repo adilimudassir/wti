@@ -29,7 +29,11 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
+            'phone' => ['required', 'unique:users'],
             'password' => $this->passwordRules(),
+            'account_type' => ['required'],
+            'state' => ["required_if:account_type,'REGULAR STUDENT'"],
+            'state_code' => ["required_if:account_type,'REGULAR STUDENT'"]
         ])->validate();
 
         return User::create([

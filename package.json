@@ -71,13 +71,16 @@
         "wnumb": "^1.2.0"
     },
     "devDependencies": {
+        "@hotwired/turbo": "^7.0.1",
         "alpinejs": "^2.7.3",
         "autoprefixer": "^10.1.0",
         "axios": "^0.21.1",
+        "laravel-echo": "^1.11.2",
         "laravel-mix": "^6.0.28",
         "lodash": "^4.17.19",
         "postcss": "^8.3.6",
         "postcss-import": "^14.0.2",
+        "pusher-js": "^7.0.3",
         "replace-in-file-webpack-plugin": "^1.0.6",
         "resolve-url-loader": "^3.1.4",
         "rtlcss": "^3.1.2",

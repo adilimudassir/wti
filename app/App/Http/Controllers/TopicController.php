@@ -28,7 +28,7 @@ class TopicController extends Controller
         return view('topics.create', [
             'course' => $course,
             'levels' => $course->levels->pluck('title', 'id'),
-            'topics' => $this->topicRepository->all()->pluck('title', 'id')
+            'topics' => $course->topics->pluck('title', 'id')
         ]);
     }
 
@@ -70,7 +70,7 @@ class TopicController extends Controller
             'course' => $course,
             'topic' => $topic,
             'levels' => $course->levels->pluck('title', 'id'),
-            'topics' => $this->topicRepository->all()->pluck('title', 'id')
+            'topics' => $course->topics->pluck('title', 'id')
         ]);
     }
 

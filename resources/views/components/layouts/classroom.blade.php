@@ -15,6 +15,8 @@
     <link href="{{ mix('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     {{ $after_styles ?? null }}
     <livewire:styles>
+        <script src="{{ mix('js/app.js') }}"></script>
+
 </head>
 
 <body id="kt_body" class="page-loading-enabled page-loading header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px" data-kt-aside-minimize="{{ $aside }}">
@@ -57,9 +59,10 @@
     {{ $before_scripts ?? null }}
     <script src="{{ mix('assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ mix('assets/js/scripts.bundle.js') }}"></script>
+
     {{ $after_scripts ?? null }}
     <livewire:scripts>
-
+        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
         @stack('scripts')
 
 </body>

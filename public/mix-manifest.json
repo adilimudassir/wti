@@ -104,6 +104,7 @@
     "/assets/js/custom/documentation/general/vis-timeline/template.js": "/assets/js/custom/documentation/general/vis-timeline/template.js",
     "/assets/js/custom/documentation/search.js": "/assets/js/custom/documentation/search.js",
     "/assets/js/custom/layout-builder/layout-builder.js": "/assets/js/custom/layout-builder/layout-builder.js",
+    "/js/app.js": "/js/app.js",
     "/assets/plugins/global/plugins.bundle.css": "/assets/plugins/global/plugins.bundle.css",
     "/assets/plugins/custom/leaflet/leaflet.bundle.css": "/assets/plugins/custom/leaflet/leaflet.bundle.css",
     "/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css": "/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css",

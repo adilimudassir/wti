@@ -1,4 +1,4 @@
-<div class="justify-content-center container-fluid text-center">
+<div class="container-fluid">
     @if(session()->get('flash_success'))
     <x-alert type="success">
         {{ session()->get('flash_success') }}

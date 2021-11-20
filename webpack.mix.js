@@ -174,3 +174,4 @@ mix.webpackConfig({
     mix.scripts(filePaths, `public/assets/plugins/custom/${fileName}/${fileName}.bundle.js`);
 });
 
+mix.js('resources/js/app.js', 'public/js');
