@@ -24,6 +24,6 @@ window.Echo = new Echo({
     wsPort: process.env.MIX_PUSHER_APP_PORT || null,
 });
 
-document.addEventListener('turbo:before-fetch-request', (e) => {
-    e.detail.fetchOptions.headers['X-Socket-ID'] = window.Echo.socketId();
-});
+// document.addEventListener('turbo:before-fetch-request', (e) => {
+//     e.detail.fetchOptions.headers['X-Socket-ID'] = window.Echo.socketId();
+// });

@@ -61,7 +61,7 @@
         Vue.createApp({
             data() {
                 return {
-                    account_type: "<?php echo old('account_type') ?? 'REGULAR STUDENT' ?>",
+                    account_type: "<?php echo old('account_type') ?? '' ?>",
                 }
             },
             computed: {

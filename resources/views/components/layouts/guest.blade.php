@@ -30,7 +30,7 @@
                 <a href="{{ config('app.url') }}" class="mb-12">
                     <img alt="Logo" src="{{ asset('assets/media/logos/logo.png')}}" class="h-60px" />
                 </a>
-                <div class="w-lg-{{ Route::is('register') ? '1000px' : '500' }} bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+                <div class="w-lg-{{ Route::is('register') ? '1000' : '500' }}px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
                     {{ $slot }}
                 </div>
                 <div class="d-flex flex-center flex-column-auto p-10">

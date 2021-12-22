@@ -12,7 +12,7 @@ class StudentsTable extends DataTableComponent
 {
     public function query(): Builder
     {
-        return Student::role('Student');
+        return User::role('Student');
     }
 
     public function columns(): array

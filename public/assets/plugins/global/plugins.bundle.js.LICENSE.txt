@@ -12,13 +12,13 @@
  */
 
 /*!
- * ApexCharts v3.28.3
+ * ApexCharts v3.30.0
  * (c) 2018-2021 ApexCharts
  * Released under the MIT License.
  */
 
 /*!
- * Chart.js v3.5.1
+ * Chart.js v3.6.0
  * https://www.chartjs.org
  * (c) 2021 Chart.js Contributors
  * Released under the MIT License
@@ -29,17 +29,6 @@
  * https://quilljs.com/
  * Copyright (c) 2014, Jason Chen
  * Copyright (c) 2013, salesforce.com
- */
-
-/*!
- * Sizzle CSS Selector Engine v2.3.5
- * https://sizzlejs.com/
- *
- * Copyright JS Foundation and other contributors
- * Released under the MIT license
- * https://js.foundation/
- *
- * Date: 2020-03-14
  */
 
 /*!
@@ -73,20 +62,6 @@
  * Copyright (c) 2010 - 2021 Robin Herbots
  * Licensed under the MIT license
  * Version: 5.0.6
- */
-
-/*!
- * jQuery JavaScript Library v3.5.1
- * https://jquery.com/
- *
- * Includes Sizzle.js
- * https://sizzlejs.com/
- *
- * Copyright JS Foundation and other contributors
- * Released under the MIT license
- * https://jquery.org/license
- *
- * Date: 2020-05-04T22:49Z
  */
 
 /*!
