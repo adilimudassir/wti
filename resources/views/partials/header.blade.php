@@ -40,14 +40,14 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-150px py-4" data-kt-menu="true">
 										@if(Route::is('classroom.show'))
 										<!--begin::Menu item-->
-										<div class="menu-item px-3">
+										<div class="menu-item px-3 d-grid">
 											<x-button name="Exit Classroom" :href="route('classroom.index')" class="menu-link px-3" />
 										</div>
 										<!--end::Menu item-->
 										@endif
 
 										<!--begin::Menu item-->
-										<div class="menu-item px-3">
+										<div class="menu-item px-3 d-grid">
 											<x-button name="Main Menu" :href="route('dashboard')" class="menu-link px-3" />
 										</div>
 										<!--end::Menu item-->

@@ -53,7 +53,7 @@
         <x-button.delete 
             :href="route('users.delete', $model)" 
             permission="delete-users" 
-            class="btn btn-light-primary w-100 px-3"
+            class="btn btn-light-primary w-100 px-3 btn-sm"
         >Delete</x-button.delete>
         @endif
     </div>

@@ -17,8 +17,9 @@ class CreateUserCoursesTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('course_id');
-            $table->string('status');
-            $table->dateTime('registered_date');
+            $table->boolean('is_active')->default(true);
+            $table->dateTime('started_at')->nullable();
+            $table->dateTime('finished_at')->nullable();
             $table->timestamps();
         });
     }

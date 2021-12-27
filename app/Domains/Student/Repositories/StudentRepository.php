@@ -1,7 +1,7 @@
 <?php
 namespace Domains\Student\Repositories;
 
-use Domains\Student\Models\Student;
+use Domains\Auth\Models\User as Student;
 
 class StudentRepository extends \Domains\Auth\Repositories\UserRepository
 {

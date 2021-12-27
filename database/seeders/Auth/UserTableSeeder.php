@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
         $this->disableForeignKeys();
 
         // Add the master administrator, user id of 1
-        User::create([
+        User::firstOrCreate([
             'name' => 'John Doe',
             'email' => 'admin@admin.com',
             'password' => Hash::make('secret'),
@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
             'account_type' => 'Staff'
         ]);
 
-        User::create([
+        User::firstOrCreate([
             'name' => 'User',
             'email' => 'user@user.com',
             'password' => Hash::make('secret'),

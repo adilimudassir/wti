@@ -19,13 +19,26 @@
         <span class="menu-title">Class Room</span>
     </a>
 </div>
+<div class="menu-item">
+    <a class="menu-link {{ Route::is('user-courses.*') ? 'active' : '' }}" href="{{ route('user-courses.index') }}">
+        <span class="menu-icon">
+            <i class="bi bi-book fs-3"></i>
+        </span>
+        <span class="menu-title">My Courses</span>
+    </a>
+</div>
+<div class="menu-item">
+    <div class="menu-content pt-8 pb-2">
+        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Administration</span>
+    </div>
+</div>
 @can('read-students')
 <div class="menu-item">
     <a class="menu-link {{ Route::is('students.*') ? 'active' : '' }}" href="{{ route('students.index') }}">
         <span class="menu-icon">
             <i class="bi bi-people fs-3"></i>
         </span>
-        <span class="menu-title">Students</span>
+        <span class="menu-title">Students Management</span>
     </a>
 </div>
 @endcan
@@ -35,7 +48,7 @@
         <span class="menu-icon">
             <i class="bi bi-book fs-2"></i>
         </span>
-        <span class="menu-title">Courses</span>
+        <span class="menu-title">Courses Management</span>
         <span class="menu-arrow"></span>
     </span>
     <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -52,12 +65,18 @@
     </div>
 </div>
 @endcan
-@if(auth()->user()->hasAnyPermission(['read-users', 'read-roles']))
+@can('read-payments')
 <div class="menu-item">
-    <div class="menu-content pt-8 pb-2">
-        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Administration</span>
-    </div>
+    <a class="menu-link {{ Route::is('payments.*') ? 'active' : '' }}" href="{{ route('payments.index') }}">
+        <span class="menu-icon">
+            <i class="bi bi-credit-card fs-3"></i>
+        </span>
+        <span class="menu-title">Payment Management</span>
+    </a>
 </div>
+@endcan
+@if(auth()->user()->hasAnyPermission(['read-users', 'read-roles']))
+
 <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ 
 										Route::is('users.*') || Route::is('roles.*')
 										? 'show' 

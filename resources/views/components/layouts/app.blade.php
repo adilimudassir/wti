@@ -23,7 +23,7 @@
 
 </head>
 
-<body id="kt_body" class="page-loading-enabled page-loading header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+<body id="kt_body" class="page-loading-enabled page-loading header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
     <div class="page-loader flex-column">
         <span class="spinner-border text-primary" role="status"></span>
         <span class="text-muted fs-6 fw-bold mt-5">Loading...</span>
@@ -34,6 +34,7 @@
             <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
                 @include('partials.header')
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                    @include('sweetalert::alert')
                     @include('partials.toolbar', ['title' => $title])
                     @include('partials.messages')
                     @include('components.errors')

@@ -19,9 +19,7 @@
     </div>
     <!--end::Menu item-->
     <div class="px-3">
-        @if ($topic->id !== 1)
-        <x-button.delete :href="route('topics.delete', [$topic->id, 'course' => $course->slug])" permission="delete-topics" class="btn btn-light-primary w-100 px-3">Delete</x-button.delete>
-        @endif
+        <x-button.delete :href="route('topics.delete', [$topic->id, 'course' => $course->slug])" permission="delete-topics" class="btn btn-light-primary w-100 px-3 btn-sm">Delete</x-button.delete>
     </div>
 </div>
 <!--end::Menu-->

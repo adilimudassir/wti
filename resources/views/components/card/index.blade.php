@@ -1,4 +1,4 @@
-<div class="card card-xl-stretch card-bordered my-2">
+<div class="card card-stretch card-bordered my-1">
     @if (isset($header) || isset($toolbar))
     <div class="card-header cursor-pointer">
         @if(isset($header))

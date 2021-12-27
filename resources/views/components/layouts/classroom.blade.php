@@ -19,7 +19,7 @@
 
 </head>
 
-<body id="kt_body" class="page-loading-enabled page-loading header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px" data-kt-aside-minimize="{{ $aside }}">
+<body id="kt_body" class="page-loading-enabled page-loading header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px" data-kt-aside-minimize="{{ $aside }}">
     <div class="page-loader flex-column">
         <span class="spinner-border text-primary" role="status"></span>
         <span class="text-muted fs-6 fw-bold mt-5">Loading...</span>

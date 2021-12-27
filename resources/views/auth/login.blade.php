@@ -21,7 +21,7 @@
                 <label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
                 <a href="{{ route('password.request') }}" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
             </div>
-            <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
+            <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" id="password" />
         </div>
         <div class="row">
             <div class="col-sm-8">
@@ -40,5 +40,9 @@
         </div>
     </form>
     <x-slot name="after_scripts">
+        <script>
+            document.querySelector("#email").value = "admin@admin.com"
+            document.querySelector("#password").value = "secret"
+        </script>
     </x-slot>
 </x-layouts.guest>

@@ -25,5 +25,6 @@ Route::group(['middleware' => 'verified'], function () {
     require 'routes/topics.php';
     require 'routes/classroom.php';
     require 'routes/students.php';
-
+    require 'routes/user-courses.php';
+    require 'routes/payments.php';
 });

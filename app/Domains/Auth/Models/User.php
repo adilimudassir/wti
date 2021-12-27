@@ -2,6 +2,7 @@
 
 namespace Domains\Auth\Models;
 
+use Domains\Course\Models\UserCourse;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Altek\Accountant\Contracts\Recordable;
@@ -160,5 +161,13 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
     public function isSuperAdmin()
     {
         return $this->id === 1;
+    }
+
+    /**
+     * Get User Courses
+     */
+    public function courses()
+    {
+        return $this->hasMany(UserCourse::class);
     }
 }

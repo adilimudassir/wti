@@ -25,7 +25,8 @@ trait CreatePermissions
         'courses',
         'levels',
         'topics',
-        'students'
+        'students',
+        'payments'
     ];
 
     public function generatePermissions()

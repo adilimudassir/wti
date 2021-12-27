@@ -17,15 +17,18 @@ class CourseSeeder extends Seeder
         collect([
             [
                 'title' => 'Forex Trading',
-                'description' => 'Learn Forex Trading'
+                'description' => 'Learn Forex Trading',
+                'cost' =>50000,
             ],
             [
                 'title' => 'Cryptocurrency Trading',
-                'description' => 'Learn Cryptocurrency Trading'
+                'description' => 'Learn Cryptocurrency Trading',
+                'cost' =>80000,
             ],
             [
                 'title' => 'Stock Trading',
-                'description' => 'Learn Stock Trading'
+                'description' => 'Learn Stock Trading',
+                'cost' =>60000,
             ]
         ])->each(fn ($course) => Course::firstOrCreate($course));
     }

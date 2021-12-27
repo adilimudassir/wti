@@ -20,7 +20,7 @@
     <!--end::Menu item-->
     <div class="px-3">
         @if ($model->id !== 1)
-        <x-button.delete :href="route('roles.delete', $model)" permission="delete-roles" class="btn btn-light-primary w-100 px-3">Delete</x-button.delete>
+        <x-button.delete :href="route('roles.delete', $model)" permission="delete-roles" class="btn btn-light-primary w-100 px-3 btn-sm">Delete</x-button.delete>
         @endif
     </div>
 </div>

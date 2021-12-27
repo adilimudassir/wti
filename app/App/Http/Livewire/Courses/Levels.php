@@ -12,7 +12,7 @@ class Levels extends Component
 
     public Level $level;
 
-    public $showForm = false;
+    public $showForm = false, $confirming;
 
     public function mount()
     {
@@ -49,7 +49,8 @@ class Levels extends Component
 
         $this->course->load('levels');
 
-        session()->flash('flash_success', 'Level added');
+        alert()->success('Level Added')->toToast();
+
     }
 
     public function delete($id)
@@ -60,7 +61,17 @@ class Levels extends Component
 
         $this->course->load('levels');
 
-        session()->flash('flash_success', 'Level deleted');
+        alert()->success('Level deleted')->toToast();
+    }
+
+    public function confirmDelete($id)
+    {
+        $this->confirming = $id;
+    }
+    
+    public function cancelDelete()
+    {
+        $this->confirming = null;
     }
     
     public function render()

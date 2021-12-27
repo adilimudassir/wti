@@ -18,7 +18,6 @@ class DashboardController extends Controller
 
     public function __invoke()
     {
-        notify()->success('Laravel Notify is awesome!');       
         return view('dashboard');
     }
 }

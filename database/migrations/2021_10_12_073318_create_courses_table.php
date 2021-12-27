@@ -18,6 +18,8 @@ class CreateCoursesTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->string("slug");
+            $table->integer('cost')->default(0);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ class ClassroomController extends Controller
     public function index()
     {
         return view('classroom.index', [
-            'courses' => $this->courseRepository->all()
+            'userCourses' => auth()->user()->courses,
         ]);
     }
 
