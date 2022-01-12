@@ -12,17 +12,24 @@
     </div>
     <x-card>
         <x-slot name="body">
-            <div class="">
-                <p> <strong>Level</strong> <br><span class="my-10">{{ $topic->level?->title }}<span></p>
-                <div class="separator my-10"></div>
-                <p> <strong>Title</strong> <br><span class="my-10">{{ $topic->title }}<span></p>
-                <div class="separator my-10"></div>
-                <p> <strong>Excerpt</strong> <br><span class="my-10">{{ $topic->excerpt }}<span></p>
-                <div class="separator my-10"></div>
-                <p> <strong>Content</strong> <br><span class="my-10">{!! $topic->content !!}<span></p>
-                <div class="separator my-10"></div>
+            <div class="d-grid gap-5">
+                <fieldset class="border p-5">
+                    <legend class="text-muted">Level</legend>
+                    {{ $topic->level?->title }}
+                </fieldset>
+                <fieldset class="border p-5">
+                    <legend class="text-muted">Title</legend>
+                    {{ $topic->title }}
+                </fieldset>
+                <fieldset class="border p-5">
+                    <legend class="text-muted">Excerpt</legend>
+                    {{ $topic->excerpt }}
+                </fieldset>
+                <fieldset class="border p-5">
+                    <legend class="text-muted">Content</legend>
+                    {!! $topic->content !!}
+                </fieldset>
             </div>
-
         </x-slot>
     </x-card>
 </x-layouts.app>

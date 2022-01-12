@@ -3,5 +3,5 @@
     ->for('password_confirmation')
 }}
 {{ html()->password('password_confirmation')
-    ->class('form-control form-control-lg form-control-solid')
+    ->class('form-control form-control-lg ')
 }}

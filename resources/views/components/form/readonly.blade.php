@@ -3,7 +3,7 @@
     ->for($name)
 }}
 {{ html()->text($name)
-    ->class('form-control form-control-lg form-control-solid')
+    ->class('form-control form-control-lg ')
     ->value($value)
     ->readonly()
 }}

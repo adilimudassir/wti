@@ -5,7 +5,7 @@
         </x-slot>
         <x-slot name="toolbar">
             @if(! $showForm)
-            <button class="btn btn-outline btn-outline-dashed btn-outline-danger btn-active-light-danger btn-sm ml" wire:click.prevent="toggleForm">
+            <button class="btn btn-primary btn-sm ml" wire:click.prevent="toggleForm">
                 Edit
             </button>
             @endif
@@ -13,22 +13,26 @@
         <x-slot name="body">
             @include('sweetalert::alert')
             @if($showForm)
-            <div class="d-grid gap-2">
-                <x-form.number name="cost" wire:model="course.cost" label="Cost" />
-                <x-form.radio-buttons name="allow_partial_payment" wire:model="course.allow_partial_payments" label="Allow Partial Payments" :options="['true' => 1, 'false' => 0]" />
-                @if($course->allow_partial_payments)
-                <x-form.number name="partial_payment_allowed" wire:model="course.partial_payments_allowed" label="Number of Partial Payments Allowed" />
-                @else
-                <x-form.readonly name="Number of Partial Payments Allowed" :value="$course->partial_payments_allowed" label="Number of Partial Payments Allowed" />
-                @endif
-                <div class="mx-2">
-                    <button class="btn btn-primary btn-sm" wire:click.prevent="save">Save</button>
-                    <button class="btn btn-light btn-sm btn-outline" wire:click.prevent="toggleForm">
-                        @if($showForm)
-                        Cancel
+            <div class="">
+                <x-card class="d-grid gap-2 border m-2 p-2">
+                    <x-slot name="body">
+                        <x-form.number name="cost" wire:model="course.cost" label="Cost" />
+                        <x-form.radio-buttons name="allow_partial_payment" wire:model="course.allow_partial_payments" label="Allow Partial Payments" :options="['true' => 1, 'false' => 0]" />
+                        @if($course->allow_partial_payments)
+                        <x-form.number name="partial_payment_allowed" wire:model="course.partial_payments_allowed" label="Number of Partial Payments Allowed" />
+                        @else
+                        <x-form.readonly name="Number of Partial Payments Allowed" :value="$course->partial_payments_allowed" label="Number of Partial Payments Allowed" />
                         @endif
-                    </button>
-                </div>
+                    </x-slot>
+                    <x-slot name="footer">
+                        <button class="btn btn-primary btn-sm" wire:click.prevent="save">Save</button>
+                        <button class="btn btn-light btn-sm btn-outline" wire:click.prevent="toggleForm">
+                            @if($showForm)
+                            Cancel
+                            @endif
+                        </button>
+                    </x-slot>
+                </x-card>
             </div>
             @else
             <div class="d-grid gap-5">

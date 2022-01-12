@@ -15,16 +15,21 @@
                 </div>
             </x-slot>
             @if($showForm)
-            <p class="fs-5 pb-5 border-gray-300 border-bottom">New Level</p>
-            <x-form.text name="name" wire:model="level.name" label="Name" />
-            <x-form.text name="title" wire:model="level.title" label="Title" />
-            <x-form.textarea name="description" wire:model="level.description" label="Description" />
-            <div class="d-flex justify-content-stat my-2">
-                <button class="btn btn-primary btn-sm m-1" wire:click.prevent="save">Save</button>
-                <button class="btn btn-light-primary btn-sm m-1" wire:click.prevent="toggleForm">
-                    Close
-                </button>
-            </div>
+            <x-card>
+                <x-slot name="body">
+                    <x-form.text name="name" wire:model="level.name" label="Name" />
+                    <x-form.text name="title" wire:model="level.title" label="Title" />
+                    <x-form.textarea name="description" wire:model="level.description" label="Description" />
+                </x-slot>
+                <x-slot name="footer">
+                    <div class="d-flex justify-content-stat my-2">
+                        <button class="btn btn-primary btn-sm m-1" wire:click.prevent="save">Save</button>
+                        <button class="btn btn-light-primary btn-sm m-1" wire:click.prevent="toggleForm">
+                            Close
+                        </button>
+                    </div>
+                </x-slot>
+            </x-card>
             @else
             <div class="table-responsive">
                 <table class="table border gy-7 gs-7 table-rounded">
@@ -37,7 +42,7 @@
                     </thead>
                     <tbody>
                         @foreach($course->levels as $levelModel)
-                        <tr class=" @if($confirming === $levelModel->id) bg-primary fs-1 text-white @else fw-bold fs-6 text-gray-800 border-bottom border-gray-200 @endif">
+                        <tr class="@if($confirming === $levelModel->id) bg-primary fs-1 text-white @else fw-bold fs-6 text-gray-800 border-bottom border-gray-200 @endif">
                             <td class="fw-bold">
                                 {{ $levelModel->name }}
                                 <small class="text-muted d-block">{{ $levelModel->title}}</small>

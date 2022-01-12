@@ -14,14 +14,14 @@
         <div class="fv-row mb-10">
             <label class="form-label fs-6 fw-bolder text-dark">Email</label>
 
-            <input class="form-control form-control-lg form-control-solid @error('email') is-invalid @enderror " type="text" name="email" autocomplete="off" id="email" />
+            <input class="form-control form-control-lg  @error('email') is-invalid @enderror " type="text" name="email" autocomplete="off" id="email" />
         </div>
         <div class="fv-row mb-10">
             <div class="d-flex flex-stack mb-2">
                 <label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
                 <a href="{{ route('password.request') }}" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
             </div>
-            <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" id="password" />
+            <input class="form-control form-control-lg " type="password" name="password" autocomplete="off" id="password" />
         </div>
         <div class="row">
             <div class="col-sm-8">

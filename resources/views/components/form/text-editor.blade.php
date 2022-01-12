@@ -8,7 +8,7 @@
     ->for($name)
 }}
 {{ html()->textarea($name)
-    ->class('form-control form-control-lg form-control-solid tox-target')
+    ->class('form-control form-control-lg  tox-target')
     ->classIf($errors->has($name), 'is-invalid')
     ->attributes($attributes)
     

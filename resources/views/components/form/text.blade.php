@@ -8,7 +8,7 @@
     ->for($name)
 }}
 {{ html()->text($name)
-    ->class('form-control form-control-lg form-control-solid')
+    ->class('form-control form-control-lg ')
     ->classIf($errors->has($name), 'is-invalid')
     ->attributes($attributes)
     
