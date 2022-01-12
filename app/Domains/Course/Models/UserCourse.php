@@ -1,6 +1,7 @@
 <?php
 namespace Domains\Course\Models;
 
+use Domains\Auth\Models\User;
 use Domains\Payment\Models\Payment;
 use Domains\General\Models\BaseModel;
 
@@ -40,11 +41,50 @@ class UserCourse extends BaseModel
     }
 
     /**
-     * Get the payment for the user course.
+     * Get the payments for the user course.
      */
-    public function payment()
+    public function payments()
     {
-        return $this->hasOne(Payment::class);
+        return $this->hasMany(Payment::class);
+    }
+
+    /**
+     * Get Total Payments Balance
+     */
+    public function totalPaymentsBalance()
+    {
+        return $this->payments->sum('amount');
+    }
+
+    /**
+     * Get Payment Status
+     */
+    public function paymentStatus()
+    {
+        if($this->totalPaymentsBalance() == 0) {
+            return 'Pending Purchase';
+        }
+        
+        if($this->totalPaymentsBalance() > 0
+         && $this->totalPaymentsBalance() < $this->course->cost) {
+            return 'Partial';
+        } 
+        
+        if($this->totalPaymentsBalance() == $this->course->cost) {
+            return 'Paid';
+        }
+    }
+
+    /**
+     * User Can make a payment
+     */
+    public function canMakePayment()
+    {
+        return match($this->paymentStatus()) {
+            'Pending Purchase' => true,
+            'Partial' => true,
+            'Paid' => false
+        };
     }
 
     /**
@@ -56,7 +96,7 @@ class UserCourse extends BaseModel
             return 'Inactive';
         }
         
-        if(! $this->payment?->verified) {
+        if($this->payments->count() == 0) {
             return 'Pending Purchase';
         }
 
@@ -64,10 +104,18 @@ class UserCourse extends BaseModel
             return 'Completed';
         }
 
-        if($this->payment?->verified && !$this->started_at) {
+        if(!$this->started_at ) {
             return 'Not Started';
         }
 
         return 'In Progress';
+    }
+
+    /**
+     * Get the total amount due.
+     */
+    public function amountDue(): Int
+    {
+        return $this->course?->cost - $this->totalPaymentsBalance();
     }
 }

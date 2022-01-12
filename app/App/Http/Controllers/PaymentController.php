@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Domains\Course\Models\UserCourse;
 use Domains\Payment\Repositories\PaymentRepository;
 
 class PaymentController extends Controller
@@ -25,6 +26,17 @@ class PaymentController extends Controller
         ]);
     }
 
+    public function create(Request $request)
+    {
+        $this->authorize('create-payments');
+
+        $userCourse = UserCourse::find($request->user_course_id);
+
+        return view('payments.create', [
+            'userCourse' => $userCourse,
+        ]);
+    }
+
     public function show($id)
     {
         $this->authorize('read-payments');
@@ -34,7 +46,7 @@ class PaymentController extends Controller
         ]);
     }
 
-    public function edit($id, )
+    public function edit($id)
     {
         $this->authorize('update-payments');
 
@@ -43,13 +55,18 @@ class PaymentController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function verify($id)
     {
         $this->authorize('update-payments');
 
-        return redirect()
-            ->route('payments.index')
-            ->withFlashSuccess('Role Updated Successfully!');
+        $payment = $this->paymentRepository->getById($id);
+        
+        $payment->verified = true;
+        $payment->save();
+
+        alert()->success('Payment Verified!')->toToast();
+
+        return back();
     }
 
     public function destroy($id)
@@ -60,6 +77,6 @@ class PaymentController extends Controller
 
         return redirect()
             ->route('payments.index')
-            ->withFlashSuccess('Role Deleted Successfully!');
+            ->withFlashSuccess('Payment Deleted Successfully!');
     }
 }

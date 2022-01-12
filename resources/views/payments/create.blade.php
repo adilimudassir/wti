@@ -1,12 +1,6 @@
 <x-layouts.app>
     <x-slot name="title">
-        Create Role
+        Create Payment
     </x-slot>
-    <x-form 
-        method="POST" 
-        :route="route('roles.store')" 
-        :back-route="route('roles.index')"
-    >
-        @include('roles.form')
-    </x-form>
+    <livewire:payments.create-payment :user-course="$userCourse" />
 </x-layouts.app>

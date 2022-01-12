@@ -16,12 +16,13 @@ class Payment extends BaseModel
         'user_id',
         'user_course_id',
         'verified',
-        'completed',
         'type',
         'method',
         'date',
         'receipt',
         'amount',
+        'reference',
+        'transaction_id',
     ]; 
 
     /**
@@ -29,7 +30,6 @@ class Payment extends BaseModel
      */
     protected $casts = [
         'verified' => 'boolean',
-        'completed' => 'boolean',
         'date' => 'datetime',
     ];
 
@@ -45,42 +45,13 @@ class Payment extends BaseModel
      * Payment methods
      */
     public static $methods = [
-        'Deposit' => 'Deposit',
+        'Bank Transfer' => 'Bank Transfer',
         'Online' => 'Online',
+        'CryptoCurrency' => 'CryptoCurrency',
     ];
 
     /**
-     * Get the total amount paid.
-     */
-    public function amountPaid()
-    {
-        return $this->amount + $this->installments()?->sum('amount');
-    }
-
-    /**
-     * Get the total amount due.
-     */
-    public function amountDue()
-    {
-        return $this->userCourse?->course?->cost - $this->amountPaid();
-    }
-
-    /**
-     * Get Payment Status
-     */
-    public function status()
-    {
-        if ($this->verified && $this->completed) {
-            return 'Complete';
-        } elseif ($this->verified && !$this->completed) {
-            return 'Partial';
-        } else {
-            return 'Pending';
-        }
-    }
-
-/**
-     * User relationship
+     * Get the user that owns the payment.
      */
     public function user()
     {
@@ -88,7 +59,7 @@ class Payment extends BaseModel
     }
 
     /**
-     * UserCourse relationship
+     * Get the user course that owns the payment.
      */
     public function userCourse()
     {
@@ -96,11 +67,25 @@ class Payment extends BaseModel
     }
 
     /**
-     * Payment Installments relationship
+     * Get Payment Status
      */
-    public function installments()
+    public function status(): String
     {
-        return $this->hasMany(PaymentInstallment::class);
+        if ($this->verified) {
+            return 'Verified';
+        }
+
+        return 'Pending';
     }
 
+    /**
+     * Get Total Amount due
+     */
+    public function amountDue()
+    {
+        return $this
+            ->where('created_at', '<=', $this->created_at)
+            ->where('user_course_id', $this->user_course_id)
+            ->get()->reduce(fn ($carry, $item) => $carry - $item->amount, $this->userCourse->course->cost);
+    }
 }

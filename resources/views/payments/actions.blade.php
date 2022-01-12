@@ -14,6 +14,7 @@
     <!--end::Menu item-->
 
     <!--begin::Menu item-->
+    @if(!$model->verified)
     <div class="menu-item px-3">
         <x-button name="edit" :href="route('payments.edit', $model)" permission="update-payments" class="menu-link px-3" />
     </div>
@@ -21,5 +22,6 @@
     <div class="px-3">
         <x-button.delete :href="route('payments.delete', $model)" permission="delete-payments" class="btn btn-light-primary w-100 px-3 btn-sm">Delete</x-button.delete>
     </div>
+    @endif
 </div>
 <!--end::Menu-->

@@ -13,10 +13,10 @@
 
     <x-card>
         <x-slot name="header">
-            Deposit Payments
+            Bank Transfer Payments
         </x-slot>
         <x-slot name="body">
-            <livewire:payments-table method="Deposit" />
+            <livewire:payments-table method="Bank Transfer" />
         </x-slot>
     </x-card>
 </x-layouts.app>

@@ -67,7 +67,7 @@
                 {{ $course->description }}
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary btn-block btn-sm" wire:click.prevent="joinCourse({{ $course->id }})">
+                <button class="btn btn-outline btn-outline-dashed btn-outline-danger btn-active-light-danger btn-block w-100 btn-sm" wire:click.prevent="joinCourse({{ $course->id }})">
                     Join
                 </button>
             </div>

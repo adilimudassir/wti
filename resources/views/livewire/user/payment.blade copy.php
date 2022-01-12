@@ -56,7 +56,7 @@
             </div>
             @elseif($updateReceipt)
             <div class="rounded border p-10">
-                @if($payment?->method == 'Deposit')
+                @if($payment?->method == 'Bank Transfer')
                 <x-form.file name="receipt" wire:model="receipt" label="Receipt" />
                 @error('receipt') <span class="error">{{ $message }}</span> @enderror
 

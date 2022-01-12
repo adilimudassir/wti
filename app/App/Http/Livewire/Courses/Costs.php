@@ -22,13 +22,19 @@ class Costs extends Component
     }
 
     protected $rules = [
-        'course.cost' => 'integer'
+        'course.cost' => 'nullable',
+        'course.allow_partial_payments' => 'nullable',
+        'course.partial_payments_allowed' => 'nullable',
     ];
 
     public function save()
     {
 
         $this->validate();
+
+        if(! $this->course->allow_partial_payments) {
+            $this->course->partial_payments_allowed = 0;
+        }
 
         $this->course->save();
 

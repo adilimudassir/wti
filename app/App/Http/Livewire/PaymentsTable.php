@@ -48,15 +48,6 @@ class PaymentsTable extends DataTableComponent
                     false => "<span class='badge badge-circle badge-danger' ><i class='bi bi-x text-white fs-1'></i></span>",
                     default => 'N/A'
                 })->asHtml(),
-            Column::make('Completed', 'completed')
-                ->searchable()
-                ->sortable()
-                ->format(fn ($value, $column, $row) =>
-                match ($row->completed) {
-                    true => "<span class='badge badge-circle badge-success'><i class='bi bi-check text-white fs-1'></i></span>",
-                    false => "<span class='badge badge-circle badge-danger' ><i class='bi bi-x text-white fs-1'></i></span>",
-                    default => 'N/A'
-                })->asHtml(),
             Column::make('Created At')
                 ->searchable()
                 ->sortable()

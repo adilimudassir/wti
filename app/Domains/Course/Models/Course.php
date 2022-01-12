@@ -14,6 +14,10 @@ class Course extends BaseModel
     protected $fillable = [
         'title',
         'description',
+        'cost',
+        'allow_partial_payments',
+        'partial_payments_allowed',
+        
     ];
 
     
@@ -45,6 +49,18 @@ class Course extends BaseModel
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    /**
+     * Get Payable Course Cost
+     */
+    public function getPayableCost($paymentType = 'Complete')
+    {
+        if($this->allow_partial_payments && $paymentType === 'Partial') {
+            return $this->cost / $this->partial_payments_allowed;
+        }
+
+        return $this->cost;
     }
 
 }

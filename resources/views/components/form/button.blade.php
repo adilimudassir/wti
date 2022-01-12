@@ -2,7 +2,7 @@
     @csrf
     @method($method ?? 'POST')
 
-    <button type="submit" class="{{ $buttonClass ?? '' }}">
+    <button type="submit" class="{{ $buttonClass ?? 'btn btn-light-primary btn-sm' }}">
         {{ $slot }}
     </button>
 </form>

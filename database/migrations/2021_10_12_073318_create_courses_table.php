@@ -19,6 +19,8 @@ class CreateCoursesTable extends Migration
             $table->longText('description');
             $table->string("slug");
             $table->integer('cost')->default(0);
+            $table->boolean('allow_partial_payments')->default(false);
+            $table->integer('partial_payments_allowed')->default(0);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

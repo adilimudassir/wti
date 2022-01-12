@@ -19,9 +19,12 @@ class CreatePaymentsTable extends Migration
             $table->string('type');
             $table->string('method');
             $table->boolean('verified')->default(false);
-            $table->boolean('completed')->default(false);
             $table->foreignId('user_id')->constrained();
             $table->string('receipt')->nullable();
+            $table->string('reference')->nullable();
+            $table->string('transaction_id')->nullable();
+            $table->json('transaction_data')->nullable();
+            $table->string('status')->nullable();
             $table->foreignId('user_course_id')->constrained();
             $table->dateTime('date');
             $table->timestamps();

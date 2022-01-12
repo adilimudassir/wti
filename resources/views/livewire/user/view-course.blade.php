@@ -26,84 +26,44 @@
             </fieldset>
         </x-slot>
     </x-card>
+
     <x-card>
         <x-slot name="header">
-            <p>
-                Payment Status
-                <small class="mx-5 badge badge-light-danger">{{ $userCourse->payment?->status() ?? '....' }} </small>
-            </p>
+            Payments
+            <small class="mx-2 badge badge-light-danger">{{ $userCourse->paymentStatus() }} </small>
+        </x-slot>
+        <x-slot name="toolbar">
+            @if($userCourse->canMakePayment())
+            <x-button name="create" :href="route('payments.create', ['user_course_id' => $userCourse->id])" permission="create-payments" class="btn btn-sm btn-primary" icon="bi bi-plus" />
+            @endif
         </x-slot>
         <x-slot name="body">
-            @if($showForm)
-            <div class="">
-                <x-form.select name="type" wire:model="payment.type" label="Payment Type" :options="$paymentTypes" />
-
-                <x-form.select name="method" wire:model="payment.method" label="Payment Method" :options="$paymentMethods" />
-
-                @if($payment?->type == 'Complete')
-                <x-form.readonly name="Amount" :value="currency($userCourse->course->cost)" label="Amount" />
-                @else
-                <x-form.text name="Amount" wire:model="payment.amount" label="Amount" />
-
-                @endif
-
-                @if($payment?->method == 'Deposit')
-                <x-form.file name="receipt" wire:model="receipt" label="Receipt" />
-                @error('payment.file') <span class="error">{{ $message }}</span> @enderror
-
-                <div wire:loading wire:target="receipt">
-                    <div class="clearfix">
-                        <div class="spinner-border float-end" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
-                </div>
-                @endif
-
-                <div class="d-flex justify-content-stat my-2">
-                    <button class="btn btn-primary btn-sm m-1" wire:click.prevent="save">Save</button>
-                    <button class="btn btn-light-primary btn-sm m-1" wire:click.prevent="toggleForm">
-                        Close
-                    </button>
-                </div>
-            </div>
-            @endif
-            @if($userCourse->payment)
-            <div class="fs-3 d-grid gap-5 border border-transparent">
-                <div class="d-flex justify-content-between">
-                    Payment Type
-                    <small class="text-muted">{{ $userCourse->payment?->type }}</small>
-                </div>
-                <div class="d-flex justify-content-between">
-                    Payment Method
-                    <small class="text-muted">{{ $userCourse->payment?->method }}</small>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <span>Amount</span>
-                    <small class="text-muted">{{ currency($userCourse->payment?->amount) }}</small>
-                </div>
-                <div class="d-flex justify-content-between">
-                    Date
-                    <small class="text-muted">{{ $userCourse->payment?->created_at->format('d M Y') }}</small>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <span>Receipt</span>
-                    <small class="text-muted">
-                        <a href="{{ Storage::url($userCourse->payment?->receipt) }}" target="_blank">View Receipt</a>
-                    </small>
-                </div>
-            </div>
-            @else
-            @if(!$showForm)
-            <div class="text-center">
-                You have not paid for this course yet.
-                <br>
-                <button class="btn btn-outline btn-outline-dashed btn-outline-danger btn-active-light-danger btn-sm " wire:click.prevent="toggleForm">
-                    Proceed to Payment
-                </button>
-            </div>
-            @endif
-            @endif
+            <table class="table table-rounded table-striped border gy-7 gs-7">
+                <thead>
+                    <tr class="fw-bold fs-6 text-gray-800 border-bottom border-gray-200">
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Type</th>
+                        <th>Method</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($userCourse->payments as $payment)
+                    <tr>
+                        <td>{{ currency($payment->amount) }}</td>
+                        <td>
+                            <span class="badge badge-primary">
+                                {{ $payment->status() }}
+                            </span>
+                        </td>
+                        <td>{{ $payment->type }}</td>
+                        <td>{{ $payment->method }}</td>
+                        <td>{{ $payment->created_at->diffForHumans() }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </x-slot>
     </x-card>
 </div>

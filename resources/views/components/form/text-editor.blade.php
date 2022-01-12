@@ -4,7 +4,7 @@
 ])
 
 {{ html()->label($label)
-    ->class('form-label fs-6 fw-bolder text-dark')
+    ->class('form-label fs-6 fw-bolder text-dark mt-5')
     ->for($name)
 }}
 {{ html()->textarea($name)

@@ -15,7 +15,7 @@ $inputID = $name.'_'.$id;
 <!-- if not multiple checkboxes, Display a label -->
 @if(!$multiple)
 {{
-        html()->label(ucfirst($name))->class('form-label fs-6 fw-bolder text-dark')
+        html()->label(ucfirst($name))->class('form-label fs-6 fw-bolder text-dark mt-5')
     }}
 @endif
 

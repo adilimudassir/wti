@@ -1,21 +1,18 @@
 @props([
 'name' => '',
-'label' => $label ?? ucwords(str_replace("_", " ",$name)),
-'options' => []
+'label' => $label ?? ucwords(str_replace("_", " ",$name))
 ])
 
 {{ html()->label($label)
     ->class('form-label fs-6 fw-bolder text-dark mt-5')
     ->for($name)
 }}
-{{ html()->select($name, $options)
+{{ html()->number($name)
     ->class('form-control form-control-lg form-control-solid')
     ->classIf($errors->has($name), 'is-invalid')
-    ->placeholder("Select {$label}")
     ->attributes($attributes)
     
 }}
-
 @error($name)
 {{ html()->span()->text($message)
         ->class('invalid-feedback font-weight-bold')

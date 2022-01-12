@@ -9,11 +9,11 @@ Route::group(['prefix' => 'payments', 'as' => 'payments.'], function () {
     Route::post('/store', [PaymentController::class, 'store'])->name('store');
     Route::get('/show/{id}', [PaymentController::class, 'show'])->name('show');
     Route::get('/edit/{id}', [PaymentController::class, 'edit'])->name('edit');
-    Route::get('/verify/{id}', [PaymentController::class, 'verify'])->name('verify');
+    Route::patch('/update/{id}', [PaymentController::class, 'update'])->name('update');
     Route::delete('/destroy/{id}', [PaymentController::class, 'destroy'])->name('delete');
 
     Route::group(['prefix' => 'flutterwave', 'as' => 'flutterwave.'], function () {
-        Route::post('/pay', [FlutterwavePaymentController::class, 'pay'])->name('pay');
-        Route::get('/callback', [FlutterwavePaymentController::class, 'callback'])->name('callback');
+        Route::get('/pay', [FlutterwavePaymentController::class, 'pay'])->name('pay');
+        Route::post('/callback', [FlutterwavePaymentController::class, 'callback'])->name('callback');
     });
 });
