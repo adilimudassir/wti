@@ -15,26 +15,24 @@
                         <span class="badge badge-light-primary fw-bolder me-auto px-4 py-3">{{ $userCourse->status() }}</span>
                     </div>
                 </div>
-                <div class="card-body">
-                    @if($userCourse->payment?->verified)
-                    <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7">
+                <div class="card-body gap-5">
+                    @if($userCourse->paymentStatus() !== 'Pending Purchase')
+                    <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 my-2">
                         <div class="text-muted"><em>Started</em></div>
                         <div class="fs-6 text-gray-800">
                             {{ $userCourse->started_at?->diffForHumans() ?? 'Not started yet' }}
                         </div>
                     </div>
-                    <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7">
+                    <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 my-2">
                         <div class="text-muted"><em>Finished</em></div>
                         <div class="fs-6 text-gray-800">
-                            {{ $userCourse->started_at?->diffForHumans() ?? 'Not Finished yet' }}
+                            {{ $userCourse->finished_at?->diffForHumans() ?? '.....' }}
                         </div>
                     </div>
                     @endif
-                    @if($userCourse->payment?->verified)
-                    <!-- <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="" data-bs-original-title="This project 50% completed">
-                        <div class="bg-primary rounded h-4px" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div> -->
-                    @endif
+                    <div class="h-4px w-100 bg-light my-2" data-bs-toggle="tooltip" title="{{ $userCourse->progress() }}% Complete" data-bs-original-title="This course is {{ $userCourse->progress() }}% completed">
+                        <div class="bg-primary rounded h-10px" role="progressbar" style="width: {{ $userCourse->progress() }}%" aria-valuenow="{{ $userCourse->progress() }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
             </a>
         </div>
@@ -46,7 +44,7 @@
         </div>
         @endforelse
         @if(!$joinCourse && $courses->count() > 0)
-        <div class="rounded bg-light border border-secondary border-dashed d-flex justify-content-center p-5">
+        <div class="rounded text-center bg-light border border-secondary border-dashed d-flex flex-column p-5">
             <div class="h3 d-block my-2">Want to join more courses?</div>
             <br>
             <button class="btn btn-primary mx-2 mb-2 btn-sm" wire:click.prevent="toggleJoin">
@@ -56,10 +54,10 @@
         @endif
     </div>
     @if($joinCourse)
-    <fieldset class="d-grid g-5">
-        <legend>More Courses To Join</legend>
+    <fieldset class="row gap-2 p-5 px-auto">
+        <legend>Join New Course</legend>
         @foreach($courses as $course)
-        <div class="card mb-5">
+        <div class="card mb-5 col-lg-3 col-md-4 col-sm-12 col-xs-12">
             <div class="card-header">
                 <h3 class="card-title">{{ $course->title }}</h3>
             </div>

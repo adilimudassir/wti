@@ -31,6 +31,7 @@ class Payment extends BaseModel
     protected $casts = [
         'verified' => 'boolean',
         'date' => 'datetime',
+        'transaction_data' => 'object',
     ];
 
     /**
@@ -47,7 +48,7 @@ class Payment extends BaseModel
     public static $methods = [
         'Bank Transfer' => 'Bank Transfer',
         'Online' => 'Online',
-        'CryptoCurrency' => 'CryptoCurrency',
+        // 'CryptoCurrency' => 'CryptoCurrency',
     ];
 
     /**

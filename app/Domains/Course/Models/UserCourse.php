@@ -16,6 +16,11 @@ class UserCourse extends BaseModel
         'finished_at'
     ];
 
+    protected $dates = [
+        'started_at',
+        'finished_at'
+    ];
+
     /**
      * Get the user that owns the user course.
      */
@@ -118,4 +123,26 @@ class UserCourse extends BaseModel
     {
         return $this->course?->cost - $this->totalPaymentsBalance();
     }
+
+    /** 
+     * Get User Course Topics
+     */
+    public function userCompletedCourseTopics()
+    {
+        return $this->hasMany(UserCourseTopic::class, 'user_course_id', 'id');
+    }
+
+    public function activeTopic()
+    {
+        return $this->userCompletedCourseTopics()
+            ->orderBy('created_at', 'DESC')
+            ->first()->topic 
+        ?? $this->course->levels()->first()->topics()->first();
+    }
+
+    public function progress()
+    {
+        return round(($this->userCompletedCourseTopics->count() /$this->course->topics->count()) * 100, 1);
+    }
+    
 }

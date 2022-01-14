@@ -6,6 +6,7 @@ use Spatie\Sluggable\HasSlug;
 use Domains\Course\Models\Level;
 use Spatie\Sluggable\SlugOptions;
 use Domains\General\Models\BaseModel;
+use Domains\Course\Models\UserCourseTopic;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Topic extends BaseModel
@@ -70,5 +71,10 @@ class Topic extends BaseModel
     public function nextTopic()
     {
         return $this->hasOne(self::class, 'previous_topic_id', 'id');
+    }
+
+    public function userCourseTopics()
+    {
+        return $this->hasMany(UserCourseTopic::class);
     }
 }

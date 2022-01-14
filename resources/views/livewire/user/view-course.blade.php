@@ -9,14 +9,6 @@
         </x-slot>
         <x-slot name="body">
             <fieldset class="border p-5 mb-5">
-                <legend class="text-muted">Title</legend>
-                {!! $userCourse->course->title !!}
-            </fieldset>
-            <fieldset class="border p-5 mb-5">
-                <legend class="text-muted">Description</legend>
-                {!! $userCourse->course->description !!}
-            </fieldset>
-            <fieldset class="border p-5 mb-5">
                 <legend class="text-muted">Started</legend>
                 {!! $userCourse->started_at?->diffForHumans() ?? 'Not Yet' !!}
             </fieldset>
@@ -24,6 +16,19 @@
                 <legend class="text-muted">Finished</legend>
                 {!! $userCourse->finished_at?->diffForHumans() ?? 'Not Yet' !!}
             </fieldset>
+            <fieldset class="border p-5 mb-5">
+                <legend class="text-muted">Progress</legend>
+                {!! $userCourse->progress() !!}% completed
+            </fieldset>
+            <fieldset class="border p-5 mb-5">
+                <legend class="text-muted">Current Topic</legend>
+                {!! $userCourse->activeTopic()->title !!}
+            </fieldset>
+            <fieldset class="border p-5 mb-5">
+                <legend class="text-muted">Current level</legend>
+                {{ $userCourse->activeTopic()->level->title }} ({{ $userCourse->activeTopic()->level->name }} Level)
+            </fieldset>
+
         </x-slot>
     </x-card>
 
@@ -41,7 +46,8 @@
             <table class="table table-rounded table-striped border gy-7 gs-7">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800 border-bottom border-gray-200">
-                        <th>Amount</th>
+                        <th>Amount Paid</th>
+                        <th>Amount Due</th>
                         <th>Status</th>
                         <th>Type</th>
                         <th>Method</th>
@@ -52,6 +58,7 @@
                     @foreach($userCourse->payments as $payment)
                     <tr>
                         <td>{{ currency($payment->amount) }}</td>
+                        <td>{{ currency($payment->amountDue()) }}</td>
                         <td>
                             <span class="badge badge-primary">
                                 {{ $payment->status() }}

@@ -26,9 +26,6 @@ class PaymentsTable extends DataTableComponent
                 ->searchable()
                 ->sortable()
                 ->format(fn ($value, $column, $row) => html()->a(route('students.show', $row), $value)),
-            Column::make('Method', 'method')
-                ->searchable()
-                ->sortable(),
             Column::make('Amount Paid', 'amount')
                 ->searchable()
                 ->sortable()

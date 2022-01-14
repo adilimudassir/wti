@@ -10,7 +10,10 @@
         @continue
         @endif
 
-        <a href="{{ route('classroom.show', [$userCourse?->course->slug, $userCourse?->course->levels()->first()->title, $userCourse?->course->levels()->first()->topics()->first()]) }}" class="card bg-hover-secondary text-hover-inverse-secondary">
+        @php
+
+        @endphp
+        <a href="{{ route('classroom.show', [$userCourse?->course->slug, $userCourse->activeTopic()->level->title, $userCourse->activeTopic()]) }}" class="card bg-hover-secondary text-hover-inverse-secondary g-5">
             <div class="card-header">
                 <div class="card-title">
                     {{ $userCourse->course->title }}
@@ -19,34 +22,31 @@
                     <span class="badge badge-light-primary fw-bolder me-auto px-4 py-3">{{ $userCourse->status() }}</span>
                 </div>
             </div>
-            <div class="card-body">
-                @if($userCourse->payment?->verified)
-                <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7">
+            <div class="card-body gap-5">
+                @if($userCourse->paymentStatus() !== 'Pending Purchase')
+                <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 my-2">
                     <div class="text-muted"><em>Started</em></div>
                     <div class="fs-6 text-gray-800">
                         {{ $userCourse->started_at?->diffForHumans() ?? 'Not started yet' }}
                     </div>
                 </div>
-                <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7">
+                <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 my-2">
                     <div class="text-muted"><em>Finished</em></div>
                     <div class="fs-6 text-gray-800">
-                        {{ $userCourse->started_at?->diffForHumans() ?? 'Not Finished yet' }}
+                        {{ $userCourse->finished_at?->diffForHumans() ?? '.....' }}
                     </div>
                 </div>
                 @endif
-                @if($userCourse->payment?->verified)
-                <!-- <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="" data-bs-original-title="This project 50% completed">
-                        <div class="bg-primary rounded h-4px" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div> -->
-                @endif
+                <div class="h-4px w-100 bg-light my-2" data-bs-toggle="tooltip" title="{{ $userCourse->progress() }}% Complete" data-bs-original-title="This course is {{ $userCourse->progress() }}% completed">
+                    <div class="bg-primary rounded h-10px" role="progressbar" style="width: {{ $userCourse->progress() }}%" aria-valuenow="{{ $userCourse->progress() }}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
             </div>
         </a>
         @empty
         <div class="rounded bg-white border p-10">
             <div class="text-center">
                 <h3 class="text-gray-900">No courses found</h3>
-            </div>
-        </div>
+            </d {{ $userCourse->progress() }}
         @endforelse
     </div>
 </x-layouts.classroom>

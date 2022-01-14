@@ -41,7 +41,7 @@ class Courses extends Component
 
         $this->user->load('courses');
 
-        alert()->success('Course Joined')->toToast();
+        alert()->success('Course Joined');
     }
 
     public function render()

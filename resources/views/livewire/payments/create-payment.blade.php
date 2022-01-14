@@ -26,13 +26,16 @@
                 </div>
             </div>
             @endif
+
+            @endif
+        </x-slot>
+        <x-slot name="footer">
             <div class="d-flex justify-content-stat my-2">
                 <button class="btn btn-primary btn-sm m-1" wire:click.prevent="save">Save</button>
                 <button class="btn btn-light-primary btn-sm m-1" wire:click.prevent="cancel">
                     Cancel
                 </button>
             </div>
-            @endif
         </x-slot>
     </x-card>
 </div>

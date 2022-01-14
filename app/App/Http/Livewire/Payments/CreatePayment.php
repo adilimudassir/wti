@@ -48,6 +48,7 @@ class CreatePayment extends Component
             $this->payment->date = now();
             $this->payment->save();
         }
+
         if($this->payment->method == 'Online') {
             //This generates a payment reference
             $reference = Flutterwave::generateReference();
@@ -75,16 +76,15 @@ class CreatePayment extends Component
             ];
 
             $payment = Flutterwave::initializePayment($data);
-
-
-            dd($payment);
             
             if ($payment['status'] !== 'success') {
-                $this->payment->user_course_id = $this->userCourse->id;
-                $this->payment->user_id = auth()->user()->id;
-                $this->payment->date = now();
-                $this->payment->save();
+                alert()->error('Failed')->toToast();
             }
+
+            $this->payment->user_course_id = $this->userCourse->id;
+            $this->payment->user_id = auth()->user()->id;
+            $this->payment->date = now();
+            $this->payment->save();
 
             return redirect($payment['data']['link']);
         }
