@@ -82,7 +82,6 @@
                             Lifetime Access
                         </span>
                     </li>
-
                 </div>
                 <div class="separator my-10"></div>
                 <label class="form-label fs-6 fw-bolder text-dark mt-5" for="userCourse.batch_id">

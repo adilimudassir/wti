@@ -16,7 +16,7 @@ $model = $topic->userCourseTopics()->where('user_course_id', $userCourse->id)->f
         </span>
         <span class="menu-title">{{ $topic->title }}</span>
         @if($model)
-        <span class='badge badge-light-success'><i class='bi bi-check'></i></span>
+        <span class='badge badge-light-primary'><i class='bi bi-check'></i></span>
         @endif
     </a>
 </div>
