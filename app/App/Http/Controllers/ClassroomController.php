@@ -34,14 +34,14 @@ class ClassroomController extends Controller
 
         $topic = $level->topics()->whereSlug($topic)->first();
 
-        $userCourse = UserCourse::where('course_id', $course->id)->first();
+        $userCourse = auth()->user()->courses()->where('course_id', $course->id)->first();
 
-        if($userCourse->progress() === 0) {
+        if($userCourse->progress() == 0) {
             $userCourse->started_at = now();
             $userCourse->save();
         }
 
-        if ($userCourse->progress() === 100) {
+        if ($userCourse->progress() == 100) {
             $userCourse->finished_at = now();
             $userCourse->save();
         }

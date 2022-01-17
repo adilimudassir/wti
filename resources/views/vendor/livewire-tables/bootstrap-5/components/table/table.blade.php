@@ -1,5 +1,5 @@
 <div class="{{ $this->responsive ? 'table-responsive' : '' }}">
-    <table {{ $attributes->except('wire:sortable') }} class="table table-bordered">
+    <table {{ $attributes->except('wire:sortable') }} class="table table-bordered table-hover">
         <thead>
             <tr>
                 {{ $head }}

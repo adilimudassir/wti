@@ -1,4 +1,9 @@
-{{ html()->label(ucwords(str_replace("_", " ",$name)))
+@props([
+'name' => '',
+'label' => $label ?? ucwords(str_replace("_", " ",$name))
+])
+
+{{ html()->label(ucwords(str_replace("_", " ",$label)))
     ->class('form-label fs-6 fw-bolder text-dark mt-5')
     ->for($name)
 }}

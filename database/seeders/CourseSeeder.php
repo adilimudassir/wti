@@ -19,16 +19,19 @@ class CourseSeeder extends Seeder
                 'title' => 'Forex Trading',
                 'description' => 'Learn Forex Trading',
                 'cost' =>50000,
+                'duration' => '3 Month, Lifetime Mentorship',
             ],
             [
                 'title' => 'Cryptocurrency Trading',
                 'description' => 'Learn Cryptocurrency Trading',
                 'cost' =>80000,
+                'duration' => '3 Month, Lifetime Mentorship',
             ],
             [
                 'title' => 'Stock Trading',
                 'description' => 'Learn Stock Trading',
                 'cost' =>60000,
+                'duration' => '3 Month, Lifetime Mentorship',
             ]
         ])->each(fn ($course) => Course::firstOrCreate($course));
     }

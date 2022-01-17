@@ -29,6 +29,7 @@ trait CreatePermissions
         'payments'
     ];
 
+
     public function generatePermissions()
     {
         foreach ($this->entities as $entity) {

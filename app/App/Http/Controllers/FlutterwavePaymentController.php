@@ -37,8 +37,6 @@ class FlutterwavePaymentController extends Controller
             ]
         ];
 
-        dd($data);
-
         $payment = Flutterwave::initializePayment($data);
 
 
@@ -57,6 +55,12 @@ class FlutterwavePaymentController extends Controller
     public function callback()
     {
         $payment = Payment::where('reference', request()->tx_ref)->first();
+
+        $redirectUrl = route('payments.show', $payment->id);
+
+        if(auth()->user()->hasRole('Student')) {
+            $redirectUrl = route('user-courses.show', $payment->userCourse?->course->slug);
+        }
         
         if(request()->status == 'successful') {
             
@@ -72,7 +76,7 @@ class FlutterwavePaymentController extends Controller
 
             alert()->success('Transaction successful');
 
-            return redirect()->route('payments.show', $payment->id);
+            return redirect($redirectUrl);
         }
         
         if (request()->status ==  'cancelled') {
@@ -81,7 +85,7 @@ class FlutterwavePaymentController extends Controller
             
             $payment->delete();
             
-            return redirect()->route('payments.create', ['user_course_id' => $payment->user_course_id]);
+            return route('payments.create', ['user_course_id' => $payment->user_course_id]);
         }
 
         alert()->error('Transaction Failed');

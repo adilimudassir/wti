@@ -13,7 +13,8 @@ class UserCourse extends BaseModel
         'is_active',
         'progress',
         'started_at',
-        'finished_at'
+        'finished_at',
+        'batch_id',
     ];
 
     protected $dates = [
@@ -52,6 +53,15 @@ class UserCourse extends BaseModel
     {
         return $this->hasMany(Payment::class);
     }
+
+    /**
+     * Get the student batch
+     */
+    public function batch()
+    {
+        return $this->belongsTo(Batch::class);
+    }
+    
 
     /**
      * Get Total Payments Balance

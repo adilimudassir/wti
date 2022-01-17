@@ -15,6 +15,15 @@ class Courses extends Component
 
     public $joinCourse = false;
 
+    protected $rules = [
+        'userCourse.batch_id' => 'required'
+    ];
+
+    protected $messages = [
+        'userCourse.batch_id.required' => 'Please select training batch',
+    ];
+
+
     public function toggleJoin()
     {
         if ($this->joinCourse) {
@@ -31,11 +40,11 @@ class Courses extends Component
      */
     public function joinCourse($id)
     {
+        $this->validate();
+        
         $this->userCourse->user_id = $this->user->id;
         $this->userCourse->course_id = $id;
         $this->userCourse->save();
-        
-        $this->user->courses()->save($this->userCourse);
 
         $this->toggleJoin();
 
@@ -48,7 +57,7 @@ class Courses extends Component
     {
         return view('livewire.user.courses', [
             'userCourses' => $this->user->courses->fresh(),
-            'courses' => Course::whereNotIn('id', $this->user->courses->pluck('course_id'))->get(),
+            'courses' => Course::whereNotIn('id', $this->user->courses->pluck('course_id'))->get()
         ]);
     }
 }

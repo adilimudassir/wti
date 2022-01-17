@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserCoursesTable extends Migration
+class CreateBatchesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateUserCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_courses', function (Blueprint $table) {
+        Schema::create('batches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->string('name');
             $table->foreignId('course_id');
-            $table->boolean('is_active')->default(true);
-            $table->dateTime('started_at')->nullable();
-            $table->dateTime('finished_at')->nullable();
-            $table->foreignId('batch_id');
+            $table->boolean('active')->default(false);
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateUserCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_courses');
+        Schema::dropIfExists('batches');
     }
 }

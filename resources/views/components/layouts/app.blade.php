@@ -21,6 +21,12 @@
     <livewire:styles>
         <script src="{{ mix('js/app.js') }}"></script>
 
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+
 </head>
 
 <body id="kt_body" class="page-loading-enabled page-loading header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">

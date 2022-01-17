@@ -15,6 +15,7 @@ class Course extends BaseModel
         'title',
         'description',
         'cost',
+        'duration',
         'allow_partial_payments',
         'partial_payments_allowed',
         
@@ -61,6 +62,19 @@ class Course extends BaseModel
         }
 
         return $this->cost;
+    }
+
+    /**
+     * Get Course Batches
+     */
+    public function batches()
+    {
+        return $this->hasMany(Batch::class);
+    }
+
+    public function userCourses()
+    {
+        return $this->hasMany(UserCourse::class);
     }
 
 }

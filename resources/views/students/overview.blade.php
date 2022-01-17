@@ -14,6 +14,10 @@
                 <td>{{ $student->email }}</td>
             </tr>
             <tr>
+                <th>Phone</th>
+                <td>{{ $student->phone }}</td>
+            </tr>
+            <tr>
                 <th>Status</th>
                 <td>
                     <x-badge :type="$student->isActive() ? 'success' : 'danger'" :name="$student->isActive() ? 'Active' : 'Inactive'" />
@@ -36,4 +40,4 @@
         </table>
     </x-slot>
 </x-card>
-        @endsection
+@endsection
