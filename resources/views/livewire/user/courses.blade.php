@@ -6,7 +6,7 @@
         @continue
         @endif
         <div class="mb-10">
-            <a href="{{ route('user-courses.show', $userCourse->course->slug) }}" class="card bg-hover-secondary text-hover-inverse-secondary">
+            <a href="{{ route('user-courses.show', $userCourse->course->slug) }}" class="card bg-hover-secondary text-hover-inverse-secondary shadow-lg">
                 <div class="card-header">
                     <div class="card-title">
                         {{ $userCourse->course->title }}
