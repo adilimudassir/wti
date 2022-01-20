@@ -15,7 +15,10 @@
                         <span class="badge badge-light-primary fw-bolder me-auto px-12 py-3">{{ $userCourse->status() }}</span>
                     </div>
                 </div>
+                {{--
                 <div class="card-body">
+                    {!!  $userCourse->course->description !!}
+                    {{--
                     @if($userCourse->paymentStatus() !== 'Pending Purchase')
                         <div class="text-muted fs-4">
                             <strong>Started since</strong> <em>{{ $userCourse->started_at?->diffForHumans() ?? 'Not started yet' }}</em>
@@ -27,12 +30,14 @@
                         </div>
                         @endif
                     @endif
+                    --}}
                 </div>
                 <div class="card-footer">
                     <div class="h-4px  bg-light my-2" data-bs-toggle="tooltip" title="{{ $userCourse->progress() }}% Complete" data-bs-original-title="This course is {{ $userCourse->progress() }}% completed">
                         <div class="bg-primary rounded h-10px" role="progressbar" style="width: {{ $userCourse->progress() }}%" aria-valuenow="{{ $userCourse->progress() }}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
+                --}}
             </a>
         </div>
         @empty
