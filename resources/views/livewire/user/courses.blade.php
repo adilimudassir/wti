@@ -54,8 +54,8 @@
 <div class="rounded text-center bg-light border border-secondary border-dashed d-grid d-flex flex-column p-5">
     <div class="h3 d-block my-2">Want to join more courses?</div>
     <br>
-    <button class="btn btn-primary mx-2 mb-2 btn-lg" wire:click.prevent="toggleJoin">
-        Join
+    <button class="btn btn-light-primary mx-2 mb-2 btn-lg" wire:click.prevent="toggleJoin">
+        Click Here
     </button>
 </div>
 @endif
