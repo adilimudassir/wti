@@ -1,5 +1,6 @@
 <div>
     @include('sweetalert::alert')
+    @if(!$joinCourse && $courses->count() > 0)
     <div class="d-grid">
         @forelse($userCourses as $userCourse)
         @if (!$userCourse->course->topics->count())
@@ -50,7 +51,7 @@
     </div>
 </div>
 @endforelse
-@if(!$joinCourse && $courses->count() > 0)
+
 <div class="rounded text-center bg-light border border-secondary border-dashed d-grid d-flex flex-column p-5">
     <div class="h3 d-block my-2">Want to join more courses?</div>
     <br>
