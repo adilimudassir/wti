@@ -40,9 +40,9 @@
         </div>
     </form>
     <x-slot name="after_scripts">
-        <script>
-            document.querySelector("#email").value = "admin@admin.com"
-            document.querySelector("#password").value = "secret"
-        </script>
+        <!-- <script>
+            document.querySelector("#email").value = ""
+            document.querySelector("#password").value = ""
+        </script> -->
     </x-slot>
 </x-layouts.guest>
