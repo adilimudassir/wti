@@ -56,6 +56,12 @@ class FlutterwavePaymentController extends Controller
     {
         $payment = Payment::where('reference', request()->tx_ref)->first();
 
+        if(!$payment) {
+            alert()->error('Transaction Failed');
+
+            return redirect()->route('user-courses.index');
+        }
+
         $redirectUrl = route('payments.show', $payment->id);
 
         if(auth()->user()->hasRole('Student')) {
