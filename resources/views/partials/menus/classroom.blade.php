@@ -1,4 +1,15 @@
 @if(Route::is('classroom.show'))
+<div class="menu-item">
+    <a class="menu-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+        <span class="menu-icon">
+            <i class="bi bi-grid fs-3"></i>
+        </span>
+        <span class="menu-title">Dashboard</span>
+    </a>
+</div>
+<div class="menu-content">
+    <div class="separator mx-1 my-4"></div>
+</div>
 @foreach($course->levels as $level)
 <div class="menu-item">
     <div class="menu-content pb-2">
