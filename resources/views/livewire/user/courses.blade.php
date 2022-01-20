@@ -15,9 +15,6 @@
                         <span class="badge badge-light-primary fw-bolder me-auto px-12 py-3">{{ $userCourse->status() }}</span>
                     </div>
                 </div>
-                <div class="card-body">
-
-                </div>
                 {{--
                 <div class="card-body">
                     {!!  $userCourse->course->description !!}
