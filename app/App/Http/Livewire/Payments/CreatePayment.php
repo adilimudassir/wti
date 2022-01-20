@@ -95,7 +95,7 @@ class CreatePayment extends Component
 
     public function cancel()
     {
-        return redirect()->route('user-courses.show', $this->userCourse->id);
+        return redirect()->route('user-courses.show', $this->userCourse->course->slug);
     }
 
     public function render()
