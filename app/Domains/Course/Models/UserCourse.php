@@ -88,6 +88,8 @@ class UserCourse extends BaseModel
         if($this->totalPaymentsBalance() == $this->course->cost) {
             return 'Paid';
         }
+
+        return 'Pending Purchase';
     }
 
     /**
