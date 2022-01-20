@@ -85,7 +85,7 @@ class FlutterwavePaymentController extends Controller
             
             $payment->delete();
             
-            return route('payments.create', ['user_course_id' => $payment->user_course_id]);
+            return redirect()->route('payments.create', ['user_course_id' => $payment->user_course_id]);
         }
 
         alert()->error('Transaction Failed');
