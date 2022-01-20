@@ -16,12 +16,11 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    
+
                 </div>
                 {{--
                 <div class="card-body">
                     {!!  $userCourse->course->description !!}
-                    {{--
                     @if($userCourse->paymentStatus() !== 'Pending Purchase')
                         <div class="text-muted fs-4">
                             <strong>Started since</strong> <em>{{ $userCourse->started_at?->diffForHumans() ?? 'Not started yet' }}</em>
@@ -33,7 +32,6 @@
                         </div>
                         @endif
                     @endif
-                    --}}
                 </div>
                 <div class="card-footer">
                     <div class="h-4px  bg-light my-2" data-bs-toggle="tooltip" title="{{ $userCourse->progress() }}% Complete" data-bs-original-title="This course is {{ $userCourse->progress() }}% completed">
