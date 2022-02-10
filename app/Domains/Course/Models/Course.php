@@ -16,6 +16,7 @@ class Course extends BaseModel
         'description',
         'cost',
         'duration',
+        'outline',
         'allow_partial_payments',
         'partial_payments_allowed',
         

@@ -50,13 +50,13 @@ if (! function_exists('home_route')) {
 }
 
 
-if (!function_exists('currency')) {
-    function currency($currency)
-    {
-        $instance = new \NumberFormatter("en_NG", \NumberFormatter::CURRENCY);
+    if (!function_exists('currency')) {
+        function currency($currency)
+        {
+            $instance = new \NumberFormatter("en_NG", \NumberFormatter::CURRENCY);
 
-        return $instance->format($currency);
-        // setlocale(LC_MONETARY, 'en_NG.UTF-8');
-        // return money_format('%.2n', $currency);
+            return $instance->format($currency);
+            // setlocale(LC_MONETARY, 'en_NG.UTF-8');
+            // return money_format('%.2n', $currency);
+        }
     }
-}

@@ -21,7 +21,8 @@
                 <a class="btn btn-primary btn-sm " href="{{ route('payments.edit', $payment->id) }}">
                     Edit
                 </a>
-                <x-button.link :href="route('payments.verify', $payment->id)" name="confirm-item" text="Verify" />
+                <x-button.link :href="route('payments.verify', $payment->id)" 
+                 text="Verify" />
                 @endif
                 @endcan
             </div>

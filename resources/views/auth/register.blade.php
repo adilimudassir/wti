@@ -54,7 +54,7 @@
             </label>
         </div>
         <div class="text-center">
-            <x-form.actions hide-back-route />
+            <x-form.actions label="Create" hide-back-route />
         </div>
     </form>
     <script>
