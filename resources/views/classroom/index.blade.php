@@ -35,16 +35,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item row">
+                    <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
                             <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#levels" aria-expanded="false" aria-controls="levels">
                                 Levels
                             </button>
                         </h2>
                         <div id="levels" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#classroom">
-                            <div class="accordion-body">
+                            <div class="accordion-body row d-flex flex-justify-center">
                                 @foreach($userCourse->course->levels as $key => $level)
-                                <a href="{{ route('classroom.show', [$userCourse?->course->slug, $level->title, $level->topics()->first()]) }}" class="card bg-hover-secondary text-hover-inverse-secondary card-bordered g-2 m-1 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                <a href="{{ route('classroom.show', [$userCourse?->course->slug, $level->title, $level->topics()->first()]) }}" class="card bg-hover-secondary text-hover-inverse-secondary card-bordered g-2 m-1 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                                     <div class="card-header">
                                         <div class="card-title">
                                             {{ ++$key}}. {{ $level->title }}
