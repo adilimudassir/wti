@@ -33,6 +33,7 @@
                     @include('partials.toolbar', ['title' => $title])
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <div id="kt_content_container" class="container-fluid">
+                            @include('sweetalert::alert')
                             {{ $slot }}
                         </div>
                     </div>
@@ -62,7 +63,6 @@
 
     {{ $after_scripts ?? null }}
     <livewire:scripts>
-        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
         @stack('scripts')
 
 </body>

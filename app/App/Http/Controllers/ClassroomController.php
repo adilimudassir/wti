@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Domains\Course\Models\Level;
-use Domains\Course\Models\Topic;
-use Domains\Course\Models\Course;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Domains\Course\Models\UserCourse;
 use Illuminate\Support\Facades\Route;
@@ -21,8 +17,24 @@ class ClassroomController extends Controller
 
     public function index()
     {
+        if (request()->has('matriculation_number')) {
+            $userCourse = UserCourse::where('matriculation_number', request()->matriculation_number)->first();
+            if ($userCourse) {
+                session(['userCourse'=> $userCourse]);
+            } else {
+                alert()->error('Incorrect matriculation number');
+            }
+        }
+
+        if(session()->has('userCourse')) {
+            $userCourse = UserCourse::where('matriculation_number', session('userCourse')->matriculation_number)->first();
+            if ($userCourse) {
+                session(['userCourse' => $userCourse]);
+            } 
+        }
+        
         return view('classroom.index', [
-            'userCourses' => auth()->user()->courses->filter(fn ($course) => $course->paymentStatus() !== 'Pending Purchase'),
+            // 'userCourses' => auth()->user()->courses->filter(fn ($course) => $course->paymentStatus() !== 'Pending Purchase'),
         ]);
     }
 

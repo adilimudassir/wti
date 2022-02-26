@@ -4,6 +4,7 @@ namespace Domains\Course\Models;
 use Domains\Auth\Models\User;
 use Domains\Payment\Models\Payment;
 use Domains\General\Models\BaseModel;
+use App\Notifications\AdmissionLetter;
 
 class UserCourse extends BaseModel
 {
@@ -15,6 +16,7 @@ class UserCourse extends BaseModel
         'started_at',
         'finished_at',
         'batch_id',
+        'matriculation_number',
     ];
 
     protected $dates = [
@@ -155,6 +157,24 @@ class UserCourse extends BaseModel
     public function progress()
     {
         return round(($this->userCompletedCourseTopics->count() /$this->course->topics->count()) * 100, 1);
+    }
+
+    public function sendAdmissionLetter()
+    {
+        $userType = match ($this->user->account_type) {
+            'REGULAR STUDENT' => 'RG',
+            'CORPS MEMBER' => 'NYSC',
+            default => 'RG'
+        };
+        
+        $newYear = substr((date('Y') + 1), 2, 4);
+        // Generating Mat Number
+        $matriculationNo = 'WTI/'. $userType .'/'. substr(date('Y'), 2, 4) . '/' . $newYear . '/' . substr(rand(2342 * 10, 9837388737335 * 40), 0, 6);
+
+        $this->matriculation_number = $matriculationNo;
+        $this->save();
+        
+        $this->user->notify(new AdmissionLetter($this));
     }
     
 }

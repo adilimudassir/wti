@@ -1,6 +1,7 @@
 @props([
 'name' => '',
-'label' => $label ?? ucwords(str_replace("_", " ",$name))
+'label' => $label ?? ucwords(str_replace("_", " ",$name)),
+'id' => $id ?? \Illuminate\Support\Str::random(40),
 ])
 
 {{ html()->label($label)
@@ -13,7 +14,7 @@
     ->attributes($attributes)
     
     ->attributes([
-        'id' => 'editor'
+        'id' => $id
     ])
 }}
 @error($name)
@@ -70,7 +71,7 @@
         });
     }
     var options = {
-        selector: "#editor",
+        selector: "#{{ $id }}",
         plugins: [
             'advlist autolink lists link image charmap print preview anchor',
             'searchreplace visualblocks code fullscreen',

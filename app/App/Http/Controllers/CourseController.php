@@ -17,10 +17,25 @@ class CourseController extends Controller
         $this->middleware('auth');
     }
 
-    public function __invoke($course)
+    public function index($course)
     {
         return view('courses.overview', [
             'course' => Course::whereSlug($course)->first()
         ]);
+    }
+
+    public function edit($slug)
+    {
+        return view('courses.edit', [
+            'course' => Course::whereSlug($slug)->first()
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $course = Course::find($id);
+        $course->update($request->all());
+        alert()->success('Course Information Updated')->toToast();
+        return redirect()->route('courses', $course->slug);
     }
 }

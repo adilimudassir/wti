@@ -12,7 +12,7 @@
     </a>
 </div>
 <div class="menu-item">
-    <a class="menu-link {{ Route::is('classroom.index') ? 'active' : '' }}" href="{{ route('classroom.index') }}">
+    <a class="menu-link {{ Route::is('classroom.index') ? 'active' : '' }}" target="__blank" href="{{ route('classroom.index') }}">
         <span class="menu-icon">
             <i class="bi bi-card-text fs-3"></i>
         </span>

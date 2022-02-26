@@ -6,7 +6,7 @@
         @continue
         @endif
         <div class="mb-10">
-            <a href="{{ route('user-courses.show', $userCourse->course->slug) }}" class="card bg-hover-secondary text-hover-inverse-secondary shadow-lg">
+            <a href="{{ route('user-courses.show', $userCourse->course->slug) }}" class="card bg-hover-secondary text-hover-inverse-secondary shadow-sm">
                 <div class="card-header">
                     <div class="card-title">
                         {{ $userCourse->course->title }}
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="card-footer d-grid">
-                    <a href="{{ route('user-courses.show', $userCourse->course->slug) }}" class="btn btn-primary mx-2 mb-2 btn-lg">
+                    <a href="{{ route('user-courses.show', $userCourse->course->slug) }}" class="btn btn-secondary text-primary">
                         Proceed to Course
                     </a>
                 </div>
@@ -72,7 +72,9 @@
             </h3>
         </div>
         <div class="card-body">
-            {{ $course->description }}
+            {!! $course->description !!}
+            <div class="separator my-10"></div>
+            {!! $course->outline !!}
             <div class="separator my-10"></div>
             <div class="d-flex flex-column">
                 <li class="d-flex align-items-center py-2">
@@ -84,11 +86,6 @@
                 <li class="d-flex align-items-center py-2">
                     <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">
                         Weekly Zoom Classes & Mentoring
-                    </span>
-                </li>
-                <li class="d-flex align-items-center py-2">
-                    <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">
-                        Lifetime Access
                     </span>
                 </li>
             </div>

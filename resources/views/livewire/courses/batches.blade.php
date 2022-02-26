@@ -46,7 +46,8 @@
                         @foreach($course->batches()->orderBy('created_at', 'DESC')->get() as $batchModel)
                         <tr class="@if($confirming === $batchModel->id) bg-primary fs-1 text-white @else fw-bold fs-6 text-gray-800 border-bottom border-gray-200 @endif">
                             <td class="fw-bold">
-                                {{ $batchModel->name }} <span class="badge badge-{{ $batchModel->active ? 'success' : 'info' }}">
+                                <x-button.link :text="$batchModel->name" :href="route('batches.show', [$batchModel->id, 'course' => $batchModel->course->slug])" />
+                                <span class="badge badge-{{ $batchModel->active ? 'success' : 'info' }}">
                                     {{ $batchModel->active ? 'Active' : 'Inactive' }}
                                 </span>
                             </td>
