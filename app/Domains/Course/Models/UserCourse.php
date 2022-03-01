@@ -161,19 +161,23 @@ class UserCourse extends BaseModel
 
     public function sendAdmissionLetter()
     {
+        if (filled($this->matriculation_number)) {
+            return;
+        }
+
         $userType = match ($this->user->account_type) {
             'REGULAR STUDENT' => 'RG',
             'CORPS MEMBER' => 'NYSC',
             default => 'RG'
         };
-        
+
         $newYear = substr((date('Y') + 1), 2, 4);
         // Generating Mat Number
-        $matriculationNo = 'WTI/'. $userType .'/'. substr(date('Y'), 2, 4) . '/' . $newYear . '/' . substr(rand(2342 * 10, 9837388737335 * 40), 0, 6);
+        $matriculationNo = 'WTI/' . $userType . '/' . substr(date('Y'), 2, 4) . '/' . $newYear . '/' . substr(rand(2342 * 10, 9837388737335 * 40), 0, 6);
 
         $this->matriculation_number = $matriculationNo;
         $this->save();
-        
+
         $this->user->notify(new AdmissionLetter($this));
     }
     

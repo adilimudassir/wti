@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserRoleSeeder::class);
         $this->call(CourseSeeder::class);
         $this->call(LevelSeeder::class);
-        $this->call(TopicSeeder::class);
+        if (config('app.env') === 'local') {
+            $this->call(TopicSeeder::class);
+        }
     }
 }
