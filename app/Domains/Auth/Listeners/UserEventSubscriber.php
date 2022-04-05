@@ -50,7 +50,7 @@ class UserEventSubscriber
         \Log::info('User Created: '.$event->user->name.'. By: '.optional(request()->user())->name ?? $event->user->name);
 
         if (config('access.confirm_email') && !$event->user->hasVerifiedEmail()) {
-            $event->user?->sendEmailVerificationNotification();
+            // $event->user?->sendEmailVerificationNotification();
         } else {
             $event->user?->markEmailAsVerified();
         }

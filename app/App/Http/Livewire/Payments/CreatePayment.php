@@ -41,7 +41,7 @@ class CreatePayment extends Component
 
         if ($this->payment->method == 'Bank Transfer') {
             if($this->receipt) {
-                $this->payment->receipt = $this->receipt->store('payments');
+                $this->payment->receipt = $this->receipt->store('payments', 's3');
             }
             $this->payment->user_course_id = $this->userCourse->id;
             $this->payment->user_id = auth()->user()->id;

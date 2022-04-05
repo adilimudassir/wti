@@ -18,48 +18,32 @@ class LevelSeeder extends Seeder
         collect([
             [
                 'name' => '100',
-                'title' => 'Beginner',
+                'title' => 'Beginners Course',
                 'description' => 'This is the first level of the course',
             ],
             [
                 'name' => '200',
-                'title' => 'Intermediate',
+                'title' => 'Intermediate Course',
                 'description' => 'This is the second level of the course',
             ],
             [
                 'name' => '300',
-                'title' => 'Advanced',
+                'title' => 'Advanced Course',
                 'description' => 'This is the third level of the course',
             ],
             [
                 'name' => '400',
-                'title' => 'Expert',
+                'title' => 'Professional Course',
                 'description' => 'This is the fourth level of the course',
             ],
-            [
-                'name' => '500',
-                'title' => 'Master',
-                'description' => 'This is the fifth level of the course',
-            ],
-            [
-                'name' => '600',
-                'title' => 'Grandmaster',
-                'description' => 'This is the sixth level of the course',
-            ],
-            [
-                'name' => '700',
-                'title' => 'Challenger',
-                'description' => 'This is the seventh level of the course',
-            ],
         ])->each(function ($level) {
-            Course::all()->each(function ($course) use ($level) {
-                Level::create([
-                    'course_id' => $course->id,
-                    'name' => $level['name'],
-                    'title' => $level['title'],
-                    'description' => $level['description']
-                ]);
-            });
+            $course = Course::whereSlug('forex-trading')->first();
+            Level::create([
+                'course_id' => $course->id,
+                'name' => $level['name'],
+                'title' => $level['title'],
+                'description' => $level['description']
+            ]);
         });
     }
 }

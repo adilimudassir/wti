@@ -45,12 +45,8 @@
                             <div class="accordion-body row d-flex flex-justify-center">
                                 @foreach($userCourse->course->levels as $key => $level)
                                 <a href="{{ route('classroom.show', [$userCourse?->course->slug, $level->title, $level->topics()->first()]) }}" class="card bg-hover-secondary text-hover-inverse-secondary card-bordered g-2 m-1 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="card-header">
-                                        <div class="card-title">
-                                            {{ ++$key}}. {{ $level->title }}
-                                        </div>
-                                    </div>
                                     <div class="card-body">
+                                        {{ ++$key}}. {{ $level->title }}
                                     </div>
                                 </a>
                                 @endforeach

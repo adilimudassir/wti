@@ -45,6 +45,7 @@ class Courses extends Component
         $this->userCourse->user_id = $this->user->id;
         $this->userCourse->course_id = $id;
         $this->userCourse->save();
+        $this->user->givePermissionTo('create-payments');
 
         $this->toggleJoin();
 

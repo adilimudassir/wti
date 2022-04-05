@@ -39,6 +39,6 @@ trait FileUpload
 
     private function fileSystem()
     {
-        return app()->environment('production') ? 'public' : 'public';
+        return app()->environment('production') ? 's3' : 's3';
     }
 }

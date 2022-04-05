@@ -171,9 +171,15 @@ class UserCourse extends BaseModel
             default => 'RG'
         };
 
+        $course = match ($this->course->title) {
+            'Forex Trading' => 'FX',
+            'Cryptocurrency Trading' => 'CR',
+            'Stock Trading' => 'ST',
+        };
+
         $newYear = substr((date('Y') + 1), 2, 4);
         // Generating Mat Number
-        $matriculationNo = 'WTI/' . $userType . '/' . substr(date('Y'), 2, 4) . '/' . $newYear . '/' . substr(rand(2342 * 10, 9837388737335 * 40), 0, 6);
+        $matriculationNo = 'WTI/' . $userType . '/' . $course . '/' . substr(date('Y'), 2, 4) . '/' . $newYear . '/' . substr(rand(2342 * 10, 9837388737335 * 40), 0, 6);
 
         $this->matriculation_number = $matriculationNo;
         $this->save();
