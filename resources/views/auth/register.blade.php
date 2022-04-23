@@ -71,4 +71,4 @@
             },
         }).mount('#kt_sign_up_form')
     </script>
-</x-layouts.guest>r
+</x-layouts.guest>

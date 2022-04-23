@@ -21,8 +21,7 @@
                 <a class="btn btn-primary btn-sm " href="{{ route('payments.edit', $payment->id) }}">
                     Edit
                 </a>
-                <x-button.link :href="route('payments.verify', $payment->id)" 
-                 text="Verify" />
+                <x-button.link :href="route('payments.verify', $payment->id)" text="Verify" />
                 @endif
                 @endcan
             </div>
@@ -49,6 +48,15 @@
                     Date
                     <small class="text-muted">{{ $payment->created_at->format('d M Y') }}</small>
                 </div>
+                @if($payment->method === "Bank Transfer")
+                <div class="d-flex justify-content-between">
+                    <span>Receipt</span>
+
+                    <small class="text-muted">
+                        <a href="{{ Storage::url($payment->receipt) }}" target="_blank">View Receipt</a>
+                    </small>
+                </div>
+                @endif
                 @if($payment->method === "Online")
                 <div class="d-flex justify-content-between">
                     <span>Transaction ID</span>
@@ -56,22 +64,22 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <span>Transaction Type</span>
-                    <small class="text-muted">{{ $payment->transaction_data->narration }}</small>
+                    <small class="text-muted">{{ $payment->transaction_data?->narration }}</small>
                 </div>
                 <hr>
-                @if($payment->transaction_data->payment_type === 'card')
+                @if($payment->transaction_data?->payment_type === 'card')
                 <div class="d-flex justify-content-between">
                     <span>Card Type</span>
-                    <small class="text-muted">{{ $payment->transaction_data->card->type }}</small>
+                    <small class="text-muted">{{ $payment->transaction_data?->card->type }}</small>
                 </div>
                 <div class="d-flex justify-content-between">
                     <span>Card Number</span>
-                    <small class="text-muted">{{ $payment->transaction_data->card->first_6digits }}*******{{ $payment->transaction_data->card->last_4digits }}</small>
+                    <small class="text-muted">{{ $payment->transaction_data?->card->first_6digits }}*******{{ $payment->transaction_data?->card->last_4digits }}</small>
                 </div>
                 @endif
                 <div class="d-flex justify-content-between">
                     <span>Charged Amount</span>
-                    <small class="text-muted">{{ currency($payment->transaction_data->amount) }}</small>
+                    <small class="text-muted">{{ currency($payment->transaction_data?->amount) }}</small>
                 </div>
 
                 @endif

@@ -70,7 +70,9 @@ class UserCourse extends BaseModel
      */
     public function totalPaymentsBalance()
     {
-        return $this->payments->sum('amount');
+        return $this->payments->reduce(function ($carry, $payment) {
+            return $carry + ($payment->verified ? $payment->amount : 0);
+        }, 0);
     }
 
     /**
@@ -115,7 +117,7 @@ class UserCourse extends BaseModel
             return 'Inactive';
         }
         
-        if($this->payments->count() == 0) {
+        if($this->payments()->where('verified', true)->get()->count() == 0) {
             return 'Pending Purchase';
         }
 
@@ -123,7 +125,7 @@ class UserCourse extends BaseModel
             return 'Completed';
         }
 
-        if(!$this->started_at ) {
+        if(!$this->started_at) {
             return 'Not Started';
         }
 

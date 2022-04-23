@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\FileUpload;
+use Domains\Payment\Models\Payment;
 use Domains\Course\Models\UserCourse;
+use KingFlamez\Rave\Facades\Rave as Flutterwave;
 use Domains\Payment\Repositories\PaymentRepository;
 
 class PaymentController extends Controller
 {
+    use FileUpload;
     /**
      * create an instance of the controller.
      *
@@ -31,10 +35,83 @@ class PaymentController extends Controller
         $this->authorize('create-payments');
 
         $userCourse = UserCourse::find($request->user_course_id);
+        $paymentTypes = Payment::$types;
+
+        if (!$userCourse?->course?->allow_partial_payments) {
+            unset($paymentTypes['Partial']);
+        }
+
+        if ($userCourse?->paymentStatus() === 'Partial') {
+            unset($paymentTypes['Complete']);
+        }
 
         return view('payments.create', [
             'userCourse' => $userCourse,
+            'paymentMethods' => Payment::$methods,
+            'paymentTypes' => $paymentTypes,
         ]);
+    }
+
+    public function store(Request $request)
+    {
+        $userCourse = UserCourse::find($request->user_course_id);
+
+        $paymentInstance = new Payment();
+        
+        if ($request->payment_method == 'Bank Transfer') {
+            if ($request->receipt) {
+                $paymentInstance->receipt = $this->storeFile($request->receipt, 'payments');
+            }
+            
+            $redirect = route('payments.show', $paymentInstance->id);
+        }
+
+        if ($request->payment_method == 'Online') {
+            //This generates a payment reference
+            $reference = Flutterwave::generateReference();
+
+            $paymentInstance->reference = $reference;
+
+            // Enter the details of the payment
+            $data = [
+                'payment_options' => 'card,banktransfer',
+                'amount' => $request->amount,
+                'email' => $userCourse->user->email,
+                'tx_ref' => $reference,
+                'currency' => "NGN",
+                'redirect_url' => route('payments.flutterwave.callback'),
+                'customer' => [
+                    'email' => $userCourse->user->email,
+                    "phone_number" => $userCourse->user->phone,
+                    "name" => $userCourse->user->name
+                ],
+
+                "customizations" => [
+                    "title" => "{$userCourse->course->title} Payment",
+                    "description" => $request->payment_type
+                ]
+            ];
+
+            $payment = Flutterwave::initializePayment($data);
+
+            if ($payment['status'] !== 'success') {
+                alert()->error('Failed')->toToast();
+                return back();
+            }
+
+            $redirect = redirect($payment['data']['link']);
+        }
+
+        $paymentInstance->user_course_id = $userCourse->id;
+        $paymentInstance->user_id = auth()->user()->id;
+        $paymentInstance->date = now();
+        $paymentInstance->type = $request->payment_type;
+        $paymentInstance->amount = $request->amount;
+        $paymentInstance->method = $request->payment_method;
+        $paymentInstance->save();
+
+        alert()->success('Payment Created!')->toToast();
+        return $redirect;
     }
 
     public function show($id)
