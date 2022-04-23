@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PaymentMade;
 use Illuminate\Http\Request;
 use App\Repositories\FileUpload;
 use Domains\Payment\Models\Payment;
+use Illuminate\Support\Facades\Mail;
 use Domains\Course\Models\UserCourse;
 use App\Http\Requests\PaymentFormRequest;
 use KingFlamez\Rave\Facades\Rave as Flutterwave;
@@ -108,6 +110,9 @@ class PaymentController extends Controller
         $paymentInstance->save();
 
         alert()->success('Payment Created!')->toToast();
+
+        Mail::to('operations@wavecresttradinginstitute.com')
+            ->send(new PaymentMade($userCourse, route('payments.show', $paymentInstance->id)));
 
         if ($request->payment_method == 'Bank Transfer') {
             $redirect = route('dashboard');
