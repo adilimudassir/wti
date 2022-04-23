@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\FileUpload;
 use Domains\Payment\Models\Payment;
 use Domains\Course\Models\UserCourse;
+use App\Http\Requests\PaymentFormRequest;
 use KingFlamez\Rave\Facades\Rave as Flutterwave;
 use Domains\Payment\Repositories\PaymentRepository;
 
@@ -52,7 +53,7 @@ class PaymentController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(PaymentFormRequest $request)
     {
         $userCourse = UserCourse::find($request->user_course_id);
 
@@ -62,8 +63,6 @@ class PaymentController extends Controller
             if ($request->receipt) {
                 $paymentInstance->receipt = $this->storeFile($request->receipt, 'payments');
             }
-            
-            $redirect = route('payments.show', $paymentInstance->id);
         }
 
         if ($request->payment_method == 'Online') {
@@ -98,8 +97,6 @@ class PaymentController extends Controller
                 alert()->error('Failed')->toToast();
                 return back();
             }
-
-            $redirect = redirect($payment['data']['link']);
         }
 
         $paymentInstance->user_course_id = $userCourse->id;
@@ -111,7 +108,15 @@ class PaymentController extends Controller
         $paymentInstance->save();
 
         alert()->success('Payment Created!')->toToast();
-        return $redirect;
+
+        if ($request->payment_method == 'Bank Transfer') {
+            $redirect = route('dashboard');
+        }
+
+        if ($request->payment_method == 'Online') {
+            $redirect = $payment['data']['link'];
+        }
+        return redirect($redirect);
     }
 
     public function show($id)

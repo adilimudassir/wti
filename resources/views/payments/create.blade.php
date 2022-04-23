@@ -5,6 +5,15 @@
     <x-card>
         <x-slot name="header">Form</x-slot>
         <x-slot name="body">
+            @if($errors->any())
+            <x-alert type="danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </x-alert>
+            @endif
             <div id="form">
                 <x-form method="POST" :route="route('payments.store')" :back-route="route('payments.index')" files>
                     <x-form.select name="payment_type" v-model="payment_type" label="Payment Type" :options="$paymentTypes" />
@@ -54,7 +63,9 @@
                     },
                     mounted() {
                         this.userCourse = @json($userCourse);
+                        const paymentTypes = @json($paymentTypes);
                         this.amount = this.getAmount(this.payment_type);
+                        this.payment_type = Object.keys(paymentTypes)[0];
                     }
                 }).mount('#form')
             </script>
