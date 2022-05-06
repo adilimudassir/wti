@@ -21,6 +21,21 @@
                     <input type="hidden" name="amount" v-bind:value="amount">
                     <input type="hidden" name="user_course_id" value="{{ request()->user_course_id }}">
                     <div v-if="payment_method === 'Bank Transfer'">
+                        <fieldset class="text-left p-3">
+                            <legend>Account Details</legend>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Account Name</th>
+                                    <td>Wavecrest FX Academy</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Account Number</th>
+                                        <td>2035490452</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </fieldset>
                         <x-form.file name="receipt" label="Receipt" />
                     </div>
                     <h3 class="my-5 p-2 border">

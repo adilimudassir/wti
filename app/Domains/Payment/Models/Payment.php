@@ -47,7 +47,7 @@ class Payment extends BaseModel
      */
     public static $methods = [
         'Bank Transfer' => 'Bank Transfer',
-        'Online' => 'Online',
+        // 'Online' => 'Online',
         // 'CryptoCurrency' => 'CryptoCurrency',
     ];
 
