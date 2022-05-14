@@ -14,8 +14,18 @@
         @if(session()->has('userCourse'))
         <div class="card g-5">
             <div class="card-header">
-                <div class="card-title">
+                <div class="card-title gap-2">
                     {{ $userCourse->course->title }}
+                    @if($userCourse->paymentStatus() !== 'Pending Purchase')
+                    <div class="text-muted fs-6 fst-italic">
+                        <strong>Started since</strong> <em>{{ $userCourse->started_at?->diffForHumans() ?? 'Not started yet' }}</em>
+                    </div>
+                    @if($userCourse->finished_at)
+                    <div class="text-muted fs-6 fst-italic">
+                        <strong>Finished On</strong> <em>{{ $userCourse->finished_at?->diffForHumans() }}</em>
+                    </div>
+                    @endif
+                    @endif
                 </div>
                 <div class="card-toolbar">
                     <span class="badge badge-light-primary fw-bolder me-auto px-12 py-3">{{ $userCourse->status() }}</span>
@@ -66,7 +76,7 @@
                         </h2>
                         <div id="levels" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#classroom">
                             <div class="accordion-body row d-flex flex-justify-center">
-                                @foreach($userCourse->course->levels as $key => $level)
+                                @foreach($userCourse->allowedLevels() as $key => $level)
                                 <a href="{{ route('classroom.show', [$userCourse?->course->slug, $level->title, $level->topics()->first()]) }}" class="card bg-hover-secondary text-hover-inverse-secondary card-bordered g-2 m-1 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
                                     <div class="card-body">
                                         {{ ++$key}}. {{ $level->title }}
@@ -77,17 +87,6 @@
                         </div>
                     </div>
                 </div>
-                @if($userCourse->paymentStatus() !== 'Pending Purchase')
-                <div class="text-muted fs-4">
-                    <strong>Started since</strong> <em>{{ $userCourse->started_at?->diffForHumans() ?? 'Not started yet' }}</em>
-                </div>
-                @if($userCourse->finished_at)
-                <div class="separator my-5"></div>
-                <div class="text-muted fs-4">
-                    <strong>Finished On</strong> <em>{{ $userCourse->finished_at?->diffForHumans() }}</em>
-                </div>
-                @endif
-                @endif
             </div>
             <div class="card-footer">
                 <fieldset>

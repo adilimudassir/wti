@@ -76,6 +76,14 @@ class UserCourse extends BaseModel
     }
 
     /**
+     *  Get verified payments
+     */
+    public function verifiedPayments()
+    {
+        return $this->payments->filter(fn ($payment) => $payment->verified);
+    }
+
+    /**
      * Get Payment Status
      */
     public function paymentStatus()
@@ -187,6 +195,27 @@ class UserCourse extends BaseModel
         $this->save();
 
         $this->user->notify(new AdmissionLetter($this));
+    }
+
+    public function allowedLevels()
+    {
+        if ($this->amountDue() === 0) {
+            return $this->course->levels;
+        }
+
+        if ($this->course->allow_partial_payments) {
+            if (($this->course->partial_payments_allowed >= 3) && ($this->verifiedPayments()->count() === 1)) {
+                return $this->course->levels->take(2);
+            }
+
+            if (($this->course->partial_payments_allowed >= 3) && ($this->verifiedPayments()->count() === 2)) {
+                return $this->course->levels->take(3);
+            }
+
+            if (($this->course->partial_payments_allowed >= 3) && ($this->verifiedPayments()->count() === 3)) {
+                return $this->course->levels->take(4);
+            }   
+        }
     }
     
 }
