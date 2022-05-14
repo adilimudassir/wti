@@ -10,7 +10,7 @@
     <div class="separator mx-1 my-4"></div>
 </div>
 @if(Route::is('classroom.show'))
-@foreach($course->levels as $level)
+@foreach($course->levels()->where('title', request()->level)->get() as $level)
 <div class="menu-item">
     <div class="menu-content pb-2">
         <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{$level->title}}</span>

@@ -14,9 +14,15 @@
                 <a class="btn btn-light-primary btn-sm" href="{{ filled($topic->previousTopic) ? route('classroom.show', [$course->slug, $topic->previousTopic->level->title, $topic->previousTopic?->slug]) : '#' }}">
                     Previous
                 </a>
+                @if($topic->level?->name === $topic->nextTopic?->level?->name)
                 <a class="btn btn-primary btn-sm fw-bolder" href="{{ filled($topic->nextTopic) ? route('classroom.show', [$course->slug, $topic->nextTopic->level->title, $topic->nextTopic?->slug]) : '#' }}">
                     Next
                 </a>
+                @else
+                <a class="btn btn-primary btn-sm fw-bolder" href="{{ route('classroom.index') }}">
+                    Finish
+                </a>
+                @endif
             </div>
         </x-slot>
     </x-card>

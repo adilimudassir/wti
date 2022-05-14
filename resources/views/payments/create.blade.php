@@ -26,8 +26,12 @@
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
+                                        <th>Bank Name</th>
+                                        <td>First Bank</td>
+                                    </tr>
+                                    <tr>
                                         <th>Account Name</th>
-                                    <td>Wavecrest FX Academy</td>
+                                        <td>Wavecrest FX Academy</td>
                                     </tr>
                                     <tr>
                                         <th>Account Number</th>

@@ -74,44 +74,68 @@
         <div class="card-body">
             {!! $course->description !!}
             <div class="separator my-10"></div>
-            {!! $course->outline !!}
-            <div class="separator my-10"></div>
-            <div class="d-flex flex-column">
-                <li class="d-flex align-items-center py-2">
-                    <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">{{ $course->duration }}</span>
-                </li>
-                <li class="d-flex align-items-center py-2">
-                    <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">{{ currency($course->cost) }}</span>
-                </li>
-                <li class="d-flex align-items-center py-2">
-                    <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">
-                        Weekly Zoom Classes & Mentoring
-                    </span>
-                </li>
+            <div class="card-body mx-0">
+                <div class="accordion accordion-flush" id="course-list">
+                    @foreach($course->levels as $level)
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#level_{{ $level->id }}" aria-expanded="false" aria-controls="level_{{ $level->id }}">
+                                {{ $level->name }} Level ({{ $level->title }})
+                            </button>
+                        </h2>
+                        <div id="level_{{ $level->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#course-list">
+                            <div class="accordion-body">
+                                <ul>
+                                    @foreach($level->topics as $topic)
+                                    <li class="d-flex align-items-center py-2">
+                                        <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">
+                                            {{ $topic->title }}
+                                        </span>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="separator my-10"></div>
+                <div class="d-flex flex-column">
+                    <li class="d-flex align-items-center py-2">
+                        <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">{{ $course->duration }}</span>
+                    </li>
+                    <li class="d-flex align-items-center py-2">
+                        <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">{{ currency($course->cost) }}</span>
+                    </li>
+                    <li class="d-flex align-items-center py-2">
+                        <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">
+                            Weekly Zoom Classes & Mentoring
+                        </span>
+                    </li>
+                </div>
+                <div class="separator my-10"></div>
+                <label class="form-label fs-6 fw-bolder text-dark mt-5" for="userCourse.batch_id">
+                    Select Batch
+                </label>
+                <select class="form-control @error('userCourse.batch_id') is-invalid @enderror" name="userCourse.batch_id" id="userCourse.batch_id" wire:model="userCourse.batch_id">
+                    <option value=""> Select Batch</option>
+                    @foreach($course->batches as $batch)
+                    <option @if ($batch->active) 'selected' @endif value="{{ $batch->id }}">{{ $batch->name }}
+                        @if($batch->active)
+                        (Current batch)
+                        @endif
+                    </option>
+                    @endforeach
+                </select>
+                @error('userCourse.batch_id') <span class="invalid-feedback font-weight-bold" role="alert">{{ $message }}</span> @enderror
             </div>
-            <div class="separator my-10"></div>
-            <label class="form-label fs-6 fw-bolder text-dark mt-5" for="userCourse.batch_id">
-                Select Batch
-            </label>
-            <select class="form-control @error('userCourse.batch_id') is-invalid @enderror" name="userCourse.batch_id" id="userCourse.batch_id" wire:model="userCourse.batch_id">
-                <option value=""> Select Batch</option>
-                @foreach($course->batches as $batch)
-                <option @if ($batch->active) 'selected' @endif value="{{ $batch->id }}">{{ $batch->name }}
-                    @if($batch->active)
-                    (Current batch)
-                    @endif
-                </option>
-                @endforeach
-            </select>
-            @error('userCourse.batch_id') <span class="invalid-feedback font-weight-bold" role="alert">{{ $message }}</span> @enderror
+            <div class="card-footer d-grid">
+                <button class="btn btn-primary btn-lg" wire:click.prevent="joinCourse({{ $course->id }})">
+                    Enroll Now
+                </button>
+            </div>
         </div>
-        <div class="card-footer d-grid">
-            <button class="btn btn-primary btn-lg" wire:click.prevent="joinCourse({{ $course->id }})">
-                Enroll Now
-            </button>
-        </div>
-    </div>
-    @endforeach
+        @endforeach
 </fieldset>
 @endif
 </div>

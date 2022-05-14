@@ -18,7 +18,11 @@ class ClassroomController extends Controller
     public function index()
     {
         if (request()->has('matriculation_number')) {
-            $userCourse = UserCourse::where('matriculation_number', request()->matriculation_number)->first();
+            $userCourse = UserCourse::query()
+                ->where('matriculation_number', request()->matriculation_number)
+                ->where('user_id', auth()->user()->id)
+                ->first();
+                
             if ($userCourse) {
                 session(['userCourse'=> $userCourse]);
             } else {
@@ -27,7 +31,10 @@ class ClassroomController extends Controller
         }
 
         if(session()->has('userCourse')) {
-            $userCourse = UserCourse::where('matriculation_number', session('userCourse')->matriculation_number)->first();
+            $userCourse = UserCourse::query()
+                ->where('matriculation_number', session('userCourse')->matriculation_number)
+                ->where('user_id', auth()->user()->id)
+                ->first();
             if ($userCourse) {
                 session(['userCourse' => $userCourse]);
             } 

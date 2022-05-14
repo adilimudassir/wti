@@ -31,7 +31,30 @@
                         </h2>
                         <div id="outline" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#classroom">
                             <div class="accordion-body">
-                                {!! $userCourse->course->outline !!}
+                                <div class="accordion" id="course-list">
+                                    @foreach($userCourse?->course->levels as $level)
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#level_{{ $level->id }}" aria-expanded="false" aria-controls="level_{{ $level->id }}">
+                                                {{ $level->name }} Level ({{ $level->title }})
+                                            </button>
+                                        </h2>
+                                        <div id="level_{{ $level->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#course-list">
+                                            <div class="accordion-body">
+                                                <ul>
+                                                    @foreach($level->topics as $topic)
+                                                    <li class="d-flex align-items-center py-2">
+                                                        <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">
+                                                            {{ $topic->title }}
+                                                        </span>
+                                                    </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
