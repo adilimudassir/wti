@@ -15,7 +15,7 @@
     {{ $scripts ?? null }}
     {{ $styles ?? null }}
     <script src="{{ mix('js/app.js') }}"></script>
-    
+
 
 </head>
 
@@ -34,8 +34,14 @@
                     {{ $slot }}
                 </div>
                 <div class="d-flex flex-center flex-column-auto p-10">
-                    <div class="d-flex align-items-center fw-bold fs-6">
-                        &copy; Copyright {{ date('Y') }} &nbsp; <strong class="fw-bolder text-primary">{{ config('app.name') }}</strong> . All rights reserved.
+                    <div class="d-flex align-items-center d-grid row fw-bold fs-6">
+                        <p class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
+                            &copy; Copyright {{ date('Y') }} &nbsp;
+                        </p>
+                        <p class="fw-bolder text-primary col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">{{ config('app.name') }}</p>
+                        <p class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
+                            All rights reserved.
+                        </p>
                     </div>
                 </div>
             </div>
