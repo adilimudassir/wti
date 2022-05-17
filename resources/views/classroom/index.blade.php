@@ -2,6 +2,14 @@
     <x-slot name="title">
         Class Room
     </x-slot>
+    <x-slot name="styles">
+        <style>
+            fieldset,
+            legend {
+                all: revert;
+            }
+        </style>
+    </x-slot>
     Welcome, {{ auth()->user()->name }}
 
     @php
@@ -35,17 +43,17 @@
                 <div class="accordion accordion-flush" id="classroom">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#outline" aria-expanded="false" aria-controls="outline">
-                                Outline
+                            <button class="accordion-button collapsed bg-light-primary bg-active-primary text-primary fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#outline" aria-expanded="false" aria-controls="outline">
+                                Course Outline <small class="text-muted my-4 mx-2 fs-6 font-italic">(Click to expand)</small>
                             </button>
                         </h2>
                         <div id="outline" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#classroom">
                             <div class="accordion-body">
                                 <div class="accordion" id="course-list">
-                                    @foreach($userCourse?->course?->levels as $level)
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#level_{{ $level->id }}" aria-expanded="false" aria-controls="level_{{ $level->id }}">
+                                    @foreach($userCourse?->course?->levels ?? [] as $level)
+                                    <div class="accordion-item gap-2">
+                                        <h2 class="accordion-header my-3" id="flush-headingOne">
+                                            <button class="accordion-button collapsed bg-light-primary text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#level_{{ $level->id }}" aria-expanded="false" aria-controls="level_{{ $level->id }}">
                                                 {{ $level->name }} Level ({{ $level->title }})
                                             </button>
                                         </h2>
@@ -68,25 +76,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#levels" aria-expanded="false" aria-controls="levels">
-                                Levels
-                            </button>
-                        </h2>
-                        <div id="levels" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#classroom">
-                            <div class="accordion-body row d-flex flex-justify-center">
-                                @foreach($userCourse->allowedLevels() as $key => $level)
-                                <a href="{{ route('classroom.show', [$userCourse?->course->slug, $level->title, $level->topics()->first()]) }}" class="card bg-hover-secondary text-hover-inverse-secondary card-bordered g-2 m-1 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="card-body">
-                                        {{ ++$key}}. {{ $level->title }}
-                                    </div>
-                                </a>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                <fieldset class="my-5 row">
+                    <legend class="fs-3 pl-0 py-5 ml-1">
+                        <span>Choose a level to begin </span>
+                        <i class="fa fa-angle-down fa-xl mt-2 text-primary"></i>
+                    </legend>
+                    @foreach($userCourse->allowedLevels() as $key => $level)
+                    <a href="{{ route('classroom.show', [$userCourse?->course->slug, $level->title, $level->topics()->first()]) }}" class="card col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="bg-light-primary text-primary bg-hover-primary text-hover-white my-1 @if($key === 0) ml-0 mr-1 @else m-1 @endif border card-body lh-xl ls-3">
+                            {{ $level->title }} ({{ $level->name }}) <br>
+                            <small class="text-muted text-hover-white">{{ $level->description }}</small>
+                        </div>
+                    </a>
+                    @endforeach
+                </fieldset>
             </div>
             <div class="card-footer">
                 <fieldset>

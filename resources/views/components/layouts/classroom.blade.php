@@ -1,4 +1,4 @@
-@props(['title', 'asset_url' => config('app.url') . "/assets/", 'aside' => 'off'])
+@props(['title', 'asset_url' => config('app.url') . "/assets/", 'aside' => 'off', 'styles' => $styles ?? null, 'scripts' => $scripts ?? null,])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -10,10 +10,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    {{ $before_styles ?? null }}
+    {{ $styles ?? null }}
     <link href="{{ mix('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ mix('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-    {{ $after_styles ?? null }}
     <livewire:styles>
         <script src="{{ mix('js/app.js') }}"></script>
 
