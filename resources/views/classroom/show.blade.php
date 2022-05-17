@@ -2,16 +2,18 @@
     <x-slot name="title">
         {{ $course->title }}'s Class Room
     </x-slot>
-    <x-card>
-        <x-slot name="header">
-            {{ $topic->title }}
+    <x-card class="bg-light-primary">
+        <x-slot name="header" class="bg-primary text-white">
+            <span class="text-white">
+                {{ $topic->title }}
+            </span>
         </x-slot>
         <x-slot name="body">
             {!! $topic->content !!}
         </x-slot>
         <x-slot name="footer">
             <div class="d-flex justify-content-between g-2">
-                <a class="btn btn-light-primary btn-sm" href="{{ filled($topic->previousTopic) ? route('classroom.show', [$course->slug, $topic->previousTopic->level->title, $topic->previousTopic?->slug]) : '#' }}">
+                <a class="btn btn-outline btn-outline-dashed btn-outline-primary btn-active-light-primary btn-sm" href="{{ filled($topic->previousTopic) ? route('classroom.show', [$course->slug, $topic->previousTopic->level->title, $topic->previousTopic?->slug]) : '#' }}">
                     Previous
                 </a>
                 @if($topic->level?->name === $topic->nextTopic?->level?->name)

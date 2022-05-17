@@ -1,10 +1,10 @@
 @props(['title'])
 
-<div class="toolbar d-none d-lg-block" id="kt_toolbar">
+<div class="toolbar" id="kt_toolbar">
     <!--begin::Container-->
     <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
         <!--begin::Page title-->
-        <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 my-5">
+        <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 my-5 d-none d-md-block">
             <!--begin::Title-->
             @include('partials.page-title', ['title' => $title])
             <!--end::Title-->

@@ -12,7 +12,7 @@
     </div>
     @endif
     @if (isset($body))
-    <div class="card-body py-2">
+    <div {{ $body->attributes->class(['card-body p-2']) }}>
         {{ $body }}
     </div>
     @endif
