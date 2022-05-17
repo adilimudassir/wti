@@ -42,7 +42,7 @@
                         <div id="outline" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#classroom">
                             <div class="accordion-body">
                                 <div class="accordion" id="course-list">
-                                    @foreach($userCourse?->course->levels as $level)
+                                    @foreach($userCourse?->course?->levels as $level)
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingOne">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#level_{{ $level->id }}" aria-expanded="false" aria-controls="level_{{ $level->id }}">

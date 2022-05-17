@@ -5,6 +5,7 @@ use Domains\Auth\Models\User;
 use Domains\Payment\Models\Payment;
 use Domains\General\Models\BaseModel;
 use App\Notifications\AdmissionLetter;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserCourse extends BaseModel
 {
@@ -197,7 +198,7 @@ class UserCourse extends BaseModel
         $this->user->notify(new AdmissionLetter($this));
     }
 
-    public function allowedLevels()
+    public function allowedLevels() : Collection
     {
         if ($this->amountDue() === 0) {
             return $this->course->levels;
@@ -214,8 +215,10 @@ class UserCourse extends BaseModel
 
             if (($this->course->partial_payments_allowed >= 3) && ($this->verifiedPayments()->count() === 3)) {
                 return $this->course->levels->take(4);
-            }   
+            }
         }
+        
+        return collect([]);
     }
     
 }
