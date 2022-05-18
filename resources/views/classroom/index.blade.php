@@ -90,11 +90,13 @@
                         </div>
                     </a>
                     @empty
-                    <p class="text-center fs-3 text-primary bg-light-primary">
-                        No Classes for you. <br>
-                        Check for pending payments <br>
-                        <i class="fa fa-folder-open fa-lg text-primary"></i>
-                    </p>
+                    <div class="text-center fs-3 text-primary ">
+                        <img src="{{ asset('assets/media/illustrations/empty.svg')}}" alt="" class="w-25 min-w-150px h-auto min-h-150px" />
+                        <p>It seems you have'nt purchased this course yet</p>
+                        @if($userCourse->canMakePayment())
+                        <x-button name="Proceed to payment" :href="route('payments.create', ['user_course_id' => $userCourse->id])" permission="create-payments" class="btn btn-sm btn-primary" icon="bi bi-plus" />
+                        @endif
+                    </div>
                     @endforelse
                 </fieldset>
             </div>
