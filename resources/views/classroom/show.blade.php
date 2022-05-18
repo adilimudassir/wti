@@ -26,6 +26,9 @@
                 </a>
                 @endif
             </div>
+            <div class="d-grid my-5">
+                <x-button name="Leave Classroom" :href="route('classroom.index')" class="btn btn-outline btn-outline-dashed btn-outline-primary btn-active-light-primary fw-bolder"  icon="bi bi-arrow-left-square fs-1 text-primary" />
+            </div>
         </x-slot>
     </x-card>
 </x-layouts.classroom>
