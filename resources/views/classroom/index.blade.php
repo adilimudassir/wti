@@ -82,14 +82,19 @@
                         <span>Choose a level to begin </span>
                         <i class="fa fa-angle-down fa-xl mt-2 text-primary"></i>
                     </legend>
-                    @foreach($userCourse->allowedLevels() as $key => $level)
+                    @forelse($userCourse->allowedLevels() as $key => $level)
                     <a href="{{ route('classroom.show', [$userCourse?->course->slug, $level->title, $level->topics()->first()]) }}" class="card col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="bg-light-primary text-primary bg-hover-primary text-hover-white my-1 @if($key === 0) ml-0 mr-1 @else m-1 @endif border card-body lh-xl ls-3">
                             {{ $level->title }} ({{ $level->name }}) <br>
                             <small class="text-muted text-hover-white">{{ $level->description }}</small>
                         </div>
                     </a>
-                    @endforeach
+                    @empty
+                    <p class="text-center fs-3 text-primary">
+                        No Classes for you. Check for pending payments
+                        <i class="fa fa-folder-open"></i>
+                    </p>
+                    @endforelse
                 </fieldset>
             </div>
             <div class="card-footer">
