@@ -14,7 +14,32 @@
                 </ul>
             </x-alert>
             @endif
+            <table class="table table-bordered border-2 border-primary table-secondary">
+                <tbody>
+                    <tr class="fw-bold fs-3">
+                        <th class="w-25">Course</th>
+                        <td>{{ $userCourse->course->title }}</td>
+                    </tr>
+                    <tr class="fw-bold fs-3">
+                        <th class="w-25">Cost</th>
+                        <td>{{ currency($userCourse->course->cost) }}</td>
+                    </tr>
+                    <tr class="fw-bold fs-3 text-success">
+                        <th class="w-25">Total Paid</th>
+                        <td>{{ currency($userCourse->totalPaymentsBalance()) }}</td>
+                    </tr>
+                    <tr class="fw-bold fs-3 text-danger">
+                        <th class="w-25">Amount Due</th>
+                        <td>{{ currency($userCourse->amountDue()) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="separator my-10"></div>
             <div id="form">
+                <p class="text-left fs-3">
+                    Fill below to proceed to payment
+                    <i class="fa fa-angle-down fa-xl mt-2 text-primary"></i>
+                </p>
                 <x-form method="POST" :route="route('payments.store')" :back-route="route('payments.index')" files>
                     <x-form.select name="payment_type" v-model="payment_type" label="Payment Type" :options="$paymentTypes" />
                     <x-form.select name="payment_method" v-model="payment_method" label="Payment Method" :options="$paymentMethods" />
