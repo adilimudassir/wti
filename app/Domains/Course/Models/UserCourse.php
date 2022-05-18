@@ -218,7 +218,7 @@ class UserCourse extends BaseModel
             }
         }
         
-        return collect([]);
+        return new Collection([]);
     }
     
 }
