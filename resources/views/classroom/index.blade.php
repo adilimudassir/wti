@@ -90,10 +90,10 @@
                         </div>
                     </a>
                     @empty
-                    <p class="text-center fs-3 text-primary">
+                    <p class="text-center fs-3 text-primary bg-light-primary">
                         No Classes for you. <br>
                         Check for pending payments <br>
-                        <i class="fa fa-folder-open fa-2xl text-primary"></i>
+                        <i class="fa fa-folder-open fa-lg text-primary"></i>
                     </p>
                     @endforelse
                 </fieldset>
