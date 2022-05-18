@@ -1,6 +1,6 @@
 @if ($showFilterDropdown && ($filtersView || count($customFilters)))
-<div class="btn-group d-block d-md-inline dropdown">
-    <button data-bs-toggle="dropdown" aria-expanded="false" id="filterDropDown" type="button" class="btn dropdown-toggle d-block w-100 d-md-inline">
+<div class="btn-group d-block d-md-inline dropdown w-100">
+    <button data-bs-toggle="dropdown" aria-expanded="false" id="filterDropDown" type="button" class="btn dropdown-toggle d-block border border-2 w-100 d-md-inline">
         @lang('Filters')
 
         @if (count($this->getFiltersWithoutSearch()))

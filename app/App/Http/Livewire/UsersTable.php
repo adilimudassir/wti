@@ -2,16 +2,20 @@
 
 namespace App\Http\Livewire;
 
+use Domains\Auth\Models\Role;
 use Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filter;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
 class UsersTable extends DataTableComponent
 {
     public function query(): Builder
     {
-        return User::whereAccountType('STAFF');
+        return User::query()
+            ->orderBy('created_at', 'DESC')
+            ->when($this->getFilter('role'), fn ($query, $role) => $query->role($role));
     }
 
     public function columns(): array
@@ -33,6 +37,22 @@ class UsersTable extends DataTableComponent
                 ->sortable(),
             Column::make('Actions')
                 ->format(fn ($value, $column, $row) => view('users.actions')->withModel($row)),
+        ];
+    }
+
+    public function filters(): array
+    {
+        $roles = [
+            '' => 'Any'
+        ];
+
+        foreach (Role::all() as $role) {
+            $roles[$role->name] = $role->name;
+        }
+
+        return [
+            'role' => Filter::make('role')
+                ->select($roles),
         ];
     }
 }
