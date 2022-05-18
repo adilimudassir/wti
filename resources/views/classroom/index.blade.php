@@ -91,8 +91,9 @@
                     </a>
                     @empty
                     <p class="text-center fs-3 text-primary">
-                        No Classes for you. Check for pending payments
-                        <i class="fa fa-folder-open"></i>
+                        No Classes for you. <br>
+                        Check for pending payments <br>
+                        <i class="fa fa-folder-open fa-2xl text-primary"></i>
                     </p>
                     @endforelse
                 </fieldset>
