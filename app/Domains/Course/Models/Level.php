@@ -32,4 +32,20 @@ class Level extends BaseModel
     {
         return $this->hasMany(Topic::class);
     }
+
+    /**
+     * Check User Level Progress
+     */
+    public function userLevelProgress(UserCourse $userCourse)
+    {
+        $user_course_topic = UserCourseTopic::where('user_course_id', $userCourse?->id)
+            ->whereIn('topic_id', $this->topics()->pluck('id')->toArray())
+            ->get();
+
+        return collect([
+            'total' => $this->topics()->count(),
+            'completed' => $user_course_topic->count(),
+            'percentage' => $user_course_topic->count() / $this->topics()->count() * 100
+        ]);
+    }
 }

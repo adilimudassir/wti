@@ -83,10 +83,22 @@
                         <i class="fa fa-angle-down fa-xl mt-2 text-primary"></i>
                     </legend>
                     @forelse($userCourse->allowedLevels() as $key => $level)
+                    @php
+                    $levelStatus = $level->userLevelProgress($userCourse);
+                    @endphp
                     <a href="{{ route('classroom.show', [$userCourse?->course->slug, $level->title, $level->topics()->first()]) }}" class="card col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="bg-light-primary text-primary bg-hover-primary text-hover-white my-1 @if($key === 0) ml-0 mr-1 @else m-1 @endif border card-body lh-xl ls-3">
-                            {{ $level->title }} ({{ $level->name }}) <br>
+                            {{ $level->title }} ({{ $level->name }})
+                            @if($levelStatus['percentage'] === 100)
+                            <i class="bi bi-check-lg text-success fs-1"></i>
+                            @endif
+                            <br>
                             <small class="text-muted text-hover-white">{{ $level->description }}</small>
+                            <br>
+                            <span class="">
+                                Completed: {{ $levelStatus['completed'] }} / {{ $levelStatus['total'] }}
+                                    ({{ $levelStatus['percentage'] }}%)
+                            </span>
                         </div>
                     </a>
                     @empty
