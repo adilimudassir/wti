@@ -23,7 +23,7 @@ class CreateCoursesTable extends Migration
             $table->longText('outline')->nullable();
             $table->boolean('allow_partial_payments')->default(false);
             $table->integer('partial_payments_allowed')->default(0);
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

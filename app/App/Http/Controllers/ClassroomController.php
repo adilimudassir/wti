@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use App\ViewModels\ClassroomViewModel;
@@ -31,17 +30,14 @@ class ClassroomController extends Controller
             $level,
             $topic
         );
-
-        if (request('course') && Route::is('classroom.*')) {
-            View::composer('partials.menus.classroom', function ($view) use ($viewModel) {
-                $view
-                    ->with('userCourse', $viewModel->userCourse())
-                    ->with('level', $viewModel->level())
-                    ->with('availableTopics', $viewModel->availableTopics());
-            });
-        }
-
         
+        View::composer('partials.menus.classroom', function ($view) use ($viewModel) {
+            $view
+                ->with('userCourse', $viewModel->userCourse())
+                ->with('level', $viewModel->level())
+                ->with('availableTopics', $viewModel->availableTopics());
+        });
+
         return view('classroom.show', $viewModel);
     }
 }

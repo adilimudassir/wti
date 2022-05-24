@@ -26,8 +26,6 @@ class ClassroomViewModel extends ViewModel
         
         if ($this->isLessonDay) {
             $this->changeCurrentTopic();
-        } else {
-            
         }
     }
 
@@ -99,6 +97,10 @@ class ClassroomViewModel extends ViewModel
             return $this->level()->topics;
         }
 
-        return $this->userCourse()->userCompletedCourseTopics()->where('level_id', $this->level()->id)->orderBy('id', 'ASC')->get();
+        return $this->userCourse()
+            ->userCompletedCourseTopics()
+            ->where('level_id', $this->level()->id)
+            ->orderBy('id', 'ASC')
+            ->get();
     }
 }

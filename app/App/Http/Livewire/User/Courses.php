@@ -58,7 +58,8 @@ class Courses extends Component
     {
         return view('livewire.user.courses', [
             'userCourses' => $this->user->courses->fresh(),
-            'courses' => Course::whereNotIn('id', $this->user->courses->pluck('course_id'))->get()
+            'courses' => Course::whereNotIn('id', $this->user->courses->pluck('course_id'))
+                ->where('is_active', true)->get()
         ]);
     }
 }

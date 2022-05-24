@@ -19,7 +19,7 @@ class Course extends BaseModel
         'outline',
         'allow_partial_payments',
         'partial_payments_allowed',
-        
+        'is_active',
     ];
 
     
