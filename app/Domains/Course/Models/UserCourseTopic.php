@@ -17,6 +17,7 @@ class UserCourseTopic extends Model
     protected $fillable = [
         'user_course_id',
         'topic_id',
+        'level_id',
         'time_visited',
         'is_current'
     ];
@@ -27,6 +28,14 @@ class UserCourseTopic extends Model
     public function topic()
     {
         return $this->belongsTo(Topic::class);
+    }
+
+    /**
+     * Get Level
+     */
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
     }
 
     public function userCourse()

@@ -45,7 +45,23 @@ class Level extends BaseModel
         return collect([
             'total' => $this->topics()->count(),
             'completed' => $user_course_topic->count(),
-            'percentage' => $user_course_topic->count() / $this->topics()->count() * 100
+            'percentage' => $user_course_topic->count() / ($this->topics()->count() ?: 1) * 100
         ]);
+    }
+
+    /**
+     * Get The current level of the user
+     */
+    public function currentLevelTopic(UserCourse $userCourse)
+    {
+        $user_course_topic = UserCourseTopic::where('user_course_id', $userCourse->id)
+            ->where('level_id', $this->id)
+            ->where('is_current', true)
+            ->first();
+
+        return [
+            'topic' => filled($user_course_topic) ?  $user_course_topic->topic : $this->topics->first(),
+            'level' => filled($user_course_topic) ?  $user_course_topic->level : $this
+        ];
     }
 }

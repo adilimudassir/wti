@@ -33,7 +33,7 @@ class LevelSeeder extends Seeder
             ],
             [
                 'name' => '400',
-                'title' => 'Professional Course',
+                'title' => 'Mastery Class',
                 'description' => 'This is the fourth level of the course',
             ],
         ])->each(function ($level) {

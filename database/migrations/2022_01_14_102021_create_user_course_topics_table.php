@@ -16,6 +16,7 @@ class CreateUserCourseTopicsTable extends Migration
         Schema::create('user_course_topics', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_course_id');
+            $table->foreignId('level_id');
             $table->foreignId('topic_id');
             $table->dateTime('time_visited');
             $table->boolean('is_current')->default(false);
