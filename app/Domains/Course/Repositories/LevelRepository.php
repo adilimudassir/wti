@@ -28,7 +28,7 @@ class LevelRepository extends BaseRepository
             if (!$newLevel) {
                 throw new GeneralException('Level could not be created at the moment');
             }
-            
+
             return $newLevel;
         });
     }

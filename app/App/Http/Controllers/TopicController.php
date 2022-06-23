@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Domains\Course\Models\Course;
 use App\Http\Requests\TopicFormRequest;
 use Domains\Course\Repositories\TopicRepository;
@@ -10,7 +9,7 @@ use Domains\Course\Repositories\TopicRepository;
 class TopicController extends Controller
 {
     /**
-     * 
+     *
      * Create a new controller instance.
      */
     public function __construct(private TopicRepository $topicRepository)
@@ -19,7 +18,7 @@ class TopicController extends Controller
     }
 
     /**
-     * 
+     *
      * Create a new topic.
      */
     public function create($slug)
@@ -33,7 +32,7 @@ class TopicController extends Controller
     }
 
     /**
-     * 
+     *
      * Store a newly created topic in storage.
      */
     public function store(TopicFormRequest $request)
@@ -46,7 +45,7 @@ class TopicController extends Controller
     }
 
     /**
-     * 
+     *
      * display a topic.
      */
     public function show($slug)
@@ -57,7 +56,7 @@ class TopicController extends Controller
     }
 
     /**
-     * 
+     *
      * show the form for editing the specified topic.
      */
     public function edit($id)
@@ -65,7 +64,7 @@ class TopicController extends Controller
         $topic = $this->topicRepository->getById($id);
 
         $course = $topic->level?->course;
-        
+
         return view('topics.edit', [
             'course' => $course,
             'topic' => $topic,
@@ -75,13 +74,13 @@ class TopicController extends Controller
     }
 
     /**
-     * 
+     *
      * Update the specified topic in storage.
      */
     public function update(TopicFormRequest $request, $id)
     {
         $topic = $this->topicRepository->getById($id);
-        
+
         $this->topicRepository->update($request, $topic);
 
         return redirect()
@@ -90,7 +89,7 @@ class TopicController extends Controller
     }
 
     /**
-     * 
+     *
      * Remove the specified topic from storage.
      */
     public function destroy($id)

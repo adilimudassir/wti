@@ -9,7 +9,7 @@ class CourseController extends Controller
 {
     /**
      * Create an instance of the class
-     * 
+     *
      * @void
      */
     public function __construct()

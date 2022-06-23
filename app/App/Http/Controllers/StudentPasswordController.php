@@ -7,7 +7,6 @@ use Domains\Student\Repositories\StudentRepository;
 
 class StudentPasswordController
 {
-
     /**
      * create an instance of the controller.
      *

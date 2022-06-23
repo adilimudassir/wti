@@ -13,4 +13,3 @@ Breadcrumbs::for('user-courses.show', function ($trail, $course) {
     $trail->parent('user-courses.index');
     $trail->push(Course::whereSlug($course)->first()->title, route('user-courses.show', [ $course ]));
 });
-

@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
-use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
 
 class UserFormRequest extends FormRequest
 {

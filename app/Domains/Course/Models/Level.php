@@ -2,14 +2,13 @@
 
 namespace Domains\Course\Models;
 
-use Domains\Course\Models\Course;
 use Domains\General\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Level extends BaseModel
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'name',
         'title',
@@ -60,8 +59,8 @@ class Level extends BaseModel
             ->first();
 
         return [
-            'topic' => filled($user_course_topic) ?  $user_course_topic->topic : $this->topics->first(),
-            'level' => filled($user_course_topic) ?  $user_course_topic->level : $this
+            'topic' => filled($user_course_topic) ? $user_course_topic->topic : $this->topics->first(),
+            'level' => filled($user_course_topic) ? $user_course_topic->level : $this
         ];
     }
 }

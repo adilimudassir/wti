@@ -56,7 +56,7 @@ class FlutterwavePaymentController extends Controller
     {
         $payment = Payment::where('reference', request()->tx_ref)->first();
 
-        if(!$payment) {
+        if (!$payment) {
             alert()->error('Transaction Failed');
 
             return redirect()->route('user-courses.index');
@@ -64,16 +64,15 @@ class FlutterwavePaymentController extends Controller
 
         $redirectUrl = route('payments.show', $payment->id);
 
-        if(auth()->user()->hasRole('Student')) {
+        if (auth()->user()->hasRole('Student')) {
             $redirectUrl = route('user-courses.show', $payment->userCourse?->course->slug);
         }
-        
-        if(request()->status == 'successful') {
-            
+
+        if (request()->status == 'successful') {
             $transactionID = Flutterwave::getTransactionIDFromCallback();
-            
+
             $response = Flutterwave::verifyTransaction($transactionID);
-            
+
             $payment->transaction_id = $transactionID;
             $payment->transaction_data = $response['data'];
             $payment->verified = true;
@@ -84,13 +83,13 @@ class FlutterwavePaymentController extends Controller
 
             return redirect($redirectUrl);
         }
-        
+
         if (request()->status ==  'cancelled') {
             //Put desired action/code after transaction has been cancelled here
             alert()->error('Transaction cancelled');
-            
+
             $payment->delete();
-            
+
             return redirect()->route('payments.create', ['user_course_id' => $payment->user_course_id]);
         }
 
@@ -101,4 +100,3 @@ class FlutterwavePaymentController extends Controller
         return redirect()->route('payments.create', ['user_course_id' => $payment->user_course_id]);
     }
 }
-

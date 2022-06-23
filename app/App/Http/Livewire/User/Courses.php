@@ -32,7 +32,7 @@ class Courses extends Component
             $this->joinCourse = true;
         }
 
-        $this->userCourse = new UserCourse;
+        $this->userCourse = new UserCourse();
     }
 
     /**
@@ -41,7 +41,7 @@ class Courses extends Component
     public function joinCourse($id)
     {
         $this->validate();
-        
+
         $this->userCourse->user_id = $this->user->id;
         $this->userCourse->course_id = $id;
         $this->userCourse->save();

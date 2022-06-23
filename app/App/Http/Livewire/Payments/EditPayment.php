@@ -11,8 +11,10 @@ class EditPayment extends Component
     use WithFileUploads;
 
     public Payment $payment;
-    
-    public $receipt = null, $saved = false;
+
+    public $receipt = null;
+
+    public $saved = false;
 
     protected $rules = [
         'payment.type' => 'required',
@@ -31,12 +33,12 @@ class EditPayment extends Component
         $this->validate();
 
         if ($this->payment->method == 'Bank Transfer') {
-            if($this->receipt) {
+            if ($this->receipt) {
                 $this->payment->receipt = $this->receipt->store('payments');
             }
         }
         $this->payment->save();
-        
+
         alert()->success('Payment Updated!')->toToast();
         $this->saved = true;
     }
@@ -57,7 +59,7 @@ class EditPayment extends Component
         if ($this->payment->userCourse?->paymentStatus() === 'Partial') {
             unset($paymentTypes['Complete']);
         }
-        
+
         return view('livewire.payments.edit-payment', [
             'paymentMethods' => Payment::$methods,
             'paymentTypes' => $paymentTypes,

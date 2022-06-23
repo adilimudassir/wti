@@ -1,6 +1,5 @@
 <?php
 
-use Domains\Course\Models\Course;
 
 // Dashboard > Batches > Show
 Breadcrumbs::for('batches.show', function ($trail, $id) {

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\UserFormRequest;
 use Domains\Auth\Repositories\RoleRepository;
 use Domains\Auth\Repositories\UserRepository;
@@ -15,7 +14,8 @@ class UserController extends Controller
      * @param UserRepository $userRepository
      */
     public function __construct(private UserRepository $userRepository)
-    {}
+    {
+    }
 
     public function index()
     {

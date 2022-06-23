@@ -28,7 +28,7 @@ class CourseRepository extends BaseRepository
             if (!$newCourse) {
                 throw new GeneralException('Course could not be created at the moment');
             }
-            
+
             return $newCourse;
         });
     }

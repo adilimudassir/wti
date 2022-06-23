@@ -1,11 +1,11 @@
 <?php
+
 namespace Domains\Payment\Models;
 
 use Domains\Auth\Models\User;
 use Domains\Course\Models\Course;
 use Domains\Course\Models\UserCourse;
 use Domains\General\Models\BaseModel;
-use Domains\Payment\Models\PaymentInstallment;
 
 class Payment extends BaseModel
 {
@@ -23,7 +23,7 @@ class Payment extends BaseModel
         'amount',
         'reference',
         'transaction_id',
-    ]; 
+    ];
 
     /**
      * cast the attributes to the correct type.

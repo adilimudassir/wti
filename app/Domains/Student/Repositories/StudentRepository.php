@@ -1,4 +1,5 @@
 <?php
+
 namespace Domains\Student\Repositories;
 
 use Domains\Auth\Models\User as Student;

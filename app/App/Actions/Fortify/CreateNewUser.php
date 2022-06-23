@@ -4,7 +4,6 @@ namespace App\Actions\Fortify;
 
 use Domains\Auth\Models\User;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Domains\Auth\Repositories\UserRepository;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -36,7 +35,7 @@ class CreateNewUser implements CreatesNewUsers
             'state' => ["required_if:account_type,'REGULAR STUDENT'"],
             'state_code' => ["required_if:account_type,'REGULAR STUDENT'"]
         ])->validate();
-        
+
         return resolve(UserRepository::class)->create(request());
     }
 }

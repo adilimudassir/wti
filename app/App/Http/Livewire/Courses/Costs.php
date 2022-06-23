@@ -3,14 +3,14 @@
 namespace App\Http\Livewire\Courses;
 
 use Livewire\Component;
-use Domains\Course\Models\Level;
 use Domains\Course\Models\Course;
 
 class Costs extends Component
 {
     public Course $course;
 
-    public $showForm = false, $confirming;
+    public $showForm = false;
+    public $confirming;
 
     public function toggleForm()
     {
@@ -29,10 +29,9 @@ class Costs extends Component
 
     public function save()
     {
-
         $this->validate();
 
-        if(! $this->course->allow_partial_payments) {
+        if (! $this->course->allow_partial_payments) {
             $this->course->partial_payments_allowed = 0;
         }
 

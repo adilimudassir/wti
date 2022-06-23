@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Domains\Course\Models\Batch;
 
 class BatchController extends Controller
@@ -27,8 +26,8 @@ class BatchController extends Controller
     {
         $batch = Batch::findOrFail($id);
 
-        $batch->userCourses->each(fn($userCourse) => $userCourse->sendAdmissionLetter());
-        
+        $batch->userCourses->each(fn ($userCourse) => $userCourse->sendAdmissionLetter());
+
         notify()->success('Admission letter sent successfully');
 
         return back();

@@ -30,7 +30,7 @@ class RolesTable extends DataTableComponent
                     fn ($builder, $term) =>
                     $builder->orWhereHas(
                         'permissions',
-                        fn ($query)  =>
+                        fn ($query) =>
                         $query->where('name', 'like', '%' . $term . '%')
                     )
                 )->asHtml(),

@@ -5,8 +5,6 @@ namespace App\Http\Livewire\Courses;
 use Livewire\Component;
 use Domains\Course\Models\Topic;
 use Domains\Course\Models\Course;
-use Domains\Course\Models\UserCourse;
-use Domains\Course\Models\UserCourseTopic;
 
 class Topics extends Component
 {
@@ -20,7 +18,7 @@ class Topics extends Component
     {
         $this->topicModel = new Topic();
     }
-    
+
     public function render()
     {
         return view('livewire.courses.topics', [
@@ -28,6 +26,4 @@ class Topics extends Component
             'levels' => $this->course->levels
         ]);
     }
-
-    
 }

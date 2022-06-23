@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class TopicsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class TopicsTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         \DB::table('topics')->delete();
-        
-        \DB::table('topics')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('topics')->insert(array(
+            0 =>
+            array(
                 'content' => '<h1 class="font-weight-semibold">INTRODUCTION AND WHAT IS FOREX</h1>
 <p><strong>WELCOME ONCE AGAIN TO THE BEGINNERS TRAINING COURSE</strong></p>
 <p>&nbsp;</p>
@@ -49,13 +46,13 @@ class TopicsTableSeeder extends Seeder
                 'excerpt' => 'WHAT IS FOREX',
                 'id' => 1,
                 'level_id' => 1,
-                'previous_topic_id' => NULL,
+                'previous_topic_id' => null,
                 'slug' => 'what-is-forex',
                 'title' => 'WHAT IS FOREX',
                 'updated_at' => '2022-04-05 16:55:45',
             ),
-            1 => 
-            array (
+            1 =>
+            array(
                 'content' => '<h1 class="font-weight-semibold">WHAT IS TRADED ON FOREX</h1>
 <p>&nbsp;</p>
 <p>Someone would ask what is traded on the Forex Market. This is not the form of market where buy your clothes or shoes. This is not Idumota or Oshodi or your normal markets in any parts of the world you are. In forex market we trade the following:</p>
@@ -71,8 +68,8 @@ class TopicsTableSeeder extends Seeder
                 'title' => 'WHAT IS TRADED ON FOREX',
                 'updated_at' => '2022-04-05 17:00:24',
             ),
-            2 => 
-            array (
+            2 =>
+            array(
                 'content' => '<h1 class="font-weight-semibold">WHO IS A FOREX BROKER</h1>
 <p class="text-white text-light">&nbsp;</p>
 <p><strong>DEFINITION</strong></p>
@@ -100,8 +97,8 @@ class TopicsTableSeeder extends Seeder
                 'title' => 'WHO IS A FOREX BROKER',
                 'updated_at' => '2022-04-05 17:13:32',
             ),
-            3 => 
-            array (
+            3 =>
+            array(
                 'content' => '<h1 class="font-weight-semibold">TERMINOLOGIES USED IN FOREX</h1>
 <p class="text-white text-light">&nbsp;</p>
 <p>Just like every Field you try to learn, you would have to get accustomed to its Terms and Terminologies. So for every new field you embark upon in life, you would encounter New Terminologies and terms which is peculiar to such fields. Be it Law, Medicine, Journalism, Engineering etc. you would have to get yourself acquainted with their Terminologies so as to be able to communicate properly.</p>
@@ -165,8 +162,8 @@ class TopicsTableSeeder extends Seeder
                 'title' => 'TERMINOLOGIES USED IN FOREX',
                 'updated_at' => '2022-04-05 17:17:44',
             ),
-            4 => 
-            array (
+            4 =>
+            array(
                 'content' => '<h1 class="font-weight-semibold">FORMS OF TRADING</h1>
 <p class="text-white text-light">&nbsp;</p>
 <p>There are basically&nbsp;<strong>Two (2)&nbsp;</strong>forms of Trading in Forex. They are sometimes referred to as&nbsp;<strong>ANALYSIS.</strong></p>
@@ -214,8 +211,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'FORMS OF TRADING',
                     'updated_at' => '2022-04-05 17:26:00',
                 ),
-                5 => 
-                array (
+                5 =>
+                array(
                     'content' => '<h1 class="font-weight-semibold">CURRENCY PAIRS</h1>
 <div class="open_grepper_editor" title="Edit &amp; Save To Grepper">&nbsp;</div>
 <p><strong>DEFINITION</strong></p>
@@ -286,8 +283,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'CURRENCY PAIRS',
                     'updated_at' => '2022-04-05 18:00:23',
                 ),
-                6 => 
-                array (
+                6 =>
+                array(
                     'content' => '<h1>MT4 INTERFACE PART 1</h1>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -346,8 +343,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'MT4 INTERFACE PART 1',
                     'updated_at' => '2022-04-05 18:01:16',
                 ),
-                7 => 
-                array (
+                7 =>
+                array(
                     'content' => '<p>INTRODUCTION TO INTERMEDIARY COURSE</p>',
                     'created_at' => '2022-04-05 14:58:13',
                     'excerpt' => 'INTRODUCTION TO INTERMEDIATE COURSE',
@@ -358,8 +355,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'INTRODUCTION TO INTERMEDIATE COURSE',
                     'updated_at' => '2022-04-05 15:05:04',
                 ),
-                8 => 
-                array (
+                8 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">WHAT IS A PIP</h3>
@@ -374,8 +371,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'WHAT IS A PIP',
                     'updated_at' => '2022-04-05 14:58:41',
                 ),
-                9 => 
-                array (
+                9 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">CONCEPT OF BID AND ASK PRICE</h3>
@@ -390,8 +387,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'CONCEPT OF BID AND ASK PRICE',
                     'updated_at' => '2022-04-05 14:59:15',
                 ),
-                10 => 
-                array (
+                10 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">WHAT IS A SPREAD</h3>
@@ -406,8 +403,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'WHAT IS A SPREAD',
                     'updated_at' => '2022-04-05 14:59:42',
                 ),
-                11 => 
-                array (
+                11 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">CONCEPT OF TAKE PROFIT</h3>
@@ -422,8 +419,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'CONCEPT OF TAKE PROFIT',
                     'updated_at' => '2022-04-05 15:00:12',
                 ),
-                12 => 
-                array (
+                12 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">CONCEPT OF STOP LOSS</h3>
@@ -438,8 +435,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'CONCEPT OF STOP LOSS',
                     'updated_at' => '2022-04-05 15:00:42',
                 ),
-                13 => 
-                array (
+                13 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">LOT SIZE</h3>
@@ -454,8 +451,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'LOT SIZE',
                     'updated_at' => '2022-04-05 15:01:15',
                 ),
-                14 => 
-                array (
+                14 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">LEVERAGE</h3>
@@ -470,8 +467,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'LEVERAGE',
                     'updated_at' => '2022-04-05 15:01:45',
                 ),
-                15 => 
-                array (
+                15 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">FORMS OF TRADING ORDERS</h3>
@@ -486,8 +483,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'FORMS OF TRADING ORDERS',
                     'updated_at' => '2022-04-05 15:02:17',
                 ),
-                16 => 
-                array (
+                16 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">TRADING PLAN</h3>
@@ -502,8 +499,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'TRADING PLAN',
                     'updated_at' => '2022-04-05 15:02:45',
                 ),
-                17 => 
-                array (
+                17 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">COMMON MISTAKES BY TRADERS</h3>
@@ -518,8 +515,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'COMMON MISTAKES BY TRADERS',
                     'updated_at' => '2022-04-05 15:03:17',
                 ),
-                18 => 
-                array (
+                18 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">RISK MANAGEMENT</h3>
@@ -534,8 +531,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'RISK MANAGEMENT',
                     'updated_at' => '2022-04-05 15:03:46',
                 ),
-                19 => 
-                array (
+                19 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">MT4 INTERFACE PART 2</h3>
@@ -550,8 +547,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'MT4 INTERFACE PART 2',
                     'updated_at' => '2022-04-05 15:04:17',
                 ),
-                20 => 
-                array (
+                20 =>
+                array(
                     'content' => '<p>INTRODUCTION TO ADVANCED COURSE</p>',
                     'created_at' => '2022-04-05 15:05:41',
                     'excerpt' => 'INTRODUCTION TO ADVANCED COURSE',
@@ -562,8 +559,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'INTRODUCTION TO ADVANCED COURSE',
                     'updated_at' => '2022-04-05 15:05:41',
                 ),
-                21 => 
-                array (
+                21 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">INDICATORS</h3>
@@ -578,8 +575,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'INDICATORS',
                     'updated_at' => '2022-04-05 15:06:11',
                 ),
-                22 => 
-                array (
+                22 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">MOVING AVERAGE STRATEGIES</h3>
@@ -594,8 +591,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'MOVING AVERAGE STRATEGIES',
                     'updated_at' => '2022-04-05 15:06:49',
                 ),
-                23 => 
-                array (
+                23 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">PARABOLIC SAR</h3>
@@ -610,8 +607,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'PARABOLIC SAR',
                     'updated_at' => '2022-04-05 15:07:24',
                 ),
-                24 => 
-                array (
+                24 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">HOW TO LOCK PROFITS/TRAILING STOP</h3>
@@ -626,8 +623,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'HOW TO LOCK PROFITS/TRAILING STOP',
                     'updated_at' => '2022-04-05 15:07:54',
                 ),
-                25 => 
-                array (
+                25 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">TIME FRAMES ANALYSIS</h3>
@@ -642,8 +639,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'TIME FRAMES ANALYSIS',
                     'updated_at' => '2022-04-05 15:08:23',
                 ),
-                26 => 
-                array (
+                26 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">STOCHASTIC OSCILLATOR</h3>
@@ -658,8 +655,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'STOCHASTIC OSCILLATOR',
                     'updated_at' => '2022-04-05 15:08:54',
                 ),
-                27 => 
-                array (
+                27 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">BOLLINGER BANDS</h3>
@@ -674,8 +671,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'BOLLINGER BANDS',
                     'updated_at' => '2022-04-05 15:09:53',
                 ),
-                28 => 
-                array (
+                28 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">RELATIVE STRENGTH INDEX (RSI)</h3>
@@ -690,8 +687,8 @@ class TopicsTableSeeder extends Seeder
                 'title' => 'RELATIVE STRENGTH INDEX (RSI)',
                     'updated_at' => '2022-04-05 15:10:27',
                 ),
-                29 => 
-                array (
+                29 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">BOLLINGER SQUEEZE</h3>
@@ -706,8 +703,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'BOLLINGER SQUEEZE',
                     'updated_at' => '2022-04-05 15:11:01',
                 ),
-                30 => 
-                array (
+                30 =>
+                array(
                     'content' => '<p>INTRODUCTION TO PROFESSIONAL COURSE</p>',
                     'created_at' => '2022-04-05 15:12:20',
                     'excerpt' => 'INTRODUCTION TO PROFESSIONAL COURSE',
@@ -718,8 +715,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'INTRODUCTION TO PROFESSIONAL COURSE',
                     'updated_at' => '2022-04-05 15:12:20',
                 ),
-                31 => 
-                array (
+                31 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">CANDLE STICK ANALYSIS</h3>
@@ -734,8 +731,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'CANDLE STICK ANALYSIS',
                     'updated_at' => '2022-04-05 15:12:46',
                 ),
-                32 => 
-                array (
+                32 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">SUPPORT &amp; RESISTANCE LEVEL</h3>
@@ -750,8 +747,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'SUPPORT & RESISTANCE LEVEL',
                     'updated_at' => '2022-04-05 15:13:16',
                 ),
-                33 => 
-                array (
+                33 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">HOW TO TRADE SUPPORT AND RESISTANCE</h3>
@@ -766,8 +763,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'HOW TO TRADE SUPPORT AND RESISTANCE',
                     'updated_at' => '2022-04-05 15:14:04',
                 ),
-                34 => 
-                array (
+                34 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">PIVOT POINTS</h3>
@@ -782,8 +779,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'PIVOT POINTS',
                     'updated_at' => '2022-04-05 15:14:27',
                 ),
-                35 => 
-                array (
+                35 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">FORMS OF TRADING ORDERS II</h3>
@@ -798,8 +795,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'FORMS OF TRADING ORDERS II',
                     'updated_at' => '2022-04-05 15:14:54',
                 ),
-                36 => 
-                array (
+                36 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">FIBONNACCI TOOL</h3>
@@ -814,8 +811,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'FIBONNACCI TOOL',
                     'updated_at' => '2022-04-05 15:15:32',
                 ),
-                37 => 
-                array (
+                37 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">ELLIOT WAVES THEORY</h3>
@@ -830,8 +827,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'ELLIOT WAVES THEORY',
                     'updated_at' => '2022-04-05 15:16:07',
                 ),
-                38 => 
-                array (
+                38 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">FRACTALS</h3>
@@ -846,8 +843,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'FRACTALS',
                     'updated_at' => '2022-04-05 15:16:34',
                 ),
-                39 => 
-                array (
+                39 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">FUNDAMENTAL ANALYSIS (NEWS TRADING USING NFP AS A PROTOTYPE)</h3>
@@ -862,8 +859,8 @@ class TopicsTableSeeder extends Seeder
                 'title' => 'FUNDAMENTAL ANALYSIS (NEWS TRADING USING NFP AS A PROTOTYPE)',
                     'updated_at' => '2022-04-05 15:17:18',
                 ),
-                40 => 
-                array (
+                40 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">GAPS TRADING STRATEGY</h3>
@@ -878,8 +875,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'GAPS TRADING STRATEGY',
                     'updated_at' => '2022-04-05 15:17:48',
                 ),
-                41 => 
-                array (
+                41 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">ICHIMOKU HINKO HYO INDICATOR</h3>
@@ -894,8 +891,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'ICHIMOKU HINKO HYO INDICATOR',
                     'updated_at' => '2022-04-05 15:18:17',
                 ),
-                42 => 
-                array (
+                42 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">CHART PATTERNS</h3>
@@ -910,8 +907,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'CHART PATTERNS',
                     'updated_at' => '2022-04-05 15:18:45',
                 ),
-                43 => 
-                array (
+                43 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">CANDLE STICK ANALYSIS 2</h3>
@@ -926,8 +923,8 @@ class TopicsTableSeeder extends Seeder
                     'title' => 'CANDLE STICK ANALYSIS 2',
                     'updated_at' => '2022-04-05 15:19:19',
                 ),
-                44 => 
-                array (
+                44 =>
+                array(
                     'content' => '<ul class="custom-listing custom-listing--checked mb-20">
 <li>
 <h3 class="card-title text-dark bg-white pb-3 pl-2 pt-3">MENTORAHIP COURSE WITH THE CEO</h3>
@@ -943,7 +940,5 @@ class TopicsTableSeeder extends Seeder
                     'updated_at' => '2022-04-05 15:19:46',
                 ),
             ));
-        
-        
     }
 }

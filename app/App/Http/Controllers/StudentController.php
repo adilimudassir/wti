@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Domains\Student\Models\Student;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentFormRequest;
 use Domains\Auth\Repositories\RoleRepository;
 use Domains\Student\Repositories\StudentRepository;
@@ -16,7 +15,8 @@ class StudentController extends Controller
      * @param StudentRepository $studentRepository
      */
     public function __construct(private StudentRepository $studentRepository)
-    {}
+    {
+    }
 
     public function index()
     {

@@ -4,9 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
 use Domains\Course\Models\UserCourse;
-use Illuminate\Support\Facades\Route;
 
 class ClassroomMiddleware
 {
@@ -41,7 +39,7 @@ class ClassroomMiddleware
                 session(['userCourse' => $userCourse]);
             }
         }
-        
+
         return $next($request);
     }
 }

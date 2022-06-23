@@ -2,8 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Repositories\RepositoryTrait;
-
 /**
  * Class BaseRepository.
  *

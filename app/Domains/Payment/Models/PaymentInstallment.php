@@ -1,4 +1,5 @@
 <?php
+
 namespace Domains\Payment\Models;
 
 use Domains\General\Models\BaseModel;

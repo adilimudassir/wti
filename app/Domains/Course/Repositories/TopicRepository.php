@@ -28,7 +28,7 @@ class TopicRepository extends BaseRepository
             if (!$newTopic) {
                 throw new GeneralException('Topic could not be created at the moment');
             }
-            
+
             return $newTopic;
         });
     }

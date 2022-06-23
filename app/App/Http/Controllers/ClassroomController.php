@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Route;
 use App\ViewModels\ClassroomViewModel;
 use Domains\Course\Repositories\CourseRepository;
 
@@ -18,7 +17,7 @@ class ClassroomController extends Controller
     }
 
     public function index()
-    {   
+    {
         return view('classroom.index', []);
     }
 
@@ -30,7 +29,7 @@ class ClassroomController extends Controller
             $level,
             $topic
         );
-        
+
         View::composer('partials.menus.classroom', function ($view) use ($viewModel) {
             $view
                 ->with('userCourse', $viewModel->userCourse())

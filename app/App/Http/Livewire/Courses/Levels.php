@@ -12,11 +12,12 @@ class Levels extends Component
 
     public Level $level;
 
-    public $showForm = false, $confirming;
+    public $showForm = false;
+    public $confirming;
 
     public function mount()
     {
-        $this->level = new Level;
+        $this->level = new Level();
     }
 
     public function toggleForm()
@@ -27,7 +28,7 @@ class Levels extends Component
             $this->showForm = true;
         }
 
-        $this->level = new Level;
+        $this->level = new Level();
     }
 
     protected $rules = [
@@ -50,7 +51,6 @@ class Levels extends Component
         $this->course->load('levels');
 
         alert()->success('Level Added')->toToast();
-
     }
 
     public function delete($id)
@@ -68,12 +68,12 @@ class Levels extends Component
     {
         $this->confirming = $id;
     }
-    
+
     public function cancelDelete()
     {
         $this->confirming = null;
     }
-    
+
     public function render()
     {
         return view('livewire.courses.levels', [

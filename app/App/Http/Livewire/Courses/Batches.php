@@ -12,12 +12,15 @@ class Batches extends Component
 
     public Batch $batch;
 
-    public $showForm = false, $confirming, $start_date, $end_date;
+    public $showForm = false;
+    public $confirming;
+    public $start_date;
+    public $end_date;
 
     public function mount()
     {
         $this->batch = new Batch();
-        
+
         $this->start_date = now()->toDateString();
         $this->end_date = now()->addMonth(3)->toDateString();
     }
@@ -49,12 +52,12 @@ class Batches extends Component
         $this->batch->end_date = $this->end_date;
 
         $this->validate();
-        
+
         if ($this->batch->active) {
             $this->course->batches()->where('active', true)->update(['active' => false]);
         }
 
-        if($this->course->batches->count() === 0) {
+        if ($this->course->batches->count() === 0) {
             $this->batch->active = true;
         }
 
@@ -87,7 +90,7 @@ class Batches extends Component
     {
         $this->confirming = null;
     }
-    
+
     public function render()
     {
         return view('livewire.courses.batches', [

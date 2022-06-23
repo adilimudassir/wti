@@ -26,33 +26,43 @@ class CourseStudentsTable extends DataTableComponent
                 ->searchable()
                 ->sortable(),
             Column::make('Name', 'user.name')
-                ->searchable(fn ($builder, $term) => 
-                    $builder->orWhereHas('user', fn ($query)=>
+                ->searchable(fn ($builder, $term) =>
+                    $builder->orWhereHas(
+                        'user',
+                        fn ($query) =>
                         $query
                             ->where('name', 'like', '%' . $term . '%')
                     ))
                 ->sortable(),
             Column::make('Account Type', 'user.account_type')
-                ->searchable(fn ($builder, $term) => 
-                    $builder->orWhereHas('user', fn ($query)=>
+                ->searchable(fn ($builder, $term) =>
+                    $builder->orWhereHas(
+                        'user',
+                        fn ($query) =>
                         $query
                             ->where('account_type', 'like', '%' . $term . '%')
                     )),
             Column::make('State', 'user.state')
-                ->searchable(fn ($builder, $term) => 
-                    $builder->orWhereHas('user', fn ($query)=>
+                ->searchable(fn ($builder, $term) =>
+                    $builder->orWhereHas(
+                        'user',
+                        fn ($query) =>
                         $query
                             ->where('state', 'like', '%' . $term . '%')
                     )),
             Column::make('State Code', 'user.state_code')
-                ->searchable(fn ($builder, $term) => 
-                    $builder->orWhereHas('user', fn ($query)=>
+                ->searchable(fn ($builder, $term) =>
+                    $builder->orWhereHas(
+                        'user',
+                        fn ($query) =>
                         $query
                             ->where('state_code', 'like', '%' . $term . '%')
                     )),
             Column::make('Batch', 'batch.name')
-                ->searchable(fn ($builder, $term) => 
-                    $builder->orWhereHas('batch', fn ($query)=>
+                ->searchable(fn ($builder, $term) =>
+                    $builder->orWhereHas(
+                        'batch',
+                        fn ($query) =>
                         $query
                             ->where('name', 'like', '%' . $term . '%')
                     ))
@@ -69,10 +79,13 @@ class CourseStudentsTable extends DataTableComponent
     {
         return [
             'batch' => Filter::make('Batch')
-                ->select(array_merge([
+                ->select(
+                    array_merge(
+                    [
                             '' => 'Any'
-                            ],$this->course->batches()->get()->pluck("name", 'name')->toArray()
-                        )
+                            ],
+                    $this->course->batches()->get()->pluck("name", 'name')->toArray()
+                )
                 )
         ];
     }

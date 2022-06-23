@@ -10,7 +10,7 @@ use Rappasoft\LaravelLivewireTables\DataTableComponent;
 class PaymentsTable extends DataTableComponent
 {
     public string $method;
-    
+
     public function query(): Builder
     {
         return Payment::whereMethod($this->method)->orderBy('created_at', 'desc');
@@ -33,7 +33,7 @@ class PaymentsTable extends DataTableComponent
                 ->sortable()
                 ->format(fn ($value, $column, $row) => currency($value)),
             Column::make('Amount Due', 'amount')
-                ->format(fn ($value, $column, $row) => currency($row->amountDue())),            
+                ->format(fn ($value, $column, $row) => currency($row->amountDue())),
             Column::make('Date', 'date')
                 ->searchable()
                 ->sortable()

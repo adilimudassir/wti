@@ -1,4 +1,5 @@
 <?php
+
 namespace Domains\Course\Models;
 
 use Domains\Auth\Models\User;
@@ -64,7 +65,7 @@ class UserCourse extends BaseModel
     {
         return $this->belongsTo(Batch::class);
     }
-    
+
 
     /**
      * Get Total Payments Balance
@@ -89,16 +90,16 @@ class UserCourse extends BaseModel
      */
     public function paymentStatus()
     {
-        if($this->totalPaymentsBalance() == 0) {
+        if ($this->totalPaymentsBalance() == 0) {
             return 'Pending Purchase';
         }
-        
-        if($this->totalPaymentsBalance() > 0
+
+        if ($this->totalPaymentsBalance() > 0
          && $this->totalPaymentsBalance() < $this->course->cost) {
             return 'Partial';
-        } 
-        
-        if($this->totalPaymentsBalance() == $this->course->cost) {
+        }
+
+        if ($this->totalPaymentsBalance() == $this->course->cost) {
             return 'Paid';
         }
 
@@ -110,7 +111,7 @@ class UserCourse extends BaseModel
      */
     public function canMakePayment()
     {
-        return match($this->paymentStatus()) {
+        return match ($this->paymentStatus()) {
             'Pending Purchase' => true,
             'Partial' => true,
             'Paid' => false
@@ -125,16 +126,16 @@ class UserCourse extends BaseModel
         if (! $this->is_active) {
             return 'Inactive';
         }
-        
-        if($this->payments()->where('verified', true)->get()->count() == 0) {
+
+        if ($this->payments()->where('verified', true)->get()->count() == 0) {
             return 'Pending Purchase';
         }
 
-        if( $this->finished_at) {
+        if ($this->finished_at) {
             return 'Completed';
         }
 
-        if(!$this->started_at) {
+        if (!$this->started_at) {
             return 'Not Started';
         }
 
@@ -149,7 +150,7 @@ class UserCourse extends BaseModel
         return $this->course?->cost - $this->totalPaymentsBalance();
     }
 
-    /** 
+    /**
      * Get User Course Topics
      */
     public function userCompletedCourseTopics()
@@ -161,7 +162,7 @@ class UserCourse extends BaseModel
     {
         return $this->userCompletedCourseTopics()
             ->orderBy('created_at', 'DESC')
-            ->first()->topic 
+            ->first()->topic
         ?? $this->course->levels()->first()->topics()->first();
     }
 
@@ -198,7 +199,7 @@ class UserCourse extends BaseModel
         $this->user->notify(new AdmissionLetter($this));
     }
 
-    public function allowedLevels() : Collection
+    public function allowedLevels(): Collection
     {
         if ($this->amountDue() === 0) {
             return $this->course->levels;
@@ -217,8 +218,7 @@ class UserCourse extends BaseModel
                 return $this->course->levels->take(4);
             }
         }
-        
+
         return new Collection([]);
     }
-    
 }

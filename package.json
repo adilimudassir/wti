@@ -72,7 +72,7 @@
     },
     "devDependencies": {
         "@hotwired/turbo": "^7.0.1",
-        "alpinejs": "^2.7.3",
+        "alpinejs": "^3.4.2",
         "autoprefixer": "^10.1.0",
         "axios": "^0.21.1",
         "laravel-echo": "^1.11.2",

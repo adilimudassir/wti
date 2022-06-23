@@ -7,7 +7,6 @@ use App\Http\Requests\UserPasswordFormRequest;
 
 class UserPasswordController
 {
-
     /**
      * create an instance of the controller.
      *

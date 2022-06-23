@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course extends BaseModel
 {
-    use HasFactory, HasSlug;
+    use HasFactory;
+    use HasSlug;
 
     protected $fillable = [
         'title',
@@ -22,7 +23,7 @@ class Course extends BaseModel
         'is_active',
     ];
 
-    
+
     public function levels()
     {
         return $this->hasMany(Level::class);
@@ -58,7 +59,7 @@ class Course extends BaseModel
      */
     public function getPayableCost($paymentType = 'Complete')
     {
-        if($this->allow_partial_payments && $paymentType === 'Partial') {
+        if ($this->allow_partial_payments && $paymentType === 'Partial') {
             return $this->cost / $this->partial_payments_allowed;
         }
 
@@ -77,5 +78,4 @@ class Course extends BaseModel
     {
         return $this->hasMany(UserCourse::class);
     }
-
 }

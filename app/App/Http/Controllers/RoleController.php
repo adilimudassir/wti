@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleFormRequest;
 use Domains\Auth\Repositories\RoleRepository;
 use Domains\Auth\Repositories\PermissionRepository;
@@ -15,7 +14,8 @@ class RoleController extends Controller
      * @param RoleRepository $roleRepository
      */
     public function __construct(private RoleRepository $roleRepository)
-    {}
+    {
+    }
 
     public function index()
     {

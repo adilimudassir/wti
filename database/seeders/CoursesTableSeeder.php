@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class CoursesTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +13,11 @@ class CoursesTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
         \DB::table('courses')->delete();
-        
-        \DB::table('courses')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('courses')->insert(array(
+            0 =>
+            array(
                 'allow_partial_payments' => 0,
                 'cost' => 50000,
                 'created_at' => '2022-04-05 14:51:33',
@@ -175,8 +172,8 @@ class CoursesTableSeeder extends Seeder
                     'title' => 'Forex Trading',
                     'updated_at' => '2022-04-05 17:13:00',
                 ),
-                1 => 
-                array (
+                1 =>
+                array(
                     'allow_partial_payments' => 0,
                     'cost' => 80000,
                     'created_at' => '2022-04-05 14:51:33',
@@ -190,8 +187,8 @@ class CoursesTableSeeder extends Seeder
                     'title' => 'Cryptocurrency Trading',
                     'updated_at' => '2022-04-05 14:51:33',
                 ),
-                2 => 
-                array (
+                2 =>
+                array(
                     'allow_partial_payments' => 0,
                     'cost' => 60000,
                     'created_at' => '2022-04-05 14:51:33',
@@ -206,7 +203,5 @@ class CoursesTableSeeder extends Seeder
                     'updated_at' => '2022-04-05 14:51:33',
                 ),
             ));
-        
-        
     }
 }

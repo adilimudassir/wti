@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders\Auth;
 
 use Domains\Auth\Models\User;

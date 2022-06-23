@@ -60,7 +60,7 @@ class PaymentController extends Controller
         $userCourse = UserCourse::find($request->user_course_id);
 
         $paymentInstance = new Payment();
-        
+
         if ($request->payment_method == 'Bank Transfer') {
             if ($request->receipt) {
                 $paymentInstance->receipt = $this->storeFile($request->receipt, 'payments');
@@ -147,7 +147,7 @@ class PaymentController extends Controller
         $this->authorize('update-payments');
 
         $payment = $this->paymentRepository->getById($id);
-        
+
         $payment->verified = true;
         $payment->save();
 

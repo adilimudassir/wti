@@ -15,8 +15,10 @@ class CreatePayment extends Component
     public ?Payment $payment = null;
 
     public UserCourse $userCourse;
-    
-    public $receipt = null, $saved = false;
+
+    public $receipt = null;
+
+    public $saved = false;
 
     protected $rules = [
         'payment.type' => 'required',
@@ -40,7 +42,7 @@ class CreatePayment extends Component
         $this->validate();
 
         if ($this->payment->method == 'Bank Transfer') {
-            if($this->receipt) {
+            if ($this->receipt) {
                 $this->payment->receipt = $this->receipt->store('payments', 's3');
             }
             $this->payment->user_course_id = $this->userCourse->id;
@@ -49,7 +51,7 @@ class CreatePayment extends Component
             $this->payment->save();
         }
 
-        if($this->payment->method == 'Online') {
+        if ($this->payment->method == 'Online') {
             //This generates a payment reference
             $reference = Flutterwave::generateReference();
 
@@ -76,7 +78,7 @@ class CreatePayment extends Component
             ];
 
             $payment = Flutterwave::initializePayment($data);
-            
+
             if ($payment['status'] !== 'success') {
                 alert()->error('Failed')->toToast();
             }
@@ -88,7 +90,7 @@ class CreatePayment extends Component
 
             return redirect($payment['data']['link']);
         }
-        
+
         alert()->success('Payment Created!')->toToast();
         $this->saved = true;
     }
@@ -109,7 +111,7 @@ class CreatePayment extends Component
         if ($this->userCourse?->paymentStatus() === 'Partial') {
             unset($paymentTypes['Complete']);
         }
-        
+
         return view('livewire.payments.create-payment', [
             'paymentMethods' => Payment::$methods,
             'paymentTypes' => $paymentTypes,

@@ -1,4 +1,5 @@
 <?php
+
 namespace Domains\Student\Models;
 
 use Domains\Auth\Models\User;
@@ -10,7 +11,7 @@ class Student extends User
     protected $guard_name = 'web';
 
     /**
-     * 
+     *
      * Get Account types
      */
     public static $types = [

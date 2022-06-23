@@ -15,15 +15,15 @@ class ClassroomViewModel extends ViewModel
     ];
 
     public bool $isLessonDay = false;
-    
+
     public function __construct(
         private CourseRepository $courseRepository,
         private string $courseSlug,
         private string $levelTitle,
         private string $topicSlug
-    ){
+    ) {
         $this->setIsLessonDay();
-        
+
         if ($this->isLessonDay) {
             $this->changeCurrentTopic();
         }
@@ -34,8 +34,8 @@ class ClassroomViewModel extends ViewModel
         $this->isLessonDay = in_array(now()->englishDayOfWeek, $this->lessonDays);
     }
 
-    private function changeCurrentTopic() : void
-    {    
+    private function changeCurrentTopic(): void
+    {
         $this->userCourse()->userCompletedCourseTopics()
             ->where('level_id', $this->level()->id)
             ->update([
@@ -63,18 +63,18 @@ class ClassroomViewModel extends ViewModel
         if ($this->isLessonDay) {
             return $level;
         }
-        
+
         if ($this->userCourse()->userCompletedCourseTopics()->where('level_id', $level->id)->count() > 0) {
             return $level;
         }
-        
+
         return $this->course->levels()->first();
     }
 
     public function topic()
     {
         $topic = $this->level()->topics()->whereSlug($this->topicSlug)->first();
-        
+
         if ($this->isLessonDay) {
             return $topic;
         }

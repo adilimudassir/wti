@@ -17,7 +17,10 @@ class Payment extends Component
 
     public $receipt = null;
 
-    public $create = false, $edit = false, $updateReceipt = false, $paymentToBeVerified = false;
+    public $create = false;
+    public $edit = false;
+    public $updateReceipt = false;
+    public $paymentToBeVerified = false;
 
     protected $rules = [
         'payment.type' => 'nullable',
@@ -72,7 +75,7 @@ class Payment extends Component
     {
         $this->validate();
 
-        if($this->payment->method == 'Bank Transfer') {
+        if ($this->payment->method == 'Bank Transfer') {
             $this->payment->receipt = $this->receipt->store('receipts');
         }
 
@@ -89,7 +92,7 @@ class Payment extends Component
     public function update()
     {
         $this->validate();
-        
+
         $this->payment->save();
 
         $this->edit = false;
@@ -126,7 +129,7 @@ class Payment extends Component
         if ($this->payment->status() === 'Complete') {
             $this->payment->completed = true;
         }
-        
+
         $this->payment->save();
 
         $this->paymentToBeVerified = null;
@@ -142,7 +145,7 @@ class Payment extends Component
             unset($paymentTypes['Partial']);
         }
 
-        if($this->userCourse->paymentStatus() === 'Partial') {
+        if ($this->userCourse->paymentStatus() === 'Partial') {
             unset($paymentTypes['Complete']);
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace Domains\Payment\Repositories;
 
 use Domains\Payment\Models\Payment;

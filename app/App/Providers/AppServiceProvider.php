@@ -34,7 +34,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('partials.menus.classroom', function ($view) {
-
             if (request('course') && Route::is('classroom.*')) {
                 $view->with('course', Course::whereSlug(request('course'))->first());
             }

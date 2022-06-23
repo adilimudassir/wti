@@ -41,7 +41,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         }
 
         return back()->withFlashSuccess('Profile Updated');
-
     }
 
     /**

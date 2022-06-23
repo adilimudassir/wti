@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Domains\Auth\Models\User;
-use Domains\Student\Models\Student;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;

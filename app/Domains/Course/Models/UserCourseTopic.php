@@ -2,8 +2,6 @@
 
 namespace Domains\Course\Models;
 
-use Domains\Course\Models\Topic;
-use Domains\Course\Models\UserCourse;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

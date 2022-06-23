@@ -10,7 +10,9 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 
 class UserLoggedOut
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
      * Create a new event instance.
@@ -18,7 +20,8 @@ class UserLoggedOut
      * @return void
      */
     public function __construct(public User $user)
-    {}
+    {
+    }
 
     /**
      * Get the channels the event should broadcast on.
