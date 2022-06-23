@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Domains\Course\Models\Level;
 use Domains\Course\Models\Topic;
 use Domains\Course\Models\Course;
 

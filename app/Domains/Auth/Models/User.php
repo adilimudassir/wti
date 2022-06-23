@@ -15,14 +15,14 @@ use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 
 class User extends Authenticatable implements Recordable, MustVerifyEmail
 {
-    use HasRoles,
-        Notifiable,
-        Impersonate,
-        MustVerifyEmailTrait,
-        \Altek\Accountant\Recordable;
+    use HasRoles;
+    use Notifiable;
+    use Impersonate;
+    use MustVerifyEmailTrait;
+    use \Altek\Accountant\Recordable;
 
     protected $table = 'users';
-        
+
     /**
      * The attributes that are mass assignable.
      *
@@ -82,7 +82,7 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
     ];
 
     /**
-     * 
+     *
      * Get Account types
      */
     public static $TYPES = [
@@ -94,7 +94,7 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
      */
     public function sendEmailVerificationNotification(): void
     {
-        $this->notify(new VerifyEmail);
+        $this->notify(new VerifyEmail());
     }
 
     /**

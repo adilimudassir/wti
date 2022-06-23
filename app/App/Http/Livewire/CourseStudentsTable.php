@@ -81,11 +81,11 @@ class CourseStudentsTable extends DataTableComponent
             'batch' => Filter::make('Batch')
                 ->select(
                     array_merge(
-                    [
+                        [
                             '' => 'Any'
                             ],
-                    $this->course->batches()->get()->pluck("name", 'name')->toArray()
-                )
+                        $this->course->batches()->get()->pluck("name", 'name')->toArray()
+                    )
                 )
         ];
     }

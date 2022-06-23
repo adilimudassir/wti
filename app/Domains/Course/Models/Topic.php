@@ -3,15 +3,14 @@
 namespace Domains\Course\Models;
 
 use Spatie\Sluggable\HasSlug;
-use Domains\Course\Models\Level;
 use Spatie\Sluggable\SlugOptions;
 use Domains\General\Models\BaseModel;
-use Domains\Course\Models\UserCourseTopic;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Topic extends BaseModel
 {
-    use HasFactory, HasSlug;
+    use HasFactory;
+    use HasSlug;
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +22,7 @@ class Topic extends BaseModel
         'level_id',
         'previous_topic_id'
     ];
-    
+
     /**
      * Get the level that owns the topic.
      */
