@@ -28,7 +28,7 @@ class BatchController extends Controller
         Batch::findOrFail($id)->update($request->all());
 
         alert()->success('Batch Updated')->toToast();
-        
+
         return back();
     }
 

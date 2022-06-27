@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Spatie\Html\Elements\Element;
 use Illuminate\Support\Facades\View;
 use App\ViewModels\ClassroomViewModel;
 use App\ViewModels\ClassSchedulesViewModel;
@@ -36,7 +35,7 @@ class ClassroomController extends Controller
             alert()->info('Class has Not started yet');
             return redirect()->route('classroom.index');
         }
-        
+
         if ($classroomViewModel->isLectureDay()) {
             alert()->html(
                 "<h1>Hello, " . auth()->user()->name . "</h1>",

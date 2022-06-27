@@ -8,12 +8,12 @@ use Spatie\ViewModels\ViewModel;
 class ClassSchedulesViewModel extends ViewModel
 {
     use LectureDays;
-    
+
     public function dayOfTheWeek()
     {
         return [
             'day' => now()->englishDayOfWeek,
-            'description' => match($this->isLectureDay()) {
+            'description' => match ($this->isLectureDay()) {
                 true => 'Study Day',
                 false => 'Review Day'
             }

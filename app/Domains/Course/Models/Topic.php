@@ -82,7 +82,7 @@ class Topic extends BaseModel
         if (blank($userCourse)) {
             return false;
         }
-        
+
         return filled($userCourse->userCompletedCourseTopics()->where('topic_id', $this->id)->first());
     }
 }

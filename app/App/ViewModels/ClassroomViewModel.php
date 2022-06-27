@@ -4,7 +4,6 @@ namespace App\ViewModels;
 
 use Domains\Course\Models\Level;
 use Domains\Course\Models\Topic;
-use Spatie\ViewModels\ViewModel;
 use Domains\Course\Repositories\CourseRepository;
 
 class ClassroomViewModel extends ClassSchedulesViewModel

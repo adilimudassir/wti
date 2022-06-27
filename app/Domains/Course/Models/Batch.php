@@ -44,6 +44,6 @@ class Batch extends Model
 
     public function isActive()
     {
-        return $this->started() && !$this->ended(); 
+        return $this->started() && !$this->ended();
     }
 }

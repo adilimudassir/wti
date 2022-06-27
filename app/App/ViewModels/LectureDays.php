@@ -1,6 +1,6 @@
 <?php
-namespace App\ViewModels;
 
+namespace App\ViewModels;
 
 trait LectureDays
 {
@@ -15,7 +15,7 @@ trait LectureDays
         '200' => 3,
         '300' => 4
     ];
-    
+
     public function isLectureDay()
     {
         return in_array(now()->englishDayOfWeek, $this->lectureDays);
@@ -23,7 +23,7 @@ trait LectureDays
 
     public function batchOngoing()
     {
-        return $this->userCourse()->batch->isActive();
+        return $this->userCourse()?->batch?->isActive();
     }
 
     public function userCourse()
