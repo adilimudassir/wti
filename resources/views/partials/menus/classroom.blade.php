@@ -20,12 +20,13 @@
 @php
 
 if (! $topic instanceof Domains\Course\Models\Topic) {
-    $topic = $topic->topic;
+$topic = $topic->topic;
 }
 
 $model = $topic->userCourseTopics()->where('user_course_id', $userCourse->id)->where('level_id', $topic?->level->id)->first() ?? null;
 @endphp
 <div class="menu-item">
+    @if($topic->completed($userCourse))
     <a href="{{ route('classroom.show', [$topic->level->course->slug, $topic->level->title, $topic->slug]) }}" class="menu-link {{ $topic->slug === request('topic') ? 'active' : '' }}">
         <span class="menu-bullet">
             <span class="bullet bullet-dot"></span>
@@ -35,6 +36,14 @@ $model = $topic->userCourseTopics()->where('user_course_id', $userCourse->id)->w
         <span class='badge badge-light-primary'><i class='bi bi-check'></i></span>
         @endif
     </a>
+    @else
+    <a href="#" class="menu-link {{ $topic->slug === request('topic') ? 'active' : '' }}">
+        <span class="menu-bullet">
+            <span class="bullet bullet-dot"></span>
+        </span>
+        <span class="menu-title">{{ $topic->title }}</span>
+    </a>
+    @endif
 </div>
 @endforeach
 @endif

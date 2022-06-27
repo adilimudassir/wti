@@ -53,14 +53,23 @@ class Level extends BaseModel
      */
     public function currentLevelTopic(UserCourse $userCourse)
     {
-        $user_course_topic = UserCourseTopic::where('user_course_id', $userCourse->id)
+        $user_course_topic = \Domains\Course\Models\UserCourseTopic::where('user_course_id', $userCourse->id)
             ->where('level_id', $this->id)
-            ->where('is_current', true)
+            ->orderBy('created_at', 'DESC')
             ->first();
 
         return [
             'topic' => filled($user_course_topic) ? $user_course_topic->topic : $this->topics->first(),
             'level' => filled($user_course_topic) ? $user_course_topic->level : $this
         ];
+    }
+
+    public function completed()
+    {
+        if (session()->has('userCourse')) {
+            return $this->userLevelProgress(session('userCourse'))['percentage'] === 100;
+        }
+
+        return false;
     }
 }

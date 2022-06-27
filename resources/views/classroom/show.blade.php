@@ -2,12 +2,7 @@
     <x-slot name="title">
         {{ $course->title }}'s Class Room
     </x-slot>
-    <x-card class="bg-light-primary">
-        <x-slot name="header" class="bg-primary text-white">
-            <span class="text-white">
-                {{ $topic->title }}
-            </span>
-        </x-slot>
+    <x-card class="bg-light-primary">eeee
         <x-slot name="body">
             {!! $topic->content !!}
         </x-slot>
@@ -27,7 +22,7 @@
                 @endif
             </div>
             <div class="d-grid my-5">
-                <x-button name="Leave Classroom" :href="route('classroom.index')" class="btn btn-outline btn-outline-dashed btn-outline-primary btn-active-light-primary fw-bolder"  icon="bi bi-arrow-left-square fs-1 text-primary" />
+                <x-button name="Leave Classroom" :href="route('classroom.index')" class="btn btn-outline btn-outline-dashed btn-outline-primary btn-active-light-primary fw-bolder" icon="bi bi-arrow-left-square fs-1 text-primary" />
             </div>
         </x-slot>
     </x-card>

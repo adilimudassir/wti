@@ -45,4 +45,25 @@
             </fieldset>
         </x-slot>
     </x-card>
+    {{
+        html()
+            ->modelForm($batch, 'PATCH', route('batches.update', $batch->id))
+            ->class('form-horizontal')
+        ->open() 
+    }}
+    <x-card>
+        <x-slot name="header">
+            Update Batch
+        </x-slot>
+        <x-slot name="body">
+            <x-form.text name="name" label="Name" />
+            <x-form.date name="start_date" label="Start Date" />
+            <x-form.date name="end_date" label="End Date" />
+        </x-slot>
+        <x-slot name="footer">
+            <x-form.actions label="Update" :back-route="route('courses', $batch->course)" />
+        </x-slot>
+    </x-card>
+    {{ html()->closeModelForm() }}
+
 </x-layouts.app>

@@ -76,4 +76,13 @@ class Topic extends BaseModel
     {
         return $this->hasMany(UserCourseTopic::class);
     }
+
+    public function completed($userCourse = null)
+    {
+        if (blank($userCourse)) {
+            return false;
+        }
+        
+        return filled($userCourse->userCompletedCourseTopics()->where('topic_id', $this->id)->first());
+    }
 }

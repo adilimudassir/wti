@@ -162,7 +162,7 @@ class UserCourse extends BaseModel
     {
         return $this->userCompletedCourseTopics()
             ->orderBy('created_at', 'DESC')
-            ->first()->topic
+            ->first()
         ?? $this->course->levels()->first()->topics()->first();
     }
 

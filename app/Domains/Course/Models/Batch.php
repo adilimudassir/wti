@@ -31,4 +31,19 @@ class Batch extends Model
     {
         return $this->hasMany(UserCourse::class);
     }
+
+    public function started()
+    {
+        return $this->start_date->lessThan(now());
+    }
+
+    public function ended()
+    {
+        return $this->end_date->lessThan(now());
+    }
+
+    public function isActive()
+    {
+        return $this->started() && !$this->ended(); 
+    }
 }
