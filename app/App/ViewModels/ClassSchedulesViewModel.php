@@ -22,8 +22,7 @@ class ClassSchedulesViewModel extends ViewModel
 
     public function totalLectureDays()
     {
-        // return @$this->lectureWeeks[$this->level()?->name] * count($this->lectureDays);
-        return $this->lecturesPerDay[$this->level()?->name];
+        return @$this->lectureWeeks[$this->level()?->name] * count($this->lectureDays);
     }
 
     public function totalTopics()
@@ -33,7 +32,8 @@ class ClassSchedulesViewModel extends ViewModel
 
     public function totalTopicsPerDay()
     {
-        return floor($this->totalTopics() / max($this->totalLectureDays(), 1));
+        // return floor($this->totalTopics() / max($this->totalLectureDays(), 1));
+        return $this->lecturesPerDay[$this->level()?->name];
     }
 
     public function level()
