@@ -10,6 +10,12 @@ trait LectureDays
         'Wednesday',
     ];
 
+    public array $lecturesPerDay = [
+        '100' => 3,
+        '200' => 4,
+        '300' => 4
+    ];
+
     public array $lectureWeeks = [
         '100' => 3,
         '200' => 3,
