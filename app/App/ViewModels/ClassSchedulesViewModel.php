@@ -33,7 +33,7 @@ class ClassSchedulesViewModel extends ViewModel
     public function totalTopicsPerDay()
     {
         // return floor($this->totalTopics() / max($this->totalLectureDays(), 1));
-        return $this->lecturesPerDay[$this->level()?->name];
+        return @$this->lecturesPerDay[$this->level()?->name];
     }
 
     public function level()
