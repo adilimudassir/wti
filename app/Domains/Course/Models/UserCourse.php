@@ -173,6 +173,10 @@ class UserCourse extends BaseModel
 
     public function sendAdmissionLetter()
     {
+        if ($this->paymentStatus() == 'Pending Purchase') {
+            return ;
+        }
+        
         if (filled($this->matriculation_number)) {
             return;
         }
