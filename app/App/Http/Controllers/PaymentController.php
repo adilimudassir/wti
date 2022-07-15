@@ -8,6 +8,8 @@ use App\Repositories\FileUpload;
 use Domains\Payment\Models\Payment;
 use Illuminate\Support\Facades\Mail;
 use Domains\Course\Models\UserCourse;
+use App\Notifications\PaymentVerified;
+use App\Notifications\PaymentSubmitted;
 use App\Http\Requests\PaymentFormRequest;
 use KingFlamez\Rave\Facades\Rave as Flutterwave;
 use Domains\Payment\Repositories\PaymentRepository;
@@ -114,6 +116,8 @@ class PaymentController extends Controller
         Mail::to('operations@wavecresttradinginstitute.com')
             ->send(new PaymentMade($userCourse, route('payments.show', $paymentInstance->id)));
 
+        $userCourse->user->notify(new PaymentSubmitted($paymentInstance));
+        
         if ($request->payment_method == 'Bank Transfer') {
             $redirect = route('dashboard');
         }
@@ -152,6 +156,8 @@ class PaymentController extends Controller
         $payment->save();
 
         alert()->success('Payment Verified!')->toToast();
+
+        $payment->userCourse?->user?->notify(new PaymentVerified($payment));
 
         return back();
     }
