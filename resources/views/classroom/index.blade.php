@@ -39,7 +39,9 @@
                     <span class="badge badge-light-primary fw-bolder me-auto px-12 py-3">{{ $userCourse->status() }}</span>
                 </div>
             </div>
+            @if($userCourse->batch?->started())
             <div class="card-body">
+
                 <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                     <div class="d-flex align-items-center">
                         <div class="fs-3 fw-bolder counted">Day of the Week</div>
@@ -146,6 +148,19 @@
                     </div>
                 </fieldset>
             </div>
+            @else
+            <div class="text-center fs-3 text-primary flex items-center justify-center">
+                <img src="{{ asset('assets/media/illustrations/waiting.svg')}}" alt="" class="w-25 min-w-150px h-auto min-h-150px" />
+                <p class="py-5">
+                    It's not time to start just yet. Relax
+                </p>
+
+                <h1 class="text-center text-primary fs-1">
+                    {{ $userCourse->batch->daysUntilStarted() }} Days Left
+                </h1>
+
+            </div>
+            @endif
         </div>
         @else
         <div class="rounded bg-white border p-10">

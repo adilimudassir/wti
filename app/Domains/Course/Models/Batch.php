@@ -46,4 +46,20 @@ class Batch extends Model
     {
         return $this->started() && !$this->ended();
     }
+
+    /**
+     * Days since batch started
+     */
+    public function daysSinceStarted()
+    {
+        return $this->start_date->diffInDays(now());
+    }
+
+    /**
+     * Days until batch starts
+     */
+    public function daysUntilStarted()
+    {
+        return $this->start_date->diffInDays(now());
+    }
 }
