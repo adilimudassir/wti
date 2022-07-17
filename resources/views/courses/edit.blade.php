@@ -17,7 +17,7 @@
             <x-form.text-editor name="outline" name="outline" />
         </x-slot>
         <x-slot name="footer">
-            <x-form.actions label="Update" :back-route="route('courses', $course)" />
+            <x-form.actions label="Update" :back-route="route('courses.overview', $course)" />
         </x-slot>
     </x-card>
     {{ html()->closeModelForm() }}

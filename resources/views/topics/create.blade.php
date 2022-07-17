@@ -12,7 +12,7 @@
             @include('topics.form')
         </x-slot>
         <x-slot name="footer">
-            <x-form.actions label="Submit" :back-route="route('courses', $course->slug)" />
+            <x-form.actions label="Submit" :back-route="route('courses.overview', $course->slug)" />
         </x-slot>
     </x-card>
 

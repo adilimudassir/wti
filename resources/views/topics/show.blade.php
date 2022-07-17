@@ -4,7 +4,7 @@
     </x-slot>
     <div class="d-flex justify-content-between mb-3">
         <div>
-            <x-button.link :href="route('courses', [$topic->level?->course?->slug, 'course' => $topic->level?->course?->slug])" class="btn btn-sm btn-light-primary" text="Back" icon="bi bi-chevron-left" />
+            <x-button.link :href="route('courses.overview', [$topic->level?->course?->slug, 'course' => $topic->level?->course?->slug])" class="btn btn-sm btn-light-primary" text="Back" icon="bi bi-chevron-left" />
         </div>
         <div>
             <x-button name="edit" :href="route('topics.edit', [$topic->id, 'course' => $topic->level?->course?->slug])" permission="update-topics" class="btn btn-sm btn-primary" icon="bi bi-pencil" />

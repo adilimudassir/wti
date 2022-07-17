@@ -4,7 +4,7 @@
     </x-slot>
     <div class="d-flex justify-content-between mb-3">
         <div>
-            <x-button.link :href="route('courses', $batch->course)" class="btn btn-sm btn-light-primary" text="Back" icon="bi bi-chevron-left" />
+            <x-button.link :href="route('courses.overview', $batch->course)" class="btn btn-sm btn-light-primary" text="Back" icon="bi bi-chevron-left" />
         </div>
         <div>
             @can('edit-batches')
@@ -61,7 +61,7 @@
             <x-form.date name="end_date" label="End Date" />
         </x-slot>
         <x-slot name="footer">
-            <x-form.actions label="Update" :back-route="route('courses', $batch->course)" />
+            <x-form.actions label="Update" :back-route="route('courses.overview', $batch->course)" />
         </x-slot>
     </x-card>
     {{ html()->closeModelForm() }}

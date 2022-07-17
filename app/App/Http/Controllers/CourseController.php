@@ -36,6 +36,6 @@ class CourseController extends Controller
         $course = Course::find($id);
         $course->update($request->all());
         alert()->success('Course Information Updated')->toToast();
-        return redirect()->route('courses', $course->slug);
+        return redirect()->route('courses.overview', $course->slug);
     }
 }

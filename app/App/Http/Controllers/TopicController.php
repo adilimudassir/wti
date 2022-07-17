@@ -101,7 +101,7 @@ class TopicController extends Controller
         $course = $topic->level?->course;
 
         return redirect()
-            ->route('courses', $course->slug)
+            ->route('courses.overview', $course->slug)
             ->withFlashSuccess('Topic Deleted Successfully!');
     }
 }

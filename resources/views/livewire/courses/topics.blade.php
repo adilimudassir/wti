@@ -1,4 +1,3 @@
-
 <div>
     <x-card>
         <x-slot name="header">
@@ -22,7 +21,7 @@
                     <div>
                         {{ $topic->title }}
                     </div>
-                    <div>
+                    <div class="ms-auto">
                         @include('topics.actions')
                     </div>
                 </legend>
