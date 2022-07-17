@@ -21,8 +21,12 @@
                     <div>
                         {{ $topic->title }}
                     </div>
-                    <div class="ms-auto">
-                        @include('topics.actions')
+                    <div class="ms-auto d-flex justify-content-end gap-1">
+                        <x-button name="View" :href="route('topics.show', [$topic->slug, 'course' => $course->slug])" permission="read-topics" class="btn btn-light-success btn-sm" />
+                        <x-button name="Edit" :href="route('topics.edit', [$topic->id, 'course' => $course->slug])" permission="update-topics" class="btn btn-light-info btn-sm" />
+                        <x-button.delete :href="route('topics.delete', [$topic->id, 'course' => $course->slug])" permission="delete-topics" class="btn btn-light-primary btn-sm">
+                            Delete
+                        </x-button.delete>
                     </div>
                 </legend>
                 {{ $topic->excerpt }}
