@@ -50,24 +50,26 @@ class Costs extends Component
         array_push($this->partialItems, $i);
     }
 
-    public function removePartial($index)
+    public function removePartial($index, $item)
     {
         unset($this->partialItems[$index]);
+        unset($this->partials[$item]);
     }
 
     public function save()
     {
         $this->validate();
 
-        if (! $this->course->allow_partial_payments) {
-            $this->course->partial_payments_allowed = 0;
-        }
-
         $this->course->partial_payments = collect($this->partials)->mapWithKeys(function ($partial, $key) {
             return [
                 'partial_' . --$key => $partial,
             ];
         });
+
+        if (!$this->course->allow_partial_payments) {
+            $this->course->partial_payments_allowed = 0;
+            $this->course->partial_payments = null;
+        }
                 
 
         $this->course->save();

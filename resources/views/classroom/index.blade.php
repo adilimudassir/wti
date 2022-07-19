@@ -107,36 +107,36 @@
                         <i class="fa fa-angle-down fa-xl mt-2 text-primary"></i>
                     </legend>
                     @forelse($userCourse->allowedLevels() as $key => $level)
-                    @php
-                    $levelStatus = $level->userLevelProgress($userCourse);
-                    $currentLevelTopic = $level->currentLevelTopic($userCourse);
-                    @endphp
-                    @if(blank($level->topics))
-                    @continue
-                    @endif
-                    <a href="{{ route('classroom.show', [$userCourse?->course->slug, $currentLevelTopic['level']->title, $currentLevelTopic['topic']]) }}" class="card col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="bg-light-primary text-primary bg-hover-primary text-hover-white my-1 @if($key === 0) ml-0 mr-1 @else m-1 @endif border card-body lh-xl ls-3">
-                            {{ $level->title }} ({{ $level->name }})
-                            @if($levelStatus['percentage'] === 100)
-                            <i class="bi bi-check-lg text-success fs-1"></i>
-                            @endif
-                            <br>
-                            <small class="text-muted text-hover-white">{{ $level->description }}</small>
-                            <br>
-                            <span class="">
-                                Completed: {{ $levelStatus['completed'] }} / {{ $levelStatus['total'] }}
-                                ({{ $levelStatus['percentage'] }}%)
-                            </span>
-                        </div>
-                    </a>
-                    @empty
-                    <div class="text-center fs-3 text-primary ">
-                        <img src="{{ asset('assets/media/illustrations/empty.svg')}}" alt="" class="w-25 min-w-150px h-auto min-h-150px" />
-                        <p>It seems you have'nt purchased this course yet</p>
-                        @if($userCourse->canMakePayment())
-                        <x-button name="Proceed to payment" :href="route('payments.create', ['user_course_id' => $userCourse->id])" permission="create-payments" class="btn btn-sm btn-primary" icon="bi bi-plus" />
+                        @php
+                            $levelStatus = $level->userLevelProgress($userCourse);
+                            $currentLevelTopic = $level->currentLevelTopic($userCourse);
+                        @endphp
+                        @if(blank($level->topics))
+                            @continue
                         @endif
-                    </div>
+                        <a href="{{ route('classroom.show', [$userCourse?->course->slug, $currentLevelTopic['level']->title, $currentLevelTopic['topic']]) }}" class="card col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div class="bg-light-primary text-primary bg-hover-primary text-hover-white my-1 @if($key === 0) ml-0 mr-1 @else m-1 @endif border card-body lh-xl ls-3">
+                                {{ $level->title }} ({{ $level->name }})
+                                @if($levelStatus['percentage'] === 100)
+                                <i class="bi bi-check-lg text-success fs-1"></i>
+                                @endif
+                                <br>
+                                <small class="text-muted text-hover-white">{{ $level->description }}</small>
+                                <br>
+                                <span class="">
+                                    Completed: {{ $levelStatus['completed'] }} / {{ $levelStatus['total'] }}
+                                    ({{ $levelStatus['percentage'] }}%)
+                                </span>
+                            </div>
+                        </a>
+                    @empty
+                        <div class="text-center fs-3 text-primary ">
+                            <img src="{{ asset('assets/media/illustrations/empty.svg')}}" alt="" class="w-25 min-w-150px h-auto min-h-150px" />
+                            <p>It seems you have'nt purchased this course yet</p>
+                            @if($userCourse->canMakePayment())
+                            <x-button name="Proceed to payment" :href="route('payments.create', ['user_course_id' => $userCourse->id])" permission="create-payments" class="btn btn-sm btn-primary" icon="bi bi-plus" />
+                            @endif
+                        </div>
                     @endforelse
                 </fieldset>
             </div>

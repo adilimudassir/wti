@@ -217,17 +217,24 @@ class UserCourse extends BaseModel
             return $this->course->levels;
         }
 
+
         if ($this->course->allow_partial_payments) {
-            if (($this->course->partial_payments_allowed >= 3) && ($this->verifiedPayments()->count() === 1)) {
+            $percentage  = ($this->verifiedPayments()->count() / $this->course->partial_payments_allowed) * 100;
+
+            if ($percentage === 0) {
+                return new Collection([]);
+            }
+
+            if ($percentage < 30 ) {
+                return $this->course->levels->take(1);
+            }
+
+            if ($percentage < 60) {
                 return $this->course->levels->take(2);
             }
 
-            if (($this->course->partial_payments_allowed >= 3) && ($this->verifiedPayments()->count() === 2)) {
+            if ($percentage === 100) {
                 return $this->course->levels->take(3);
-            }
-
-            if (($this->course->partial_payments_allowed >= 3) && ($this->verifiedPayments()->count() === 3)) {
-                return $this->course->levels->take(4);
             }
         }
 

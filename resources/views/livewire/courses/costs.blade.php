@@ -31,7 +31,7 @@
                                 @error('partials.'.$item) <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="col">
-                                <button wire:click.prevent="removePartial({{$key}})" class="btn btn-danger" style="margin-top: 18px;"><i class="fa fa-times"></i></button>
+                                <button wire:click.prevent="removePartial({{$key}}, {{$item}})" class="btn btn-danger" style="margin-top: 18px;"><i class="fa fa-times"></i></button>
                             </div>
                         </div>
                         @endforeach

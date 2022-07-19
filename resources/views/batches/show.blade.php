@@ -38,7 +38,7 @@
                 <div class="d-flex flex-column">
                     @foreach($batch->userCourses as $userCourse)
                     <li class="d-flex align-items-center py-2">
-                        <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">{{ $userCourse->user->name }} - {{ $userCourse->matriculation_number ?? 'Not Available' }}</span>
+                        <span class="bullet bullet-vertical bg-danger me-5"></span> <span class="text-gray-800">{{ $userCourse->user->name }} - {{ $userCourse->matriculation_number ?? 'Not Admitted yet' }}</span>
                     </li>
                     @endforeach
                 </div>
