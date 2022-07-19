@@ -21,7 +21,7 @@
                         @if($course->allow_partial_payments)
                         <x-form.number name="partial_payment_allowed" wire:model="course.partial_payments_allowed" label="Number of Partial Payments Allowed" />
                         <br>
-                        <button wire:click.prevent="addPartial({{$partialItem}})" class="btn d-block btn-success btn-sm"><i class="fa fa-plus"></i></button>
+                        <button wire:click.prevent="addPartial({{$partialItem}})" class="btn d-block btn-success btn-sm">Add Partial Payment <i class="fa fa-plus"></i></button>
                         <br>
                         @foreach($partialItems as $key => $item)
                         <div class="row">
