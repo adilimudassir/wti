@@ -38,11 +38,15 @@ class PaymentController extends Controller
     public function create(Request $request)
     {
         $this->authorize('create-payments');
+        $partialAmountToBePaid = 0;
 
         $userCourse = UserCourse::find($request->user_course_id);
         $paymentTypes = Payment::$types;
 
-        if (!$userCourse?->course?->allow_partial_payments) {
+        if ($userCourse?->course?->allow_partial_payments) {
+            // unset($paymentTypes['Complete']);
+            $partialAmountToBePaid = $userCourse->getPartialPayableCost();
+        } else {
             unset($paymentTypes['Partial']);
         }
 
@@ -54,6 +58,7 @@ class PaymentController extends Controller
             'userCourse' => $userCourse,
             'paymentMethods' => Payment::$methods,
             'paymentTypes' => $paymentTypes,
+            'partialAmountToBePaid' => $partialAmountToBePaid,
         ]);
     }
 

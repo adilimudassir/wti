@@ -21,6 +21,11 @@ class Course extends BaseModel
         'allow_partial_payments',
         'partial_payments_allowed',
         'is_active',
+        'partial_payments',
+    ];
+
+    protected $casts = [
+        'partial_payments' => 'array',
     ];
 
 

@@ -82,6 +82,7 @@
                         return {
                             payment_type: 'Complete',
                             payment_method: 'Online',
+                            partial_payment_amount: 0,
                             amount: 0,
                             userCourse: null
                         }
@@ -94,7 +95,7 @@
                     methods: {
                         getAmount(value) {
                             if (this.userCourse.course.allow_partial_payments && value === 'Partial') {
-                                return this.userCourse.course.cost / this.userCourse.course.partial_payments_allowed;
+                                return this.partial_payment_amount;
                             }
                             return this.userCourse.course.cost;
                         },
@@ -110,6 +111,7 @@
                         const paymentTypes = @json($paymentTypes);
                         this.amount = this.getAmount(this.payment_type);
                         this.payment_type = Object.keys(paymentTypes)[0];
+                        this.partial_payment_amount = parseFloat(@json($partialAmountToBePaid))
                     }
                 }).mount('#form')
             </script>

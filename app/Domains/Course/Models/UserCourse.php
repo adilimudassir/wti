@@ -86,6 +86,14 @@ class UserCourse extends BaseModel
     }
 
     /**
+     * Get Payable Course Cost
+     */
+    public function getPartialPayableCost()
+    {
+        return $this->course->partial_payments['partial_' . $this->verifiedPayments()->count() + 1];
+    }
+
+    /**
      * Get Payment Status
      */
     public function paymentStatus()
