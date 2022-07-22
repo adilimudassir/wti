@@ -151,6 +151,25 @@ class PaymentController extends Controller
         ]);
     }
 
+    public function update(Request $request, $id)
+    {
+        $this->authorize('update-payments');
+
+        $payment = $this->paymentRepository->getById($id);
+
+        if ($request->payment_method == 'Bank Transfer') {
+            if ($request->receipt) {
+                $payment->receipt = $this->storeFile($request->receipt, 'payments');
+            }
+        }
+        $payment->amount = $request->amount;
+        $payment->save();
+
+        alert()->success('Payment Updated!')->toToast();
+
+        return redirect()->route('payments.show', $payment->id);
+    }
+
     public function verify($id)
     {
         $this->authorize('update-payments');

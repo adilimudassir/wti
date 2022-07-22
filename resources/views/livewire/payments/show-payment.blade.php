@@ -50,6 +50,10 @@
         <small class="text-muted">{{ currency($payment->amount) }}</small>
     </div>
     <div class="d-flex justify-content-between">
+        <span>Amount Due</span>
+        <small class="text-muted">{{ currency($payment->usrCourse?->amountDue()) }}</small>
+    </div>
+    <div class="d-flex justify-content-between">
         Date
         <small class="text-muted">{{ $payment->created_at->format('d M Y') }}</small>
     </div>

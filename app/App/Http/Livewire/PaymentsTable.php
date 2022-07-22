@@ -34,10 +34,6 @@ class PaymentsTable extends DataTableComponent
                 ->format(fn ($value, $column, $row) => currency($value)),
             Column::make('Amount Due', 'amount')
                 ->format(fn ($value, $column, $row) => currency($row->amountDue())),
-            Column::make('Date', 'date')
-                ->searchable()
-                ->sortable()
-                ->format(fn ($value, $column, $row) => $value->format('d/m/Y')),
             Column::make('Verified', 'verified')
                 ->searchable()
                 ->sortable()

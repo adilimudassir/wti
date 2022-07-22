@@ -89,9 +89,23 @@ class UserCourse extends BaseModel
      * Get Payable Course Cost
      */
     public function getPartialPayableCost()
-    {
+    {        
+        //check if it is the last partial payment
+        if ($this->isLastPartialPayment()) {
+            return $this->amountDue();
+        }
+        
         return $this->course->partial_payments['partial_' . $this->verifiedPayments()->count() + 1];
     }
+
+    /**
+     * Last Partial Payment
+     */
+    public function isLastPartialPayment()
+    {
+        return blank(@$this->course->partial_payments['partial_' . $this->verifiedPayments()->count() + 2]);
+    }
+    
 
     /**
      * Get Payment Status

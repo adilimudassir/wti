@@ -18,11 +18,11 @@
             <div>
                 @can('edit-payments')
                 @if(!$payment->verified)
+                <x-button.link :href="route('payments.verify', $payment->id)" text="Verify" />
+                @endif
                 <a class="btn btn-primary btn-sm " href="{{ route('payments.edit', $payment->id) }}">
                     Edit
                 </a>
-                <x-button.link :href="route('payments.verify', $payment->id)" text="Verify" />
-                @endif
                 @endcan
             </div>
         </x-slot>
@@ -41,8 +41,12 @@
                     <small class="text-muted">{{ $payment->method }}</small>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <span>Amount</span>
+                    <span>Amount Paid</span>
                     <small class="text-muted">{{ currency($payment->amount) }}</small>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <span>Amount Due</span>
+                    <small class="text-muted">{{ currency($payment->userCourse?->amountDue()) }}</small>
                 </div>
                 <div class="d-flex justify-content-between">
                     Date
