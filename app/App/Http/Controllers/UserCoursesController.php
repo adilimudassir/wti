@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Domains\Course\Models\UserCourse;
 use Domains\Course\Repositories\CourseRepository;
 
 class UserCoursesController extends Controller
@@ -11,6 +12,7 @@ class UserCoursesController extends Controller
      */
     public function __construct(private CourseRepository $courseRepository)
     {
+        $this->middleware('auth');
     }
 
     public function index()
@@ -24,7 +26,10 @@ class UserCoursesController extends Controller
     {
         $course = $this->courseRepository->getByColumn($course, 'slug');
 
-        $userCourse = auth()->user()->courses()->where('course_id', $course->id)->firstOrFail();
+        $userCourse = UserCourse::query()
+            ->where('user_id', auth()->id())
+            ->where('course_id', $course->id)
+            ->firstOrFail();
 
         return view('user-courses.show', [
             'userCourse' => $userCourse
