@@ -66,6 +66,12 @@ class PaymentController extends Controller
     {
         $userCourse = UserCourse::find($request->user_course_id);
 
+        if ($userCourse->amountDue() <= 0) {
+            alert()->info('Payment Already completed!')->toToast();
+            return redirect()->route('dashboard');
+        }
+        
+        
         $paymentInstance = new Payment();
 
         if ($request->payment_method == 'Bank Transfer') {
@@ -118,10 +124,10 @@ class PaymentController extends Controller
 
         alert()->success('Payment Created!')->toToast();
 
-        Mail::to('operations@wavecresttradinginstitute.com')
-            ->send(new PaymentMade($userCourse, route('payments.show', $paymentInstance->id)));
+        // Mail::to('operations@wavecresttradinginstitute.com')
+        //     ->send(new PaymentMade($userCourse, route('payments.show', $paymentInstance->id)));
 
-        $userCourse->user->notify(new PaymentSubmitted($paymentInstance));
+        // $userCourse->user->notify(new PaymentSubmitted($paymentInstance));
         
         if ($request->payment_method == 'Bank Transfer') {
             $redirect = route('dashboard');
@@ -181,7 +187,7 @@ class PaymentController extends Controller
 
         alert()->success('Payment Verified!')->toToast();
 
-        $payment->userCourse?->user?->notify(new PaymentVerified($payment));
+        // $payment->userCourse?->user?->notify(new PaymentVerified($payment));
 
         return back();
     }
