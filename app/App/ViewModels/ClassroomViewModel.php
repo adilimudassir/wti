@@ -25,12 +25,18 @@ class ClassroomViewModel extends ClassSchedulesViewModel
     {
         $level = $this->course()->levels()->whereTitle($this->levelTitle)->first();
 
-        if (!$this->canTakeNewLecture($level)) {
+        if (
+            !$this->canTakeNewLecture($level) && 
+            (int)$this->userCourse()?->activeTopic()->level->name < (int)$level->name
+        ) {
             // toast("There is no new lecture today");
             return $this->userCourse()?->activeTopic()->level;
         }
 
-        if (!$this->canStartNewLevel($level)) {
+        if (
+            !$this->canStartNewLevel($level) && 
+            (int)$this->userCourse()?->activeTopic()->level->name < (int)$level->name
+        ) {
             // toast("You need to complete previous levels first!");
             return $this->userCourse()?->activeTopic()->level;
         }
