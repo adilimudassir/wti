@@ -20,7 +20,7 @@ class ClassroomMiddleware
         if ($request->has('matriculation_number')) {
             $userCourse = UserCourse::query()
                 ->where('matriculation_number', $request->matriculation_number)
-                ->where('user_id', auth()->user()->id)
+                // ->where('user_id', auth()->user()->id)
                 ->with('batch')
                 ->first();
 
@@ -34,7 +34,7 @@ class ClassroomMiddleware
         if (session()->has('userCourse')) {
             $userCourse = UserCourse::query()
                 ->where('matriculation_number', session('userCourse')->matriculation_number)
-                ->where('user_id', auth()->user()->id)
+                // ->where('user_id', auth()->user()->id)
                 ->with('batch')
                 ->first();
             if ($userCourse) {
