@@ -2,7 +2,7 @@
     <x-slot name="title">
         {{ $course->title }}'s Class Room
     </x-slot>
-    <x-card class="bg-light-primary">eeee
+    <x-card class="bg-light-primary">
         <x-slot name="body">
             {!! $topic->content !!}
         </x-slot>
