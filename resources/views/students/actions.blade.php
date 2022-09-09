@@ -10,7 +10,6 @@
             <x-button name="edit" :href="route('students.edit', $model)" permission="update-students" class="dropdown-item" />
 
         </li>
-        @if ($model->isActive())
         @canBeImpersonated($model)
         <li>
             <x-button.link :href="route('impersonate', $model->id)" class="dropdown-item" :text="'Login as ' . $model->name" permission="impersonate-students" />
@@ -19,7 +18,6 @@
         <li>
             <x-button.link :href="route('students.change-password', $model->id)" class="dropdown-item" :text="'Change Password'" permission="update-students" />
         </li>
-        @endif
         <li>
             @if ($model->id !== 1 && $model->id !== auth()->id())
             <x-button.delete :href="route('students.delete', $model)" permission="delete-students" class="btn btn-light-primary w-100 px-3 btn-sm">Delete</x-button.delete>
