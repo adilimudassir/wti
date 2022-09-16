@@ -53,6 +53,9 @@ if (! function_exists('home_route')) {
     if (!function_exists('currency')) {
         function currency($currency)
         {
+            if (! is_int($currency)) {
+                return $currency;
+            }
             $instance = new \NumberFormatter("en_NG", \NumberFormatter::CURRENCY);
 
             return $instance->format($currency);
