@@ -13,9 +13,9 @@ class CoursesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('courses.overview')->delete();
+        \DB::table('courses')->delete();
 
-        \DB::table('courses.overview')->insert(array(
+        \DB::table('courses')->insert(array(
             0 =>
             array(
                 'allow_partial_payments' => 0,
