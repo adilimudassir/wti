@@ -22,7 +22,7 @@
                     </tr>
                     <tr class="fw-bold fs-3">
                         <th class="w-25">Cost</th>
-                        <td>{{ currency($userCourse->course->cost) }}</td>
+                        <td>{{ currency($userCourse->cost()) }}</td>
                     </tr>
                     <tr class="fw-bold fs-3 text-success">
                         <th class="w-25">Total Paid</th>
