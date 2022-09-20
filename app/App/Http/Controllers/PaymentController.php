@@ -40,7 +40,7 @@ class PaymentController extends Controller
         $this->authorize('create-payments');
         $partialAmountToBePaid = 0;
 
-        $userCourse = UserCourse::find($request->user_course_id);
+        $userCourse = UserCourse::with('user')->find($request->user_course_id);
         $paymentTypes = Payment::$types;
 
         if ($userCourse?->course?->allow_partial_payments) {
@@ -52,6 +52,10 @@ class PaymentController extends Controller
 
         if ($userCourse?->paymentStatus() === 'Partial') {
             unset($paymentTypes['Complete']);
+        }
+
+        if ($userCourse->account_type === 'REGULAR') {
+            
         }
 
         return view('payments.create', [

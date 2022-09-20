@@ -117,11 +117,11 @@ class UserCourse extends BaseModel
         }
 
         if ($this->totalPaymentsBalance() > 0
-         && $this->totalPaymentsBalance() < $this->course->cost) {
+            && $this->totalPaymentsBalance() < $this->cost()) {
             return 'Partial';
         }
 
-        if ($this->totalPaymentsBalance() == $this->course->cost) {
+        if ($this->totalPaymentsBalance() == $this->cost()) {
             return 'Paid';
         }
 
@@ -169,7 +169,18 @@ class UserCourse extends BaseModel
      */
     public function amountDue(): Int
     {
-        return $this->course?->cost - $this->totalPaymentsBalance();
+        return  $this->cost() - $this->totalPaymentsBalance();
+    }
+
+    public function cost()
+    {
+        $cost = $this->course?->cost;
+
+        if ($this->user->account_type === 'REGULAR') {
+            $cost = 50000;
+        }
+
+        return $cost;
     }
 
     /**
@@ -200,6 +211,7 @@ class UserCourse extends BaseModel
         }
         
         if (filled($this->matriculation_number)) {
+            // $this->user->notify(new AdmissionLetter($this));
             return;
         }
 

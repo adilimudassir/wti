@@ -97,6 +97,15 @@
                             if (this.userCourse.course.allow_partial_payments && value === 'Partial') {
                                 return this.partial_payment_amount;
                             }
+
+                            if (this.userCourse.user.account_type === 'REGULAR') {
+                                return 50000;
+                            }
+
+                            // if (this.userCourse.user.account_type === 'Staff') {
+                            //     return 0;
+                            // }
+
                             return this.userCourse.course.cost;
                         },
                         formatAsMoney: (amount = 0) => {
