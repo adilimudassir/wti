@@ -98,7 +98,7 @@
                                 return this.partial_payment_amount;
                             }
 
-                            if (this.userCourse.user.account_type === 'REGULAR') {
+                            if (this.userCourse.user.account_type === 'REGULAR STUDENT') {
                                 return 50000;
                             }
 

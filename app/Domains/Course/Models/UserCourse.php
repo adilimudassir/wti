@@ -176,7 +176,7 @@ class UserCourse extends BaseModel
     {
         $cost = $this->course?->cost;
 
-        if ($this->user->account_type === 'REGULAR') {
+        if ($this->user->account_type === 'REGULAR STUDENT') {
             $cost = 50000;
         }
 
