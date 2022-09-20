@@ -40,6 +40,6 @@ trait FileUpload
 
     private function fileSystem()
     {
-        return 'public';
+        return env('FILESYSTEM_DRIVER');
     }
 }
