@@ -53,12 +53,12 @@ if (! function_exists('home_route')) {
     if (!function_exists('currency')) {
         function currency($currency)
         {
-            if (! is_int($currency)) {
+            if (! is_int((int)$currency)) {
                 return $currency;
             }
             $instance = new \NumberFormatter("en_NG", \NumberFormatter::CURRENCY);
 
-            return $instance->format($currency);
+            return $instance->format((int)$currency);
             // setlocale(LC_MONETARY, 'en_NG.UTF-8');
             // return money_format('%.2n', $currency);
         }
