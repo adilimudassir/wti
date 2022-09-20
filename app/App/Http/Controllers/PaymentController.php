@@ -128,10 +128,10 @@ class PaymentController extends Controller
 
         alert()->success('Payment Created!')->toToast();
 
-        // Mail::to('operations@wavecresttradinginstitute.com')
-        //     ->send(new PaymentMade($userCourse, route('payments.show', $paymentInstance->id)));
+        Mail::to('operations@wavecresttradinginstitute.com')
+            ->send(new PaymentMade($userCourse, route('payments.show', $paymentInstance->id)));
 
-        // $userCourse->user->notify(new PaymentSubmitted($paymentInstance));
+        $userCourse->user->notify(new PaymentSubmitted($paymentInstance));
         
         if ($request->payment_method == 'Bank Transfer') {
             $redirect = route('dashboard');
@@ -191,7 +191,7 @@ class PaymentController extends Controller
 
         alert()->success('Payment Verified!')->toToast();
 
-        // $payment->userCourse?->user?->notify(new PaymentVerified($payment));
+        $payment->userCourse?->user?->notify(new PaymentVerified($payment));
 
         return back();
     }
