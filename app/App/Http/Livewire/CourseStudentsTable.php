@@ -84,7 +84,7 @@ class CourseStudentsTable extends DataTableComponent
                         [
                             '' => 'Any'
                             ],
-                        $this->course->batches()->get()->pluck("name", 'name')->toArray()
+                        $this->course->batches()->get()->pluck("name", 'id')->toArray()
                     )
                 )
         ];
