@@ -30,7 +30,14 @@ class PaymentsTable extends DataTableComponent
                 ->format(fn ($value, $column, $row) => html()->a(route('user-courses.show', $row->userCourse->course), $value)),
             Column::make('Account Type', 'userCourse.user.account_type')
                 ->searchable()
-                ->sortable(),
+                ->sortable()
+                ->format(fn ($value, $column, $row) =>
+                match ($row->verified) {
+                    'CORPS MEMBER' => "<span class='badge badge-success'>$value</span>",
+                    'REGULAR MEMBER' => "<span class='badge badge-info' >$value</span>",
+                    'Staff' => "<span class='badge badge-danger' >$value</span>",
+                    default => 'N/A'
+                })->asHtml(),
             Column::make('Amount Paid', 'amount')
                 ->searchable()
                 ->sortable()
