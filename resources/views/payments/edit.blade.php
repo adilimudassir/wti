@@ -19,7 +19,7 @@
                     Fill below to update to payment amount
                     <i class="fa fa-angle-down fa-xl mt-2 text-primary"></i>
                 </p>
-                <x-form method="POST" :route="route('payments.update', $payment->id)" :back-route="route('payments.show', $payment->id)" files>
+                <x-form method="PATCH" :route="route('payments.update', $payment->id)" :back-route="route('payments.show', $payment->id)" files>
                     <h3 class="my-5 p-2 border">
                         <label for="staticEmail" class="form-label fs-6 fw-bolder text-dark mt-5">Amount to Pay</label>
 
