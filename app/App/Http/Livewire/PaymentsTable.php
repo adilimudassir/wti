@@ -32,7 +32,7 @@ class PaymentsTable extends DataTableComponent
                 ->searchable()
                 ->sortable()
                 ->format(fn ($value, $column, $row) =>
-                match ($row->verified) {
+                match ($value) {
                     'CORPS MEMBER' => "<span class='badge badge-success'>$value</span>",
                     'REGULAR MEMBER' => "<span class='badge badge-info' >$value</span>",
                     'Staff' => "<span class='badge badge-danger' >$value</span>",
