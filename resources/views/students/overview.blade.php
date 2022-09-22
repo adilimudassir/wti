@@ -18,6 +18,10 @@
                 <td>{{ $student->phone }}</td>
             </tr>
             <tr>
+                <th>Account Type</th>
+                <td>{{ $student->account_type }}</td>
+            </tr>
+            <tr>
                 <th>Status</th>
                 <td>
                     <x-badge :type="$student->isActive() ? 'success' : 'danger'" :name="$student->isActive() ? 'Active' : 'Inactive'" />
