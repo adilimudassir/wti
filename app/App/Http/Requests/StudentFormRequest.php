@@ -30,14 +30,16 @@ class StudentFormRequest extends FormRequest
             'phone' => 'required|unique:users',
             'password' => 'required|confirmed',
             'account_type' => 'required',
-            'state' => "required_unless:account_type,'CORPS MEMBER'",
-            'state_code' => "required_unless:account_type,'CORPS MEMBER'",
+            'state' => "nullable",
+            'state_code' => "nullable",
         ];
 
-        if (Request::isMethod('POST')) {
+        if (request()->account_type === 'CORPS MEMBER') {
+            $data['state'] ='required';
+            $data['state_code'] = 'required';
         }
 
-        if (Request::method() == 'PATCH' || Request::method() == 'POST') {
+        if (Request::method() == 'PATCH' || Request::method() == 'PUT') {
             $data['email'] = 'email';
             $data['phone'] = '';
             $data['password'] = '';

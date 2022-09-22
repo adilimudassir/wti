@@ -9,6 +9,15 @@
         ->open() 
     }}
 <x-card>
+    @if($errors->any())
+    <x-alert type="danger">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </x-alert>
+    @endif
     <x-slot name="body">
         <div class="row" id="form">
             <div class="form-group col-lg-12">
