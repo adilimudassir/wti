@@ -37,7 +37,7 @@ class StudentFormRequest extends FormRequest
         if (Request::isMethod('POST')) {
         }
 
-        if (Request::isMethod('PATCH')) {
+        if (Request::method() == 'PATCH' || Request::method() == 'POST') {
             $data['email'] = 'email';
             $data['phone'] = '';
             $data['password'] = '';
