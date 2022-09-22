@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PaymentFormRequest extends FormRequest
@@ -31,6 +32,11 @@ class PaymentFormRequest extends FormRequest
 
         if (request()->payment_method == 'Bank Transfer') {
             $data['receipt'] = 'required|file|mimes:jpeg,png,jpg,pdf|max:1024';
+        }
+
+        if (Request::method() == 'PATCH' || Request::method() == 'PUT') {
+            $data['payment_method'] = 'nullable';
+            $data['payment_type'] = 'nullable';
         }
 
         return $data;

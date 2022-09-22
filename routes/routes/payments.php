@@ -9,7 +9,7 @@ Route::group(['prefix' => 'payments', 'as' => 'payments.'], function () {
     Route::post('/store', [PaymentController::class, 'store'])->name('store');
     Route::get('/show/{id}', [PaymentController::class, 'show'])->name('show');
     Route::get('/edit/{id}', [PaymentController::class, 'edit'])->name('edit');
-    Route::post('/update/{id}', [PaymentController::class, 'update'])->name('update');
+    Route::patch('/update/{id}', [PaymentController::class, 'update'])->name('update');
     Route::get('/verify/{id}', [PaymentController::class, 'verify'])->name('verify');
     Route::delete('/destroy/{id}', [PaymentController::class, 'destroy'])->name('delete');
 
